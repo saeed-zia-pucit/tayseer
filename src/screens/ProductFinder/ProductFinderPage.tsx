@@ -6,7 +6,7 @@ import {
   canProceedStep,
   QuestionPanel,
 } from '@/components/finder/QuestionPanel'
-import { SolutionSummary } from '@/components/finder/SolutionSummary'
+import { SolutionPhonePreview } from '@/components/finder/SolutionPhonePreview'
 import { routes, TOTAL_FINDER_STEPS } from '@/lib/constants'
 import type { FinderAnswers } from '@/types'
 
@@ -73,7 +73,7 @@ export function ProductFinderPage() {
           <FinderProgress step={step} />
         </div>
 
-        <div className="grid items-start gap-8 lg:grid-cols-[1.45fr_1fr]">
+        <div className="grid items-start gap-8 lg:grid-cols-[1.35fr_auto]">
           <section className="rounded-[1.75rem] bg-white/70 p-6 shadow-[0_20px_60px_-40px_rgb(6_38_47_/_0.45)] ring-1 ring-line backdrop-blur md:p-8">
             <QuestionPanel
               step={step}
@@ -88,7 +88,7 @@ export function ProductFinderPage() {
             />
           </section>
 
-          <SolutionSummary answers={answers} analyzing={analyzing} />
+          <SolutionPhonePreview answers={answers} analyzing={analyzing} />
         </div>
       </div>
     </div>
