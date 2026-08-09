@@ -7,10 +7,18 @@ import {
   QuestionPanel,
 } from '@/components/finder/QuestionPanel'
 import { SolutionPhonePreview } from '@/components/finder/SolutionPhonePreview'
+import { SolutionSummary } from '@/components/finder/SolutionSummary'
 import { routes, TOTAL_FINDER_STEPS } from '@/lib/constants'
 import type { FinderAnswers } from '@/types'
+import { cn } from '@/lib/cn'
 
-export function ProductFinderPage() {
+export type FinderVariant = 'panel' | 'phone'
+
+interface ProductFinderPageProps {
+  variant: FinderVariant
+}
+
+export function ProductFinderPage({ variant }: ProductFinderPageProps) {
   const navigate = useNavigate()
   const { answers, updateAnswers, step, setStep, reset } = useFinder()
   const [analyzing, setAnalyzing] = useState(false)
@@ -32,6 +40,7 @@ export function ProductFinderPage() {
   }
 
   const canProceed = canProceedStep(step, answers)
+  const isPhone = variant === 'phone'
 
   return (
     <div className="relative min-h-dvh bg-surface">
@@ -53,19 +62,27 @@ export function ProductFinderPage() {
               Tayseer
             </p>
             <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/45">
-              Product Finder
+              {isPhone ? 'Phone preview flow' : 'Side-by-side flow'}
             </p>
           </div>
         </Link>
-        <button
-          type="button"
-          onClick={() => {
-            reset()
-          }}
-          className="text-xs font-semibold text-ink/50 underline-offset-4 hover:text-ink hover:underline"
-        >
-          Reset
-        </button>
+        <div className="flex items-center gap-4">
+          <Link
+            to={isPhone ? routes.finder : routes.finderPhone}
+            className="hidden text-xs font-semibold text-lagoon underline-offset-4 hover:underline sm:inline"
+          >
+            Switch to {isPhone ? 'side-by-side' : 'phone'} flow
+          </Link>
+          <button
+            type="button"
+            onClick={() => {
+              reset()
+            }}
+            className="text-xs font-semibold text-ink/50 underline-offset-4 hover:text-ink hover:underline"
+          >
+            Reset
+          </button>
+        </div>
       </header>
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 pb-12 md:px-8">
@@ -73,7 +90,12 @@ export function ProductFinderPage() {
           <FinderProgress step={step} />
         </div>
 
-        <div className="grid items-start gap-8 lg:grid-cols-[1.35fr_auto]">
+        <div
+          className={cn(
+            'grid items-start gap-8',
+            isPhone ? 'lg:grid-cols-[1.35fr_auto]' : 'lg:grid-cols-[1.45fr_1fr]',
+          )}
+        >
           <section className="rounded-[1.75rem] bg-white/70 p-6 shadow-[0_20px_60px_-40px_rgb(6_38_47_/_0.45)] ring-1 ring-line backdrop-blur md:p-8">
             <QuestionPanel
               step={step}
@@ -88,7 +110,11 @@ export function ProductFinderPage() {
             />
           </section>
 
-          <SolutionPhonePreview answers={answers} analyzing={analyzing} />
+          {isPhone ? (
+            <SolutionPhonePreview answers={answers} analyzing={analyzing} />
+          ) : (
+            <SolutionSummary answers={answers} analyzing={analyzing} />
+          )}
         </div>
       </div>
     </div>

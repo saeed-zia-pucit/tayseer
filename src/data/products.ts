@@ -4,17 +4,17 @@ export const tayseerProducts: TayseerProduct[] = [
   {
     id: 'mbuke',
     name: 'MBuke',
-    tagline: 'White-label digital wallet & banking app',
+    tagline: 'White-label mobile banking platform built for your business',
     description:
-      'Launch branded mobile wallets with USSD, agents, Soft POS, and multi-channel customer journeys.',
+      'AI-powered white-label mobile finance: onboarding, transfers & payments, analytics, agent banking, and USSD/offline — modular and brand-ready.',
     category: 'Experience',
   },
   {
     id: 'mbuke-wallet',
     name: 'MBuke Wallet',
-    tagline: 'Payments, balances & P2P in one app',
+    tagline: 'Unified wallet: P2P, bills, remittance & USSD',
     description:
-      'Consumer and SME wallets with QR, bill pay, and instant transfers — ready to white-label.',
+      'Consumer and SME wallets with dashboards, Soft POS, multi-currency, and operator tools — fully white-label.',
     category: 'Experience',
   },
   {

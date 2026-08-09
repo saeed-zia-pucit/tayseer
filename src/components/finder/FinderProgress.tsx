@@ -3,14 +3,29 @@ import { TOTAL_FINDER_STEPS } from '@/lib/constants'
 import { finderStepMeta } from '@/data/finderOptions'
 import { cn } from '@/lib/cn'
 
-export function FinderProgress({ step }: { step: number }) {
-  const pct = Math.round((step / TOTAL_FINDER_STEPS) * 100)
+interface StepMeta {
+  id: number
+  short: string
+}
+
+interface FinderProgressProps {
+  step: number
+  total?: number
+  steps?: readonly StepMeta[]
+}
+
+export function FinderProgress({
+  step,
+  total = TOTAL_FINDER_STEPS,
+  steps = finderStepMeta,
+}: FinderProgressProps) {
+  const pct = Math.round((step / total) * 100)
 
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between gap-3">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink/45">
-          Step {step} of {TOTAL_FINDER_STEPS}
+          Step {step} of {total}
         </p>
         <p className="text-xs font-medium text-ink/50">{pct}%</p>
       </div>
@@ -23,7 +38,7 @@ export function FinderProgress({ step }: { step: number }) {
         />
       </div>
       <div className="hidden gap-2 sm:flex">
-        {finderStepMeta.map((s) => (
+        {steps.map((s) => (
           <span
             key={s.id}
             className={cn(

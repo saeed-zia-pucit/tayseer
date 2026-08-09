@@ -22,6 +22,14 @@ export const emptyFinderAnswers = (): FinderAnswers => ({
 export const routes = {
   home: '/',
   finder: '/finder',
+  finderPhone: '/finder/phone',
+  whiteLabel: '/white-label',
+  whiteLabelResults: '/white-label/results',
+  mbukeDemo: '/mbuke-demo',
+  mbukeDemoResults: '/mbuke-demo/results',
+  coreIntegrations: '/core-integrations',
+  coreIntegrationsResults: '/core-integrations/results',
+  implementationJourney: '/implementation-journey',
   results: '/results',
 } as const
 

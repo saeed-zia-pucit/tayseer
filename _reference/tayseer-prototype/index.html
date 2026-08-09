@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tayseer Innovations — Banking, Reimagined Through AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</head>
+<body>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav-brand">
+      <span class="brand-mark"></span>
+      <span>Tayseer</span>
+    </a>
+    <div class="nav-links">
+      <a href="#solutions">Products</a>
+      <a href="#ecosystem">AI Ecosystem</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#presence">Presence</a>
+      <a href="#contact">Connect</a>
+    </div>
+    <button class="btn btn-primary btn-sm magnetic" data-scroll="#contact">Book a Demo</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero hero-cinematic" id="hero">
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Tayseer Innovations · Product Story</p>
+          <h1>
+            Banking,<br />
+            <span class="gradient-text">Reimagined</span><br />
+            Through AI.
+          </h1>
+          <p class="hero-sub">
+            An immersive journey through the platforms powering modern finance —
+            from digital ecosystems to connected banking networks across KSA &amp; the UAE.
+          </p>
+          <div class="hero-ctas">
+            <button class="btn btn-primary magnetic" data-scroll="#solutions">
+              <span>Begin the Journey</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="btn btn-ghost magnetic" data-scroll="#contact">Book a Demo</button>
+          </div>
+          <div class="hero-trust">
+            <span>ISO 27001 Certified</span>
+            <span class="dot"></span>
+            <span>KSA · UAE</span>
+            <span class="dot"></span>
+            <span>Enterprise Fintech</span>
+          </div>
+        </div>
+
+        <div class="hero-stage reveal" data-delay="120">
+          <div class="dash-orbit">
+            <div class="glass-card dash-main float-a">
+              <div class="dash-header">
+                <span class="live-dot"></span>
+                <span>Live Banking Pulse</span>
+                <span class="mono">+12.4%</span>
+              </div>
+              <div class="sparkline" id="sparkline"></div>
+              <div class="dash-metrics">
+                <div><small>Volume</small><strong class="mono">$2.4M</strong></div>
+                <div><small>TXN/s</small><strong class="mono">1,842</strong></div>
+                <div><small>AI Score</small><strong class="mono">98.7</strong></div>
+              </div>
+            </div>
+
+            <div class="glass-card float-card ai-panel float-b">
+              <div class="ai-avatar">AI</div>
+              <div>
+                <strong>Fahim AI</strong>
+                <p>Fraud anomaly detected · cleared in 0.4s</p>
+              </div>
+            </div>
+
+            <div class="glass-card float-card wallet-card float-c">
+              <small>Digital Wallet</small>
+              <strong class="mono">AED 48,290</strong>
+              <div class="mini-bars"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+
+            <div class="glass-card float-card notif-card float-d">
+              <span class="notif-icon">↗</span>
+              <div>
+                <strong>Payment received</strong>
+                <p class="mono">+SAR 12,500</p>
+              </div>
+            </div>
+
+            <div class="glass-card float-card api-card float-e">
+              <small>API Gateway</small>
+              <div class="api-pills">
+                <span>Core</span><span>Payments</span><span>Cards</span>
+              </div>
+            </div>
+
+            <div class="phone-mini float-f">
+              <div class="phone-bezel">
+                <div class="phone-notch"></div>
+                <div class="phone-screen-mini">
+                  <div class="mini-balance">Balance</div>
+                  <div class="mini-amount mono">$24,850</div>
+                  <div class="mini-chart"></div>
+                </div>
+              </div>
+              <div class="signal-rings" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-hint">
+        <span>Scroll to explore products</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- CIRCULAR 3D CAROUSEL STORY -->
+    <section class="scroll-story" id="solutions" aria-label="Product storytelling experience">
+      <div class="scroll-story-track" id="scrollStoryTrack" style="--slides: 6">
+        <div class="scroll-story-sticky" id="scrollStorySticky">
+          <canvas class="story-fx" id="storyFx" aria-hidden="true"></canvas>
+          <div class="story-vignette" aria-hidden="true"></div>
+          <div class="story-streams" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <header class="story-chrome">
+            <div class="story-chrome-left">
+              <p class="eyebrow">Tayseer · Product Carousel</p>
+              <p class="story-chapter" id="storyChapter">Digital Banking Ecosystem</p>
+            </div>
+            <div class="story-chrome-right">
+              <span class="mono" id="storyCounter">01 / 06</span>
+              <div class="story-progress"><i id="storyProgressFill"></i></div>
+            </div>
+          </header>
+
+          <div class="carousel-layout" id="storyCamera">
+            <div class="carousel-stage">
+              <div class="carousel-ring-scene">
+                <div class="carousel-disc" aria-hidden="true"></div>
+                <div class="carousel-ring" id="carouselRing"></div>
+                <div class="carousel-focus" aria-hidden="true"></div>
+              </div>
+              <div class="carousel-thumbs" id="carouselThumbs" role="tablist" aria-label="Select product"></div>
+            </div>
+
+            <aside class="story-info carousel-info" id="storyInfoPanel">
+              <p class="eyebrow" id="infoTag">Scene 01</p>
+              <h3 id="infoTitle">Digital Banking Ecosystem</h3>
+              <p class="story-desc" id="infoDesc"></p>
+              <ul class="story-features" id="infoFeatures"></ul>
+              <div class="story-actions">
+                <button type="button" class="btn btn-primary btn-glow magnetic story-book" id="storyBookBtn">
+                  <span>Book a Demo</span>
+                </button>
+              </div>
+            </aside>
+          </div>
+
+          <nav class="story-dots" id="storyDots" role="tablist" aria-label="Products"></nav>
+          <p class="story-hint"><span></span> Scroll to rotate the carousel</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI ECOSYSTEM -->
+    <section class="section ecosystem" id="ecosystem">
+      <div class="section-head reveal">
+        <p class="eyebrow">Fahim AI · Neural Core</p>
+        <h2>Tayseer AI &amp; <span class="gradient-text">Core Banking Architecture</span></h2>
+        <p class="section-sub">Watch signals pulse from the AI brain into every banking capability.</p>
+      </div>
+      <div class="eco-canvas reveal" id="ecoCanvas">
+        <div class="eco-circuit-bg" aria-hidden="true"></div>
+        <svg class="eco-lines" id="ecoLines" viewBox="0 0 800 560" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="eco-core">
+          <div class="brain-glow"></div>
+          <div class="brain-rings" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="brain-visual" aria-hidden="true">
+            <svg class="brain-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00F2FF"/>
+                  <stop offset="55%" stop-color="#00A8FF"/>
+                  <stop offset="100%" stop-color="#0066FF"/>
+                </linearGradient>
+                <filter id="brainSoftGlow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="3.5" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <!-- Outer brain silhouette -->
+              <path class="brain-outline" filter="url(#brainSoftGlow)" fill="none" stroke="url(#brainGrad)" stroke-width="2.2"
+                d="M100 28c-18-2-36 6-44 22-8-4-18-2-24 6-8 10-6 26 2 36-8 8-10 22-4 34 4 10 14 16 26 16 2 12 12 22 26 24 10 14 30 16 44 6 16 6 34-2 40-18 12 0 22-10 24-22 8-4 12-16 8-26-2-8-10-14-18-14 2-14-6-28-20-34-8-14-26-22-40-20-8-8-22-12-30-10z"/>
+              <!-- Hemisphere split -->
+              <path class="brain-fold" fill="none" stroke="#00E5FF" stroke-width="1.4" stroke-opacity="0.85"
+                d="M100 36c0 20-2 40 0 58 2 16 0 32-2 48 0 8 2 16 4 22"/>
+              <!-- Neural folds left -->
+              <path class="brain-fold" fill="none" stroke="#00F2FF" stroke-width="1.2" stroke-opacity="0.7"
+                d="M62 58c12 4 18 14 16 28M52 88c14 2 22 12 18 26M58 128c10 8 24 10 34 4"/>
+              <!-- Neural folds right -->
+              <path class="brain-fold" fill="none" stroke="#00F2FF" stroke-width="1.2" stroke-opacity="0.7"
+                d="M138 56c-12 6-16 18-12 30M150 90c-14 4-20 16-14 28M142 130c-12 6-26 8-36 2"/>
+              <!-- Circuit traces -->
+              <g class="brain-circuits" stroke="#00E5FF" stroke-width="1" fill="none" stroke-opacity="0.55">
+                <path d="M78 72h18l8 10v16"/>
+                <path d="M122 74h-16l-6 12v14"/>
+                <path d="M70 110h22l6 8"/>
+                <path d="M130 112h-20l-8 10"/>
+                <circle cx="78" cy="72" r="2" fill="#00F2FF"/>
+                <circle cx="122" cy="74" r="2" fill="#00F2FF"/>
+                <circle cx="70" cy="110" r="2" fill="#7CFFB2"/>
+                <circle cx="130" cy="112" r="2" fill="#7CFFB2"/>
+                <circle cx="104" cy="98" r="2.5" fill="#FFE566"/>
+              </g>
+              <!-- Inner pulse ring -->
+              <circle class="brain-inner-ring" cx="100" cy="100" r="28" fill="none" stroke="#00F2FF" stroke-width="1" stroke-opacity="0.45"/>
+              <text class="brain-ai-label" x="100" y="108" text-anchor="middle" fill="#FFFFFF" font-family="Sora,sans-serif" font-size="28" font-weight="800" letter-spacing="2">AI</text>
+            </svg>
+          </div>
+          <div class="brain-label">
+            <span>Fahim</span>
+            <small>AI Core</small>
+          </div>
+        </div>
+        <div class="eco-nodes" id="ecoNodes"></div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="section architecture" id="architecture">
+      <div class="section-head reveal">
+        <p class="eyebrow">Core Banking</p>
+        <h2>Interactive <span class="gradient-text">system architecture</span></h2>
+        <p class="section-sub">Click any node to illuminate the transaction path.</p>
+      </div>
+      <div class="arch-flow reveal" id="archFlow">
+        <!-- nodes injected -->
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section stats" id="stats">
+      <div class="stats-grid reveal">
+        <div class="stat-card glass-panel">
+          <div class="ring" data-value="92"><canvas width="120" height="120"></canvas></div>
+          <div>
+            <strong class="mono counter" data-target="5500">0</strong><span>+</span>
+            <p>Professionals &amp; partners in delivery network</p>
+          </div>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="ring" data-value="78"><canvas width="120" height="120"></canvas></div>
+          <div>
+            <strong class="mono counter" data-target="20">0</strong><span>+</span>
+            <p>Nationalities collaborating across teams</p>
+          </div>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="ring" data-value="96"><canvas width="120" height="120"></canvas></div>
+          <div>
+            <strong class="mono counter" data-target="4">0</strong><span>M+</span>
+            <p>Customers impacted through partner banks</p>
+          </div>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="ring" data-value="88"><canvas width="120" height="120"></canvas></div>
+          <div>
+            <strong class="mono counter" data-target="2016">0</strong>
+            <p>Founded — pioneering regional fintech</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRESENCE -->
+    <section class="section presence" id="presence">
+      <div class="section-head reveal">
+        <p class="eyebrow">Global Presence</p>
+        <h2>Connected across the <span class="gradient-text">Gulf &amp; beyond</span></h2>
+      </div>
+      <div class="map-wrap reveal">
+        <svg class="world-map" viewBox="0 0 900 420" role="img" aria-label="Regional presence map">
+          <defs>
+            <radialGradient id="cityGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#00E5FF" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="linkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#0066FF"/>
+              <stop offset="100%" stop-color="#00E5FF"/>
+            </linearGradient>
+          </defs>
+          <ellipse class="map-land" cx="450" cy="220" rx="380" ry="150" />
+          <path class="map-arc" id="mapArc" d="M310 250 Q450 120 580 230" fill="none" stroke="url(#linkGrad)" stroke-width="2"/>
+          <g class="city" transform="translate(310,250)">
+            <circle class="city-glow" r="28" fill="url(#cityGlow)"/>
+            <circle class="city-dot" r="6"/>
+            <text y="-18">Riyadh · KSA</text>
+          </g>
+          <g class="city" transform="translate(580,230)">
+            <circle class="city-glow" r="28" fill="url(#cityGlow)"/>
+            <circle class="city-dot" r="6"/>
+            <text y="-18">Dubai · UAE</text>
+          </g>
+          <g class="city soft" transform="translate(450,180)">
+            <circle class="city-dot" r="4"/>
+            <text y="-14">Partners</text>
+          </g>
+        </svg>
+        <div class="presence-cards">
+          <div class="glass-panel">
+            <h4>Saudi Arabia</h4>
+            <p>Office 7, Selam Building, Al Rawabi, Riyadh</p>
+            <span class="mono">+966 555203079</span>
+          </div>
+          <div class="glass-panel">
+            <h4>United Arab Emirates</h4>
+            <p>601, One Lake Plaza, Cluster T, JLT, Dubai</p>
+            <span class="mono">+971 43997558</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section stories" id="stories">
+      <div class="section-head reveal">
+        <p class="eyebrow">Client Speak</p>
+        <h2>Trusted by institutions shaping <span class="gradient-text">digital finance</span></h2>
+      </div>
+      <div class="stories-track reveal" id="storiesTrack">
+        <article class="story-card glass-panel">
+          <p>“Tayseer has been a key partner in driving growth and innovation within our individual banking services.”</p>
+          <footer>
+            <strong>Saber Alkahtani</strong>
+            <span>Head of Individual Services Sector</span>
+          </footer>
+        </article>
+        <article class="story-card glass-panel">
+          <p>“Their innovative FinTech solutions provide a robust foundation for continuous improvement.”</p>
+          <footer>
+            <strong>Abdulla Alttowi</strong>
+            <span>Manager – R&amp;D</span>
+          </footer>
+        </article>
+        <article class="story-card glass-panel">
+          <p>“The app has been a huge hit, and our customer satisfaction ratings have soared since its launch.”</p>
+          <footer>
+            <strong>Bassma Alzailay</strong>
+            <span>Development &amp; Systems Analyst Manager</span>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="section-head reveal">
+        <p class="eyebrow">Connect</p>
+        <h2>Tell us about your <span class="gradient-text">business</span></h2>
+        <p class="section-sub">An AI-guided conversation — no cluttered forms.</p>
+      </div>
+      <div class="chat-shell glass-panel reveal">
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-options" id="chatOptions"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <span class="brand-mark"></span>
+      <div>
+        <strong>Tayseer Innovations</strong>
+        <p>Premier fintech · AI &amp; digital banking · KSA &amp; UAE</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.tayseer.me/" target="_blank" rel="noopener">Current site</a>
+      <a href="mailto:info@tayseer.me">info@tayseer.me</a>
+    </div>
+    <p class="footer-copy">© Tayseer Innovations. Prototype concept for redesign exploration.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
