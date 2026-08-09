@@ -1,42 +1,46 @@
 import { useEffect, useState } from 'react'
-import { NeuralCanvas } from '@/screens/Landing/prototype/NeuralCanvas'
-import { ProductCarousel } from '@/screens/Landing/prototype/ProductCarousel'
 import {
   ArchitectureSection,
   ContactSection,
   EcosystemSection,
-  HeroSection,
   HomeFooter,
   HomeNav,
   PresenceSection,
   StatsSection,
   StoriesSection,
 } from '@/screens/Landing/prototype/HomeSections'
+import { VideInfraExperience } from '@/screens/Landing/videinfra/VideInfraExperience'
 
-const PROTO_CSS_HREF = '/prototype/styles.css?v=7'
+const PROTO_CSS_HREF = '/prototype/styles.css?v=9'
+const VI_CSS_HREF = '/videinfra/styles.css?v=7'
 
 /**
- * Marketing homepage ported from `_reference/tayseer-prototype`.
- * Circular product carousel CTAs open existing internal demo flows.
+ * Homepage: Vide Infra–style horizontal product scroll for the top,
+ * then existing Tayseer modules below.
  */
 export function LandingPage() {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    // Load prototype CSS from /public so Tailwind/Vite never parse it
-    let link = document.querySelector<HTMLLinkElement>(
-      `link[data-tayseer-proto="1"]`,
-    )
-    if (!link) {
-      link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.dataset.tayseerProto = '1'
-      document.head.appendChild(link)
+    const ensureLink = (href: string, key: string) => {
+      let link = document.querySelector<HTMLLinkElement>(
+        `link[data-tayseer-css="${key}"]`,
+      )
+      if (!link) {
+        link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.dataset.tayseerCss = key
+        document.head.appendChild(link)
+      }
+      link.href = href
+      return link
     }
-    link.href = PROTO_CSS_HREF
+
+    const proto = ensureLink(PROTO_CSS_HREF, 'proto')
+    const vi = ensureLink(VI_CSS_HREF, 'vi')
 
     const prevBg = document.body.style.background
-    document.body.style.background = '#03060F'
+    document.body.style.background = '#2a1f4a'
 
     const onScroll = () => {
       const max =
@@ -47,26 +51,24 @@ export function LandingPage() {
     return () => {
       document.body.style.background = prevBg
       window.removeEventListener('scroll', onScroll)
-      link?.remove()
+      proto.remove()
+      vi.remove()
     }
   }, [])
 
   return (
-    <div className="tayseer-home">
-      <div className="cursor-glow" id="cursorGlow" aria-hidden />
+    <div className="tayseer-home vi-home">
       <div
         className="scroll-progress"
         id="scrollProgress"
         aria-hidden
         style={{ width: `${progress}%` }}
       />
-      <NeuralCanvas />
 
       <HomeNav />
 
       <main>
-        <HeroSection />
-        <ProductCarousel />
+        <VideInfraExperience />
         <EcosystemSection />
         <ArchitectureSection />
         <StatsSection />

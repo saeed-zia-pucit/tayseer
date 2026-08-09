@@ -20,7 +20,7 @@ export function HomeNav() {
         <span>Tayseer</span>
       </a>
       <div className="nav-links">
-        <a href="#solutions" onClick={() => setOpen(false)}>
+        <a href="#hero" onClick={() => setOpen(false)}>
           Products
         </a>
         <a href="#ecosystem" onClick={() => setOpen(false)}>
