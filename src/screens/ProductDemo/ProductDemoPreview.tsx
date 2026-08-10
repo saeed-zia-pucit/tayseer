@@ -31,18 +31,18 @@ export function ProductDemoPreview({
       <div
         className="brand-aside"
         style={{
-          background: `linear-gradient(165deg, ${config.accent}40, var(--brand-bg-deep) 42%, var(--brand-bg-elevated))`,
+          background: `linear-gradient(165deg, color-mix(in srgb, ${config.accent} 22%, #e6f0f4), color-mix(in srgb, ${config.accent} 8%, #f4f7fa) 48%, #eef3f8)`,
         }}
       >
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-lagoon-bright">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-lagoon">
               Live demo preview
             </p>
-            <h2 className="mt-2 font-display text-2xl font-bold tracking-tight">
+            <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-ink">
               {product.name}
             </h2>
-            <p className="mt-1 text-sm text-mist/70">{product.tagline}</p>
+            <p className="mt-1 text-sm text-ink/60">{product.tagline}</p>
           </div>
           <AnimatePresence>
             {analyzing ? (
@@ -50,7 +50,7 @@ export function ProductDemoPreview({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide"
+                className="rounded-full bg-ink/[0.06] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-ink/70 ring-1 ring-ink/10"
               >
                 Updating
               </motion.span>
@@ -84,12 +84,12 @@ export function ProductDemoPreview({
         </div>
 
         <div className="mt-6">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-mist/45">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/45">
             Selected modules
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {modules.length === 0 ? (
-              <span className="rounded-full bg-white/8 px-2.5 py-1 text-[10px] text-mist/50 ring-1 ring-white/10">
+              <span className="rounded-full bg-ink/[0.04] px-2.5 py-1 text-[10px] text-ink/50 ring-1 ring-ink/10">
                 Pick capabilities on step 3
               </span>
             ) : (
@@ -98,7 +98,7 @@ export function ProductDemoPreview({
                 return (
                   <span
                     key={id}
-                    className="rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-medium ring-1 ring-white/15"
+                    className="rounded-full bg-[color-mix(in_srgb,var(--brand-slide-1)_12%,#eef4f6)] px-2.5 py-1 text-[10px] font-medium text-ink/80 ring-1 ring-ink/10"
                   >
                     {opt?.label ?? id}
                   </span>
@@ -109,13 +109,15 @@ export function ProductDemoPreview({
         </div>
 
         <div
-          className="mt-8 rounded-2xl p-4 ring-1 ring-white/15"
-          style={{ background: `${config.accent}22` }}
+          className="mt-8 rounded-2xl p-4 ring-1 ring-ink/10"
+          style={{
+            background: `color-mix(in srgb, ${config.accent} 14%, #eef4f6)`,
+          }}
         >
-          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-mist/55">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ink/50">
             Demo storyline
           </p>
-          <p className="mt-2 text-sm leading-relaxed text-mist/85">
+          <p className="mt-2 text-sm leading-relaxed text-ink/70">
             {modules.length
               ? `We’ll walk ${modules.length} capability area${modules.length === 1 ? '' : 's'} tailored to ${orgLabel}.`
               : 'Answer the steps to compose your interactive walkthrough.'}
@@ -128,11 +130,13 @@ export function ProductDemoPreview({
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-start justify-between gap-4 border-b border-white/10 py-2.5 last:border-0">
-      <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-mist/45">
+    <div className="flex items-start justify-between gap-4 border-b border-ink/10 py-2.5 last:border-0">
+      <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink/45">
         {label}
       </span>
-      <span className="max-w-[60%] text-right text-sm font-medium">{value}</span>
+      <span className="max-w-[60%] text-right text-sm font-medium text-ink">
+        {value}
+      </span>
     </div>
   )
 }

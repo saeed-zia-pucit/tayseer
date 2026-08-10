@@ -392,7 +392,7 @@ function StatCard({
             cy="60"
             r="48"
             fill="none"
-            stroke="color-mix(in srgb, var(--brand-slide-6) 35%, transparent)"
+            stroke="var(--stat-ring-track)"
             strokeWidth="8"
           />
           <circle

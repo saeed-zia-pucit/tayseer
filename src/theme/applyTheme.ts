@@ -36,6 +36,7 @@ export function paintPalette(palette: BrandPalette): BrandPalette {
     root.style.setProperty(key, value)
   }
   root.dataset.palette = palette.id
+  root.dataset.themeMode = palette.mode === 'light' ? 'light' : 'dark'
   window.dispatchEvent(
     new CustomEvent(THEME_CHANGE_EVENT, { detail: palette }),
   )

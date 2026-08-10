@@ -8,6 +8,8 @@ export type BrandPalette = {
   id: string
   name: string
   blurb: string
+  /** Canvas mode — light themes remaps rings, glass, and on-accent text. */
+  mode?: 'light' | 'dark'
   bgDeep: string
   bg: string
   bgElevated: string
@@ -25,6 +27,31 @@ export type BrandPalette = {
 }
 
 /**
+ * Locked hero atmosphere — product carousel never follows Theme Lab.
+ * Keep in sync with violetAurora slide energy.
+ */
+export const HERO_PALETTE: BrandPalette = {
+  id: 'hero-lock',
+  name: 'Hero Lock',
+  blurb: 'Fixed product-hero colours — not overwritten by Theme Lab.',
+  mode: 'dark',
+  bgDeep: '#0a0614',
+  bg: '#140c24',
+  bgElevated: '#2a1848',
+  text: '#f7f2ff',
+  muted: '#b7a6de',
+  accent: '#8b5cf6',
+  accent2: '#06b6d4',
+  accent3: '#a855f7',
+  accentSoft: '#f0abfc',
+  intro: '#4c1d95',
+  slides: ['#8b5cf6', '#06b6d4', '#6366f1', '#a855f7', '#0ea5e9', '#d8b4fe'],
+  accentRgb: '139, 92, 246',
+  accent2Rgb: '6, 182, 212',
+  accent3Rgb: '168, 85, 247',
+}
+
+/**
  * Default — deep indigo + punchy violet/cyan (matches Vide Infra hero slides).
  */
 export const violetAurora: BrandPalette = {
@@ -32,6 +59,7 @@ export const violetAurora: BrandPalette = {
   name: 'Violet Aurora',
   blurb:
     'Saturated violet and cyan atmospheres — same energy as the product hero slides.',
+  mode: 'dark',
   bgDeep: '#0a0614',
   bg: '#140c24',
   bgElevated: '#2a1848',
@@ -52,6 +80,7 @@ export const lagoonPrism: BrandPalette = {
   id: 'lagoon-prism',
   name: 'Lagoon Prism',
   blurb: 'Teal core with aqua and coral accents — colourful while staying on-brand for fintech trust.',
+  mode: 'dark',
   bgDeep: '#041c22',
   bg: '#06262f',
   bgElevated: '#0d3d4a',
@@ -72,6 +101,7 @@ export const sunsetCircuit: BrandPalette = {
   id: 'sunset-circuit',
   name: 'Sunset Circuit',
   blurb: 'Midnight navy with magenta, amber, and electric blue — bold and lively.',
+  mode: 'dark',
   bgDeep: '#0b0614',
   bg: '#160b24',
   bgElevated: '#2a1240',
@@ -92,6 +122,7 @@ export const northernLights: BrandPalette = {
   id: 'northern-lights',
   name: 'Northern Lights',
   blurb: 'Near-black canvas with cyan, emerald, and violet ribbons — immersive and premium.',
+  mode: 'dark',
   bgDeep: '#05080f',
   bg: '#0a1220',
   bgElevated: '#132038',
@@ -108,26 +139,27 @@ export const northernLights: BrandPalette = {
   accent3Rgb: '52, 211, 153',
 }
 
-/** Light canvas — for demos / daytime review of the same accent system. */
+/** Light canvas — high-contrast ink on pearl surfaces for daytime review. */
 export const pearlLagoon: BrandPalette = {
   id: 'pearl-lagoon',
   name: 'Pearl Lagoon',
   blurb:
-    'Soft pearl surfaces with teal and indigo accents — a light theme for daytime review.',
-  bgDeep: '#dce6f0',
-  bg: '#eef3f8',
+    'Clean pearl surfaces with deep teal and indigo accents — readable cards and text on a light canvas.',
+  mode: 'light',
+  bgDeep: '#d8e2ec',
+  bg: '#eef2f7',
   bgElevated: '#ffffff',
-  text: '#0f1c2e',
-  muted: '#5a6f86',
-  accent: '#0d9488',
-  accent2: '#2563eb',
-  accent3: '#7c3aed',
-  accentSoft: '#0ea5e9',
-  intro: '#c7d7e8',
-  slides: ['#0d9488', '#2563eb', '#7c3aed', '#0891b2', '#4f46e5', '#14b8a6'],
-  accentRgb: '13, 148, 136',
-  accent2Rgb: '37, 99, 235',
-  accent3Rgb: '124, 58, 237',
+  text: '#0b1628',
+  muted: '#4f6278',
+  accent: '#0f766e',
+  accent2: '#1d4ed8',
+  accent3: '#6d28d9',
+  accentSoft: '#0369a1',
+  intro: '#cbd8e6',
+  slides: ['#0f766e', '#1d4ed8', '#6d28d9', '#0e7490', '#4338ca', '#0d9488'],
+  accentRgb: '15, 118, 110',
+  accent2Rgb: '29, 78, 216',
+  accent3Rgb: '109, 40, 217',
 }
 
 export const PALETTES: Record<string, BrandPalette> = {
@@ -141,7 +173,7 @@ export const PALETTES: Record<string, BrandPalette> = {
 export const PALETTE_LIST = Object.values(PALETTES)
 
 /** Default app-wide palette */
-export const ACTIVE_PALETTE_ID: keyof typeof PALETTES = 'violet-aurora'
+export const ACTIVE_PALETTE_ID: keyof typeof PALETTES = 'pearl-lagoon'
 
 export function getPalette(id: string = ACTIVE_PALETTE_ID): BrandPalette {
   return PALETTES[id] ?? violetAurora

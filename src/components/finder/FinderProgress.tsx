@@ -47,7 +47,7 @@ export function FinderProgress({
                 ? 'bg-lagoon text-mist'
                 : s.id < step
                   ? 'bg-lagoon/20 text-lagoon-bright'
-                  : 'bg-white/5 text-ink/40',
+                  : 'bg-[color-mix(in_srgb,var(--brand-bg-deep)_28%,white)] text-ink/40 ring-1 ring-ink/10',
             )}
           >
             {s.short}

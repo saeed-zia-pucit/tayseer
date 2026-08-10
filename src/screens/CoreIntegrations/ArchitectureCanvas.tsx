@@ -14,33 +14,34 @@ interface ArchitectureCanvasProps {
   animated?: boolean
 }
 
+/** Layer chrome — tinted surfaces + ink text (readable on pearl / light themes). */
 const layerStyle: Record<
   ArchitectureNode['layer'],
   { ring: string; bg: string; label: string }
 > = {
   core: {
-    ring: 'ring-lagoon-bright/55',
-    bg: 'bg-lagoon/25 text-mist',
+    ring: 'ring-[color-mix(in_srgb,var(--brand-slide-1)_42%,transparent)]',
+    bg: 'bg-[color-mix(in_srgb,var(--brand-slide-1)_20%,#eef6f4)] text-ink',
     label: 'Core',
   },
   channel: {
-    ring: 'ring-lagoon-bright/40',
-    bg: 'bg-white/8 text-mist',
+    ring: 'ring-[color-mix(in_srgb,var(--brand-slide-2)_40%,transparent)]',
+    bg: 'bg-[color-mix(in_srgb,var(--brand-slide-2)_14%,#eef3fb)] text-ink',
     label: 'Channel',
   },
   rail: {
-    ring: 'ring-[var(--brand-accent-3)]/45',
-    bg: 'bg-white/8 text-mist',
+    ring: 'ring-[color-mix(in_srgb,var(--brand-slide-3)_38%,transparent)]',
+    bg: 'bg-[color-mix(in_srgb,var(--brand-slide-3)_12%,#f3eef8)] text-ink',
     label: 'Rail',
   },
   risk: {
-    ring: 'ring-sand/50',
-    bg: 'bg-sand/15 text-mist',
+    ring: 'ring-[color-mix(in_srgb,var(--brand-accent-soft)_40%,transparent)]',
+    bg: 'bg-[color-mix(in_srgb,var(--brand-accent-soft)_12%,#f2f5f8)] text-ink',
     label: 'Risk',
   },
   legacy: {
-    ring: 'ring-white/20',
-    bg: 'bg-white/5 text-mist/80',
+    ring: 'ring-ink/15',
+    bg: 'bg-[color-mix(in_srgb,var(--brand-bg-deep)_35%,#f4f6f9)] text-ink',
     label: 'Legacy',
   },
 }
@@ -84,18 +85,18 @@ function NodeCard({
         node.layer === 'core' && 'px-4 py-4 shadow-lift',
       )}
     >
-      <p className="text-[9px] font-semibold uppercase tracking-[0.14em] opacity-60">
+      <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-ink/45">
         {style.label}
       </p>
       <p
         className={cn(
-          'mt-1 font-semibold',
+          'mt-1 font-semibold text-ink',
           node.layer === 'core' ? 'text-sm' : 'text-xs',
         )}
       >
         {node.label}
       </p>
-      <p className="mt-1 text-[9px] font-medium opacity-55 capitalize">
+      <p className="mt-1 text-[9px] font-medium capitalize text-ink/50">
         {node.mode}
       </p>
       {animated && node.layer === 'core' ? (
@@ -141,31 +142,30 @@ export function ArchitectureCanvas({
       <div className="brand-aside !p-5 md:!p-6">
         <div className="mb-5 flex items-center justify-between gap-3">
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-lagoon-bright">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-lagoon">
               {result?.title ?? 'Awaiting goal'}
             </p>
-            <p className="mt-1 text-xs text-mist/55">
+            <p className="mt-1 text-xs text-ink/50">
               {answers.style
                 ? `${result?.styleLabel ?? ''} pattern`
                 : 'Select integrations to connect'}
             </p>
           </div>
           {animated ? (
-            <span className="flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2.5 py-1 text-[10px] font-bold text-emerald-300">
+            <span className="flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2.5 py-1 text-[10px] font-bold text-emerald-700">
               <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-70" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
               </span>
               Live topology
             </span>
           ) : null}
         </div>
 
-        <div className="relative min-h-[320px] rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
-          {/* Pulse lines hint */}
+        <div className="relative min-h-[320px] rounded-2xl bg-[color-mix(in_srgb,var(--brand-bg-deep)_28%,transparent)] p-4 ring-1 ring-ink/10">
           {animated && satellites.length > 0 ? (
             <motion.div
-              className="pointer-events-none absolute inset-8 rounded-full border border-dashed border-lagoon-bright/25"
+              className="pointer-events-none absolute inset-8 rounded-full border border-dashed border-lagoon/30"
               animate={{ opacity: [0.25, 0.55, 0.25], scale: [0.98, 1.02, 0.98] }}
               transition={{ duration: 3.2, repeat: Infinity }}
               aria-hidden
@@ -175,7 +175,7 @@ export function ArchitectureCanvas({
           <div className="relative z-10 grid gap-4">
             {channels.length > 0 ? (
               <div>
-                <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-mist/40">
+                <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-ink/40">
                   Channels
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -196,12 +196,12 @@ export function ArchitectureCanvas({
             <div className="flex flex-col items-center gap-2 py-1">
               {animated && (channels.length > 0 || satellites.length > 0) ? (
                 <motion.div
-                  className="h-6 w-px bg-gradient-to-b from-lagoon-bright/10 via-lagoon-bright/70 to-lagoon-bright/10"
+                  className="h-6 w-px bg-gradient-to-b from-lagoon/10 via-lagoon/70 to-lagoon/10"
                   animate={{ opacity: [0.3, 1, 0.3] }}
                   transition={{ duration: 1.4, repeat: Infinity }}
                 />
               ) : (
-                <div className="h-4 w-px bg-white/15" />
+                <div className="h-4 w-px bg-ink/15" />
               )}
 
               {core ? (
@@ -209,25 +209,25 @@ export function ArchitectureCanvas({
                   <NodeCard node={core} animated={animated} index={0} />
                 </div>
               ) : (
-                <div className="w-full max-w-[220px] rounded-2xl border border-dashed border-white/20 px-4 py-6 text-center text-xs text-mist/40">
+                <div className="w-full max-w-[220px] rounded-2xl border border-dashed border-ink/20 px-4 py-6 text-center text-xs text-ink/40">
                   Pick a core goal to place Tayseer Core
                 </div>
               )}
 
               {animated && satellites.length > 0 ? (
                 <motion.div
-                  className="h-6 w-px bg-gradient-to-b from-lagoon-bright/10 via-lagoon-bright/70 to-lagoon-bright/10"
+                  className="h-6 w-px bg-gradient-to-b from-lagoon/10 via-lagoon/70 to-lagoon/10"
                   animate={{ opacity: [0.3, 1, 0.3] }}
                   transition={{ duration: 1.4, repeat: Infinity, delay: 0.3 }}
                 />
               ) : satellites.length > 0 ? (
-                <div className="h-4 w-px bg-white/15" />
+                <div className="h-4 w-px bg-ink/15" />
               ) : null}
             </div>
 
             {(rails.length > 0 || risk.length > 0) && (
               <div>
-                <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-mist/40">
+                <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-ink/40">
                   Rails & risk
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -247,7 +247,7 @@ export function ArchitectureCanvas({
 
             {legacy.length > 0 ? (
               <div>
-                <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-mist/40">
+                <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-ink/40">
                   Legacy bridges
                 </p>
                 <div className="grid grid-cols-2 gap-2">
@@ -266,7 +266,7 @@ export function ArchitectureCanvas({
             ) : null}
 
             {!answers.goal && satellites.length === 0 ? (
-              <p className="py-8 text-center text-sm text-mist/40">
+              <p className="py-8 text-center text-sm text-ink/40">
                 Answer questions to assemble your integration map.
               </p>
             ) : null}
@@ -281,7 +281,7 @@ export function ArchitectureCanvas({
               .map((n) => (
                 <span
                   key={n.id}
-                  className="rounded-full bg-white/8 px-2.5 py-1 text-[10px] font-medium text-mist/75 ring-1 ring-white/10"
+                  className="rounded-full bg-[color-mix(in_srgb,var(--brand-slide-2)_10%,#eef3f8)] px-2.5 py-1 text-[10px] font-medium text-ink/70 ring-1 ring-ink/10"
                 >
                   {n.label} · {n.mode}
                 </span>

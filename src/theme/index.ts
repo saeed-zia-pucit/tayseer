@@ -1,5 +1,6 @@
 export {
   ACTIVE_PALETTE_ID,
+  HERO_PALETTE,
   PALETTES,
   PALETTE_LIST,
   getPalette,

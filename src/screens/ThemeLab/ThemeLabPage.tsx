@@ -113,7 +113,7 @@ export function ThemeLabPage() {
               </button>
             </div>
           </div>
-          <section className="rounded-2xl bg-void/40 p-5 ring-1 ring-white/10">
+          <section className="theme-card">
             <h2 className="font-display text-base font-bold">Presets</h2>
             <p className="mt-1 text-sm text-ink-soft">
               Click a preset to load it, tweak colours below, then Save prefs so
@@ -125,22 +125,18 @@ export function ThemeLabPage() {
                   key={p.id}
                   type="button"
                   onClick={() => applyPreset(p.id)}
-                  className={`rounded-xl p-3 text-left ring-1 transition ${
-                    paletteId === p.id
-                      ? 'bg-lagoon/20 ring-lagoon'
-                      : 'bg-white/5 ring-white/10 hover:bg-white/10'
-                  }`}
+                  className={`theme-swatch ${paletteId === p.id ? 'is-active' : ''}`}
                 >
                   <div className="mb-2 flex gap-1">
                     {[p.bg, p.accent, p.accent2, p.accent3].map((c) => (
                       <span
                         key={c}
-                        className="h-5 w-5 rounded-full ring-1 ring-white/20"
+                        className="h-5 w-5 rounded-full ring-1 ring-black/15"
                         style={{ background: c }}
                       />
                     ))}
                   </div>
-                  <p className="text-sm font-semibold">{p.name}</p>
+                  <p className="text-sm font-semibold text-ink">{p.name}</p>
                   <p className="mt-1 text-xs text-ink-soft">{p.blurb}</p>
                 </button>
               ))}
@@ -148,17 +144,11 @@ export function ThemeLabPage() {
           </section>
 
           {groups.map(([group, fields]) => (
-            <section
-              key={group}
-              className="rounded-2xl bg-void/40 p-5 ring-1 ring-white/10"
-            >
-              <h2 className="font-display text-base font-bold">{group}</h2>
+            <section key={group} className="theme-card">
+              <h2 className="font-display text-base font-bold text-ink">{group}</h2>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {fields.map((field) => (
-                  <label
-                    key={field.key}
-                    className="flex items-center gap-3 rounded-xl bg-white/5 px-3 py-2.5 ring-1 ring-white/10"
-                  >
+                  <label key={field.key} className="theme-field">
                     <input
                       type="color"
                       value={normalizeColorInput(colors[field.key])}
@@ -166,7 +156,7 @@ export function ThemeLabPage() {
                       className="h-10 w-10 cursor-pointer rounded-lg border-0 bg-transparent"
                     />
                     <span className="min-w-0 flex-1">
-                      <span className="block text-sm font-semibold">
+                      <span className="block text-sm font-semibold text-ink">
                         {field.label}
                       </span>
                       <input
@@ -185,7 +175,7 @@ export function ThemeLabPage() {
 
         <aside className="space-y-4 lg:sticky lg:top-20 lg:self-start">
           <div
-            className="overflow-hidden rounded-2xl p-5 ring-1 ring-white/15"
+            className="overflow-hidden rounded-2xl p-5 ring-1 ring-black/10"
             style={{
               background: `linear-gradient(160deg, ${preview.bgDeep}, ${preview.bg} 55%, ${preview.bgElevated})`,
               color: preview.text,
@@ -215,8 +205,8 @@ export function ThemeLabPage() {
                 Secondary
               </span>
               <span
-                className="rounded-full px-3 py-1.5 text-xs font-semibold"
-                style={{ background: preview.accent3, color: preview.bgDeep }}
+                className="rounded-full px-3 py-1.5 text-xs font-semibold text-white"
+                style={{ background: preview.accent3 }}
               >
                 Tertiary
               </span>
@@ -225,7 +215,7 @@ export function ThemeLabPage() {
               {preview.slides.map((c, i) => (
                 <div
                   key={c + i}
-                  className="h-10 rounded-lg ring-1 ring-white/20"
+                  className="h-10 rounded-lg ring-1 ring-black/15"
                   style={{ background: c }}
                   title={`Slide ${i + 1}`}
                 />
@@ -233,12 +223,13 @@ export function ThemeLabPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl bg-void/40 p-4 text-sm text-ink-soft ring-1 ring-white/10">
+          <div className="theme-card text-sm text-ink-soft">
             <p className="font-semibold text-ink">Persistence</p>
             <p className="mt-1 text-xs leading-relaxed">
               Save prefs writes to <code className="text-lagoon-bright">localStorage</code>.
               On refresh, <code className="text-lagoon-bright">applyTheme()</code> loads
-              it before the app paints — so homepage and demos stay in sync.
+              it before the app paints. The product hero carousel stays on its
+              locked violet atmosphere and is not recolored by Theme Lab.
             </p>
             {savedAt ? (
               <p className="mt-3 text-xs font-medium text-lagoon-bright">{savedAt}</p>

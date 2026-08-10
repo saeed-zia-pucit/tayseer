@@ -4,19 +4,18 @@ import {
   ContactSection,
   EcosystemSection,
   HomeFooter,
-  PresenceSection,
   StatsSection,
   StoriesSection,
 } from '@/screens/Landing/prototype/HomeSections'
 import { SiteHeader } from '@/components/layout/SiteHeader'
+import { HomeHubHero } from '@/screens/Landing/videinfra/HomeHubHero'
 import { VideInfraExperience } from '@/screens/Landing/videinfra/VideInfraExperience'
 
-const PROTO_CSS_HREF = '/prototype/styles.css?v=11'
-const VI_CSS_HREF = '/videinfra/styles.css?v=17'
+const PROTO_CSS_HREF = '/prototype/styles.css?v=15'
+const VI_CSS_HREF = '/videinfra/styles.css?v=23'
 
 /**
- * Homepage: Vide Infra–style horizontal product scroll for the top,
- * then existing Tayseer modules below.
+ * Homepage: brand hub hero → Vide Infra product carousel → modules.
  */
 export function LandingPage() {
   const [progress, setProgress] = useState(0)
@@ -41,6 +40,9 @@ export function LandingPage() {
 
     const prevBg = document.body.style.background
     document.body.style.background = 'var(--brand-bg)'
+
+    // Always land on the hub hero when entering home (logo / route restore).
+    window.scrollTo(0, 0)
 
     const onScroll = () => {
       const max =
@@ -68,11 +70,11 @@ export function LandingPage() {
       <SiteHeader />
 
       <main>
+        <HomeHubHero />
         <VideInfraExperience />
         <EcosystemSection />
         <ArchitectureSection />
         <StatsSection />
-        <PresenceSection />
         <StoriesSection />
         <ContactSection />
       </main>

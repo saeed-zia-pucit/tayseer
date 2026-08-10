@@ -11,7 +11,7 @@ import {
   viSlides,
   type ViSlide,
 } from '@/screens/Landing/videinfra/slideData'
-import { resolvePalette, THEME_CHANGE_EVENT } from '@/theme'
+import { HERO_PALETTE, THEME_CHANGE_EVENT } from '@/theme'
 import { routes } from '@/lib/constants'
 
 /** Full travel time — long so the path feels slow once motion has started */
@@ -101,9 +101,18 @@ export function VideInfraExperience() {
       setProgress(next)
     }
 
+    const headerOffset = () => {
+      const raw = getComputedStyle(document.documentElement)
+        .getPropertyValue('--site-header-h')
+        .trim()
+      const n = Number.parseFloat(raw)
+      return Number.isFinite(n) ? n : 64
+    }
+
     const isExperiencePinned = () => {
       const rect = track.getBoundingClientRect()
-      return rect.top <= 1 && rect.bottom >= window.innerHeight - 1
+      const top = headerOffset()
+      return rect.top <= top + 1 && rect.bottom >= window.innerHeight - 1
     }
 
     const onScroll = () => {
@@ -116,17 +125,13 @@ export function VideInfraExperience() {
         if (pinningRef.current || animatingRef.current || skippingRef.current)
           return
 
-        // Hold the settled slide so inertia can't flash the next product
-        if (isExperiencePinned()) {
+        // Brief pin after a snap so inertia can't flash the next product.
+        // Do NOT permanently lock middle slides — that blocked scrolling back to the hub hero.
+        if (isExperiencePinned() && performance.now() < pinUntilRef.current) {
           const t = targetRef.current
-          const hold =
-            performance.now() < pinUntilRef.current ||
-            (t > 0 && t < VI_SEGMENT_COUNT - 1)
-          if (hold) {
-            publish(t)
-            syncScroll(t)
-            return
-          }
+          publish(t)
+          syncScroll(t)
+          return
         }
         publish(readProgress())
         targetRef.current = Math.round(progressRef.current)
@@ -134,8 +139,12 @@ export function VideInfraExperience() {
     }
 
     const onResize = () => {
-      setViewport({ w: window.innerWidth, h: window.innerHeight })
-      syncScroll(progressRef.current)
+      const h = Math.max(320, window.innerHeight - headerOffset())
+      setViewport({ w: window.innerWidth, h })
+      // Only re-pin while inside the carousel — syncScroll(0) would jump past the hub hero.
+      if (isExperiencePinned()) {
+        syncScroll(progressRef.current)
+      }
     }
 
     const flushPending = () => {
@@ -241,17 +250,38 @@ export function VideInfraExperience() {
       animateTo(next)
     }
 
-    setViewport({ w: window.innerWidth, h: window.innerHeight })
+    setViewport({
+      w: window.innerWidth,
+      h: Math.max(320, window.innerHeight - headerOffset()),
+    })
     const initial = readProgress()
     publish(initial)
     targetRef.current = Math.round(initial)
+
+    const onScrollHome = () => {
+      // Logo / home nav — release carousel lock so hub can come into view
+      if (animRef.current) cancelAnimationFrame(animRef.current)
+      animRef.current = 0
+      animatingRef.current = false
+      skippingRef.current = true
+      gestureArmedRef.current = true
+      pendingDirRef.current = 0
+      targetRef.current = 0
+      publish(0)
+      window.setTimeout(() => {
+        skippingRef.current = false
+      }, 1200)
+    }
+
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onResize)
     window.addEventListener('wheel', onWheel, { passive: false })
+    window.addEventListener('tayseer-scroll-home', onScrollHome)
     return () => {
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onResize)
       window.removeEventListener('wheel', onWheel)
+      window.removeEventListener('tayseer-scroll-home', onScrollHome)
       window.clearTimeout(idleTimerRef.current)
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
       if (animRef.current) cancelAnimationFrame(animRef.current)
@@ -291,7 +321,7 @@ export function VideInfraExperience() {
   return (
     <section
       className="vi-experience"
-      id="hero"
+      id="products"
       aria-label="Tayseer products"
       style={{ ['--vi-bg' as string]: atmos.base }}
     >
@@ -398,7 +428,7 @@ function shade(hex: string, amount: number) {
 }
 
 function atmosFromProgress(progress: number) {
-  const brand = resolvePalette()
+  const brand = HERO_PALETTE
   const stops = [...brand.slides]
   const max = Math.max(stops.length - 1, 1)
   const i = Math.min(max - 1, Math.max(0, Math.floor(progress)))

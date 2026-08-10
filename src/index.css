@@ -2,34 +2,34 @@
 
 /*
  * Brand tokens on :root — mirrored by applyTheme() / Theme Lab.
- * Default = Violet Aurora (see src/theme/palettes.ts).
+ * Default = Pearl Lagoon (light) — see src/theme/palettes.ts.
  */
 :root {
-  --brand-bg-deep: #0a0614;
-  --brand-bg: #140c24;
-  --brand-bg-elevated: #2a1848;
-  --brand-text: #f7f2ff;
-  --brand-muted: #b7a6de;
-  --brand-accent: #8b5cf6;
-  --brand-accent-2: #06b6d4;
-  --brand-accent-3: #a855f7;
-  --brand-accent-soft: #f0abfc;
-  --brand-intro: #4c1d95;
-  --brand-slide-1: #8b5cf6;
-  --brand-slide-2: #06b6d4;
-  --brand-slide-3: #6366f1;
-  --brand-slide-4: #a855f7;
-  --brand-slide-5: #0ea5e9;
-  --brand-slide-6: #d8b4fe;
-  --brand-accent-rgb: 139, 92, 246;
-  --brand-accent-2-rgb: 6, 182, 212;
-  --brand-accent-3-rgb: 168, 85, 247;
+  --brand-bg-deep: #d8e2ec;
+  --brand-bg: #eef2f7;
+  --brand-bg-elevated: #ffffff;
+  --brand-text: #0b1628;
+  --brand-muted: #4f6278;
+  --brand-accent: #0f766e;
+  --brand-accent-2: #1d4ed8;
+  --brand-accent-3: #6d28d9;
+  --brand-accent-soft: #0369a1;
+  --brand-intro: #cbd8e6;
+  --brand-slide-1: #0f766e;
+  --brand-slide-2: #1d4ed8;
+  --brand-slide-3: #6d28d9;
+  --brand-slide-4: #0e7490;
+  --brand-slide-5: #4338ca;
+  --brand-slide-6: #0d9488;
+  --brand-accent-rgb: 15, 118, 110;
+  --brand-accent-2-rgb: 29, 78, 216;
+  --brand-accent-3-rgb: 109, 40, 217;
 
   /* Light phone / mock-app chrome (scoped via .phone-ui) */
-  --phone-bg: #f3eef9;
-  --phone-ink: #1a1230;
-  --phone-muted: #6b5f8a;
-  --phone-chip: #e6ddf5;
+  --phone-bg: #e8eef5;
+  --phone-ink: #0b1628;
+  --phone-muted: #4f6278;
+  --phone-chip: #d5e4ef;
   --phone-card: #ffffff;
 }
 
@@ -41,7 +41,7 @@
   --color-ink-soft: var(--brand-muted);
   --color-lagoon: var(--brand-accent);
   --color-lagoon-bright: var(--brand-accent-2);
-  --color-mist: color-mix(in srgb, var(--brand-text) 90%, white);
+  --color-mist: #ffffff;
   --color-sand: var(--brand-accent-soft);
   --color-coral: var(--brand-accent-soft);
   --color-surface: var(--brand-bg);
@@ -109,6 +109,29 @@
     --tw-ring-color: rgb(255 255 255 / 0.14);
   }
 
+  .theme-card {
+    @apply rounded-2xl p-5 ring-1;
+    background: color-mix(in srgb, var(--brand-bg-elevated) 55%, transparent);
+    --tw-ring-color: rgb(255 255 255 / 0.12);
+  }
+
+  .theme-swatch {
+    @apply rounded-xl p-3 text-left ring-1 transition;
+    background: rgb(255 255 255 / 0.05);
+    --tw-ring-color: rgb(255 255 255 / 0.1);
+  }
+
+  .theme-swatch.is-active {
+    background: color-mix(in srgb, var(--brand-accent) 18%, transparent);
+    --tw-ring-color: var(--brand-accent);
+  }
+
+  .theme-field {
+    @apply flex items-center gap-3 rounded-xl px-3 py-2.5 ring-1;
+    background: rgb(255 255 255 / 0.05);
+    --tw-ring-color: rgb(255 255 255 / 0.1);
+  }
+
   /*
    * Remap ink/mist inside light phone mocks so existing text-ink / bg-mist
    * utilities stay readable without rewriting every screen.
@@ -164,7 +187,7 @@
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   column-gap: 1.25rem;
-  padding: 0 clamp(1.15rem, 3.5vw, 2.75rem);
+  padding: 0 clamp(1.25rem, 3.5vw, 2.75rem);
   color: #fff;
   backdrop-filter: blur(14px);
 }
@@ -204,7 +227,7 @@
   position: absolute;
   inset: 5px;
   border-radius: 4px;
-  background: color-mix(in srgb, var(--brand-bg-deep) 88%, transparent);
+  background: #0a0614;
 }
 
 .site-nav__links {
@@ -246,13 +269,14 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  min-height: 2.25rem;
-  padding: 0.55rem 1.2rem;
+  min-height: 2.5rem;
+  padding: 0.7rem 1.55rem;
+  margin-inline-end: 0.15rem;
   border-radius: 999px;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  line-height: 1;
+  letter-spacing: 0.1em;
+  line-height: 1.15;
   text-transform: uppercase;
   text-decoration: none;
   color: #fff;
@@ -325,13 +349,92 @@
   }
 
   .site-nav__lab {
-    padding: 0.5rem 0.9rem;
-    font-size: 0.64rem;
-    letter-spacing: 0.04em;
+    padding: 0.62rem 1.15rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
   }
 
   .site-nav__toggle {
     display: flex;
   }
+}
+
+/* Light theme — readable cards, ink, and rings on pearl surfaces */
+html[data-theme-mode='light'] {
+  --color-mist: #ffffff;
+  --color-glass: rgb(11 22 40 / 0.04);
+  --color-glass-border: rgb(11 22 40 / 0.1);
+  --color-line: color-mix(in srgb, var(--brand-muted) 38%, transparent);
+  --shadow-lift: 0 16px 40px -22px rgb(11 22 40 / 0.2);
+  --shadow-glow: 0 0 36px rgb(var(--brand-accent-rgb) / 0.18);
+}
+
+html[data-theme-mode='light'] .brand-panel {
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--brand-slide-1) 8%, #f7fafc),
+      #ffffff 55%,
+      color-mix(in srgb, var(--brand-slide-2) 6%, #f8fafc)
+    );
+  --tw-ring-color: rgb(11 22 40 / 0.1);
+  box-shadow: 0 14px 36px -20px rgb(11 22 40 / 0.16);
+}
+
+html[data-theme-mode='light'] .brand-aside {
+  /* Remap mist → ink inside asides so leftover text-mist utilities stay readable */
+  --color-mist: var(--brand-text);
+  color: var(--brand-text);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--brand-slide-1) 16%, #e6f0f2),
+    color-mix(in srgb, var(--brand-bg-deep) 42%, #f4f7fa) 48%,
+    color-mix(in srgb, var(--brand-slide-2) 12%, #eef3f8)
+  );
+  --tw-ring-color: color-mix(in srgb, var(--brand-slide-1) 22%, transparent);
+  box-shadow: 0 18px 40px -22px rgb(11 22 40 / 0.18);
+}
+
+html[data-theme-mode='light'] .brand-chip {
+  background: color-mix(in srgb, var(--brand-accent) 12%, white);
+  color: var(--brand-text);
+  --tw-ring-color: color-mix(in srgb, var(--brand-accent) 28%, transparent);
+}
+
+html[data-theme-mode='light'] .theme-card {
+  background: #ffffff;
+  --tw-ring-color: rgb(11 22 40 / 0.1);
+  box-shadow: 0 10px 28px -18px rgb(11 22 40 / 0.14);
+}
+
+html[data-theme-mode='light'] .theme-swatch {
+  background: color-mix(in srgb, var(--brand-bg-deep) 35%, white);
+  --tw-ring-color: rgb(11 22 40 / 0.1);
+}
+
+html[data-theme-mode='light'] .theme-swatch.is-active {
+  background: color-mix(in srgb, var(--brand-accent) 14%, white);
+  --tw-ring-color: var(--brand-accent);
+}
+
+html[data-theme-mode='light'] .theme-field {
+  background: color-mix(in srgb, var(--brand-bg-deep) 28%, white);
+  --tw-ring-color: rgb(11 22 40 / 0.1);
+}
+
+html[data-theme-mode='light'] .option-card {
+  border-color: rgb(11 22 40 / 0.1);
+  background: color-mix(in srgb, var(--brand-bg-deep) 22%, white);
+}
+
+html[data-theme-mode='light'] .option-card:hover {
+  border-color: color-mix(in srgb, var(--brand-accent) 40%, transparent);
+  background: color-mix(in srgb, var(--brand-accent) 8%, white);
+}
+
+html[data-theme-mode='light'] .option-card.is-selected {
+  border-color: color-mix(in srgb, var(--brand-accent) 55%, transparent);
+  background: var(--brand-accent);
+  color: #ffffff;
 }
 

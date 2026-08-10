@@ -9,6 +9,11 @@ const nav = [
   { to: routes.contact, label: 'Contact' },
 ] as const
 
+function goHome() {
+  window.dispatchEvent(new Event('tayseer-scroll-home'))
+  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+}
+
 /**
  * Global site header — identical on home, marketing, demos, and lab pages.
  */
@@ -16,6 +21,7 @@ export function SiteHeader({ className }: { className?: string }) {
   const { pathname } = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const onHome = pathname === routes.home
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -34,13 +40,32 @@ export function SiteHeader({ className }: { className?: string }) {
         <Link
           to={routes.home}
           className="site-nav__brand"
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            setOpen(false)
+            goHome()
+          }}
         >
           <span className="site-nav__mark" aria-hidden />
           <span>Tayseer</span>
         </Link>
 
         <div className="site-nav__links">
+          <Link
+            to={routes.home}
+            className={cn(onHome && 'is-active')}
+            onClick={(e) => {
+              setOpen(false)
+              if (onHome) {
+                e.preventDefault()
+                goHome()
+              } else {
+                // Navigate home then scroll after mount
+                window.setTimeout(goHome, 0)
+              }
+            }}
+          >
+            Home
+          </Link>
           {nav.map((item) => (
             <NavLink
               key={item.label}

@@ -2265,8 +2265,14 @@
   transition: transform 0.35s;
 }
 .tayseer-home .story-card:hover{ transform: translateY(-6px); }
-.tayseer-home .story-card p{ font-size: 0.95rem; margin-bottom: 1.25rem; color: #c7d7ef; }
+.tayseer-home .story-card p{
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+  color: color-mix(in srgb, var(--text) 88%, var(--muted));
+  line-height: 1.55;
+}
 .tayseer-home .story-card footer{ display: flex; flex-direction: column; gap: 0.15rem; }
+.tayseer-home .story-card strong{ color: var(--text); }
 .tayseer-home .story-card span{ color: var(--muted); font-size: 0.8rem; }
 
 /* Contact chat */
@@ -2464,4 +2470,314 @@
   .tayseer-home .story-slide{
     filter: none !important;
   }
+}
+
+/* ------------------------------------------------------------------ */
+/* Light canvas — solid cards, ink text, soft atmosphere               */
+/* ------------------------------------------------------------------ */
+.tayseer-home{
+  --stat-ring-track: color-mix(in srgb, var(--brand-slide-6) 35%, transparent);
+}
+
+html[data-theme-mode='light'] .tayseer-home{
+  --stat-ring-track: color-mix(in srgb, var(--brand-text) 14%, transparent);
+}
+
+html[data-theme-mode='light'] .tayseer-home .glass-panel,
+html[data-theme-mode='light'] .tayseer-home .glass-card{
+  background:
+    linear-gradient(
+      155deg,
+      color-mix(in srgb, var(--brand-slide-1) 12%, #edf3f8),
+      color-mix(in srgb, var(--brand-slide-2) 8%, #f3f6fa) 55%,
+      color-mix(in srgb, var(--brand-bg-deep) 40%, #f7f9fc)
+    );
+  border: 1px solid color-mix(in srgb, var(--brand-slide-1) 22%, transparent);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow:
+    0 16px 36px -20px rgb(11 22 40 / 0.18),
+    inset 0 1px 0 rgb(255 255 255 / 0.65);
+}
+
+html[data-theme-mode='light'] .tayseer-home .eco-canvas{
+  border: 1px solid color-mix(in srgb, var(--brand-text) 10%, transparent);
+  background:
+    radial-gradient(ellipse 90% 70% at 15% 90%, color-mix(in srgb, var(--brand-slide-1) 18%, transparent) 0%, transparent 55%),
+    radial-gradient(ellipse 65% 50% at 82% 12%, color-mix(in srgb, var(--brand-slide-2) 16%, transparent) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 48% 42%, color-mix(in srgb, var(--brand-slide-4) 12%, transparent) 0%, transparent 55%),
+    linear-gradient(155deg, #e8f0f6 0%, #f4f7fb 42%, #eef3f8 100%);
+  box-shadow:
+    inset 0 0 60px color-mix(in srgb, var(--brand-slide-2) 6%, transparent),
+    0 18px 40px -24px rgb(11 22 40 / 0.18);
+}
+
+html[data-theme-mode='light'] .tayseer-home .eco-circuit-bg{
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 48px,
+      color-mix(in srgb, var(--brand-text) 6%, transparent) 48px,
+      color-mix(in srgb, var(--brand-text) 6%, transparent) 49px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 48px,
+      color-mix(in srgb, var(--brand-text) 5%, transparent) 48px,
+      color-mix(in srgb, var(--brand-text) 5%, transparent) 49px
+    );
+}
+
+html[data-theme-mode='light'] .tayseer-home .eco-link-base{
+  stroke: color-mix(in srgb, var(--brand-slide-1) 45%, transparent);
+}
+
+html[data-theme-mode='light'] .tayseer-home .brain-label span{
+  color: var(--brand-text);
+  text-shadow: none;
+}
+
+html[data-theme-mode='light'] .tayseer-home .brain-label small{
+  color: var(--brand-muted);
+}
+
+html[data-theme-mode='light'] .tayseer-home .eco-node{
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--brand-slide-1) 16%, #eef5f8),
+      color-mix(in srgb, var(--brand-slide-2) 10%, #f2f6fa)
+    );
+  border: 1px solid color-mix(in srgb, var(--brand-slide-1) 28%, transparent);
+  box-shadow:
+    0 12px 26px -16px rgb(11 22 40 / 0.28),
+    inset 0 1px 0 rgb(255 255 255 / 0.7);
+  color: var(--brand-text);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+html[data-theme-mode='light'] .tayseer-home .eco-node:nth-child(3n){
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--brand-slide-2) 14%, #eef3fb),
+      color-mix(in srgb, var(--brand-slide-4) 10%, #f4f7fb)
+    );
+  border-color: color-mix(in srgb, var(--brand-slide-2) 30%, transparent);
+}
+
+html[data-theme-mode='light'] .tayseer-home .eco-node:nth-child(3n+1){
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--brand-slide-4) 14%, #eef7f8),
+      color-mix(in srgb, var(--brand-slide-1) 10%, #f3f8f9)
+    );
+  border-color: color-mix(in srgb, var(--brand-slide-4) 30%, transparent);
+}
+
+html[data-theme-mode='light'] .tayseer-home .eco-node::before{
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-slide-2) 18%, transparent);
+}
+
+html[data-theme-mode='light'] .tayseer-home .eco-node:hover,
+html[data-theme-mode='light'] .tayseer-home .eco-node.active{
+  border-color: color-mix(in srgb, var(--brand-slide-1) 55%, transparent);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--brand-slide-1) 24%, #e8f3f4),
+      color-mix(in srgb, var(--brand-slide-2) 16%, #eef4fb)
+    );
+  color: var(--brand-text);
+  box-shadow:
+    0 16px 30px -14px rgb(11 22 40 / 0.28),
+    0 0 0 1px color-mix(in srgb, var(--brand-slide-1) 20%, transparent);
+}
+
+html[data-theme-mode='light'] .tayseer-home .stat-card{
+  border: 1px solid transparent;
+  box-shadow: 0 16px 34px -20px rgb(11 22 40 / 0.2);
+}
+
+html[data-theme-mode='light'] .tayseer-home .stats-grid .stat-card:nth-child(1){
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--brand-slide-1) 18%, #e9f4f2),
+      color-mix(in srgb, var(--brand-slide-1) 6%, #f4f8f7)
+    );
+  border-color: color-mix(in srgb, var(--brand-slide-1) 34%, transparent);
+}
+html[data-theme-mode='light'] .tayseer-home .stats-grid .stat-card:nth-child(2){
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--brand-slide-2) 16%, #eaf0fb),
+      color-mix(in srgb, var(--brand-slide-2) 6%, #f4f6fb)
+    );
+  border-color: color-mix(in srgb, var(--brand-slide-2) 34%, transparent);
+}
+html[data-theme-mode='light'] .tayseer-home .stats-grid .stat-card:nth-child(3){
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--brand-slide-4) 16%, #e8f4f6),
+      color-mix(in srgb, var(--brand-slide-4) 6%, #f3f8f9)
+    );
+  border-color: color-mix(in srgb, var(--brand-slide-4) 34%, transparent);
+}
+html[data-theme-mode='light'] .tayseer-home .stats-grid .stat-card:nth-child(4){
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--brand-slide-3) 14%, #f1edf8),
+      color-mix(in srgb, var(--brand-slide-3) 5%, #f7f5fb)
+    );
+  border-color: color-mix(in srgb, var(--brand-slide-3) 32%, transparent);
+}
+
+html[data-theme-mode='light'] .tayseer-home .stat-card.is-counting{
+  box-shadow:
+    0 20px 38px -18px rgb(11 22 40 / 0.22),
+    0 0 0 1px color-mix(in srgb, var(--brand-slide-1) 16%, transparent);
+}
+
+html[data-theme-mode='light'] .tayseer-home .stat-card strong,
+html[data-theme-mode='light'] .tayseer-home .stat-card.is-counting strong{
+  color: var(--brand-text);
+  text-shadow: none;
+}
+
+html[data-theme-mode='light'] .tayseer-home .stat-card span{
+  color: var(--brand-slide-1);
+  font-weight: 700;
+}
+html[data-theme-mode='light'] .tayseer-home .stats-grid .stat-card:nth-child(1) span{ color: var(--brand-slide-1); }
+html[data-theme-mode='light'] .tayseer-home .stats-grid .stat-card:nth-child(2) span{ color: var(--brand-slide-2); }
+html[data-theme-mode='light'] .tayseer-home .stats-grid .stat-card:nth-child(3) span{ color: var(--brand-slide-4); }
+html[data-theme-mode='light'] .tayseer-home .stats-grid .stat-card:nth-child(4) span{ color: var(--brand-slide-3); }
+
+html[data-theme-mode='light'] .tayseer-home .stat-card p{
+  color: color-mix(in srgb, var(--brand-muted) 88%, var(--brand-text));
+}
+
+html[data-theme-mode='light'] .tayseer-home .ring{
+  border-radius: 18px;
+  padding: 0.35rem;
+  background: color-mix(in srgb, var(--brand-bg-deep) 22%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-text) 8%, transparent);
+}
+
+html[data-theme-mode='light'] .tayseer-home .stat-card.is-counting .ring{
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--brand-slide-2) 28%, transparent));
+}
+
+html[data-theme-mode='light'] .tayseer-home .arch-flow{
+  background:
+    radial-gradient(ellipse 70% 80% at 20% 50%, color-mix(in srgb, var(--brand-slide-1) 14%, transparent), transparent 60%),
+    radial-gradient(ellipse 60% 70% at 85% 40%, color-mix(in srgb, var(--brand-slide-2) 12%, transparent), transparent 58%),
+    linear-gradient(160deg, #e8f0f5, #f2f6fa);
+  border: 1px solid color-mix(in srgb, var(--brand-slide-1) 18%, transparent);
+  box-shadow: 0 14px 36px -22px rgb(11 22 40 / 0.14);
+}
+
+html[data-theme-mode='light'] .tayseer-home .arch-node{
+  background:
+    linear-gradient(
+      150deg,
+      color-mix(in srgb, var(--brand-slide-1) 12%, #eef4f7),
+      color-mix(in srgb, var(--brand-slide-2) 8%, #f4f7fb)
+    );
+  border: 1px solid color-mix(in srgb, var(--brand-slide-1) 24%, transparent);
+  color: var(--brand-text);
+  box-shadow: 0 8px 20px -14px rgb(11 22 40 / 0.16);
+}
+
+html[data-theme-mode='light'] .tayseer-home .arch-node small{
+  color: var(--brand-muted);
+}
+
+/* Page atmosphere + section type on pearl canvas */
+html[data-theme-mode='light'] .tayseer-home{
+  background:
+    radial-gradient(ellipse 90% 60% at 10% 0%, color-mix(in srgb, var(--brand-slide-1) 12%, transparent), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 95% 15%, color-mix(in srgb, var(--brand-slide-2) 10%, transparent), transparent 52%),
+    linear-gradient(165deg, #eef2f7, #f7f9fc 48%, #e8eef5);
+}
+
+html[data-theme-mode='light'] .tayseer-home::before{
+  background:
+    radial-gradient(ellipse 80% 50% at 18% -8%, color-mix(in srgb, var(--brand-slide-1) 10%, transparent), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 88% 18%, color-mix(in srgb, var(--brand-slide-2) 8%, transparent), transparent 50%);
+  opacity: 0.85;
+}
+
+html[data-theme-mode='light'] .tayseer-home .section-head h2,
+html[data-theme-mode='light'] .tayseer-home .section h2{
+  color: var(--brand-text);
+}
+
+html[data-theme-mode='light'] .tayseer-home .eyebrow{
+  color: var(--brand-slide-1);
+}
+
+html[data-theme-mode='light'] .tayseer-home .section-sub{
+  color: var(--brand-muted);
+}
+
+/* Client speak / story cards — ink on tinted surfaces */
+html[data-theme-mode='light'] .tayseer-home .story-card{
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--brand-slide-1) 14%, #e8f0f4),
+      color-mix(in srgb, var(--brand-slide-2) 8%, #f3f6fa)
+    );
+  border: 1px solid color-mix(in srgb, var(--brand-text) 14%, transparent);
+  box-shadow: 0 16px 34px -18px rgb(11 22 40 / 0.2);
+}
+
+html[data-theme-mode='light'] .tayseer-home .story-card p{
+  color: #0b1628;
+  font-weight: 500;
+}
+
+html[data-theme-mode='light'] .tayseer-home .story-card strong{
+  color: #0b1628;
+}
+
+html[data-theme-mode='light'] .tayseer-home .story-card span{
+  color: #4f6278;
+}
+
+/* Contact chat */
+html[data-theme-mode='light'] .tayseer-home .chat-shell{
+  color: var(--brand-text);
+}
+
+html[data-theme-mode='light'] .tayseer-home .btn-ghost{
+  border-color: color-mix(in srgb, var(--brand-text) 16%, transparent);
+  background: color-mix(in srgb, var(--brand-bg-deep) 22%, white);
+  color: var(--brand-text);
+}
+
+html[data-theme-mode='light'] .tayseer-home .btn-ghost:hover{
+  border-color: color-mix(in srgb, var(--brand-slide-1) 40%, transparent);
+  background: color-mix(in srgb, var(--brand-slide-1) 10%, white);
+  color: var(--brand-text);
+}
+
+html[data-theme-mode='light'] .tayseer-home .footer{
+  color: var(--brand-text);
+  border-top-color: color-mix(in srgb, var(--brand-text) 10%, transparent);
+}
+
+html[data-theme-mode='light'] .tayseer-home .footer-brand p,
+html[data-theme-mode='light'] .tayseer-home .footer-links,
+html[data-theme-mode='light'] .tayseer-home .footer-copy{
+  color: var(--brand-muted);
 }
