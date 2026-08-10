@@ -17,10 +17,10 @@ export function ConsolePanel() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3 }}
-      className="rounded-[1.25rem] border border-white/8 bg-[#05090f]/90 backdrop-blur-xl"
+      className="rounded-[1.25rem] border border-white/8 bg-void/90 backdrop-blur-xl"
     >
       <div className="flex items-center gap-2 border-b border-white/8 px-4 py-2">
-        <TerminalSquare className="h-3.5 w-3.5 text-cyan-300/70" />
+        <TerminalSquare className="h-3.5 w-3.5 text-lagoon-bright/70" />
         <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
           Deployment Console
         </span>
@@ -40,7 +40,7 @@ export function ConsolePanel() {
             animate={{ opacity: 1, x: 0 }}
             className="text-white/60"
           >
-            <span className="text-cyan-300/60">[{log.time}]</span>{' '}
+            <span className="text-lagoon-bright/60">[{log.time}]</span>{' '}
             <span className="text-white/75">{log.message}</span>
           </motion.p>
         ))}

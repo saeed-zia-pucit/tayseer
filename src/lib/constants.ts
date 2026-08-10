@@ -27,10 +27,17 @@ export const routes = {
   whiteLabelResults: '/white-label/results',
   mbukeDemo: '/mbuke-demo',
   mbukeDemoResults: '/mbuke-demo/results',
+  /** Config-driven product demos: /demo/:productId */
+  productDemo: '/demo/:productId',
+  productDemoResults: '/demo/:productId/results',
   coreIntegrations: '/core-integrations',
   coreIntegrationsResults: '/core-integrations/results',
   implementationJourney: '/implementation-journey',
   results: '/results',
+  /** Hub for internal interactive flows */
+  experiments: '/experiments',
+  /** Temporary colour playground — remove when experiments are done */
+  themeLab: '/theme-lab',
 } as const
 
 export type AppRoute = (typeof routes)[keyof typeof routes]

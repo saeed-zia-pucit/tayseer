@@ -1,25 +1,71 @@
 @import 'tailwindcss';
 
+/*
+ * Brand tokens on :root — mirrored by applyTheme() / Theme Lab.
+ * Default = Violet Aurora (see src/theme/palettes.ts).
+ */
+:root {
+  --brand-bg-deep: #0a0614;
+  --brand-bg: #140c24;
+  --brand-bg-elevated: #24183f;
+  --brand-text: #f4f0ff;
+  --brand-muted: #a99bc8;
+  --brand-accent: #9b7cff;
+  --brand-accent-2: #2dd4e8;
+  --brand-accent-3: #c4b5fd;
+  --brand-accent-soft: #f0abfc;
+  --brand-intro: #2a184f;
+  --brand-slide-1: #8b5cf6;
+  --brand-slide-2: #06b6d4;
+  --brand-slide-3: #6366f1;
+  --brand-slide-4: #a855f7;
+  --brand-slide-5: #0ea5e9;
+  --brand-slide-6: #d8b4fe;
+  --brand-accent-rgb: 155, 124, 255;
+  --brand-accent-2-rgb: 45, 212, 232;
+  --brand-accent-3-rgb: 196, 181, 253;
+
+  /* Light phone / mock-app chrome (scoped via .phone-ui) */
+  --phone-bg: #f3eef9;
+  --phone-ink: #1a1230;
+  --phone-muted: #6b5f8a;
+  --phone-chip: #e6ddf5;
+  --phone-card: #ffffff;
+}
+
 @theme {
   --font-display: 'Syne', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
 
-  --color-ink: #06262f;
-  --color-ink-soft: #0d3d4a;
-  --color-lagoon: #0f766e;
-  --color-lagoon-bright: #14b8a6;
-  --color-mist: #e8f4f2;
-  --color-sand: #f3efe6;
-  --color-coral: #e07a5f;
-  --color-surface: #f7faf9;
-  --color-line: #c9ddd9;
+  --color-ink: var(--brand-text);
+  --color-ink-soft: var(--brand-muted);
+  --color-lagoon: var(--brand-accent);
+  --color-lagoon-bright: var(--brand-accent-2);
+  --color-mist: color-mix(in srgb, var(--brand-text) 90%, white);
+  --color-sand: var(--brand-accent-soft);
+  --color-coral: var(--brand-accent-soft);
+  --color-surface: var(--brand-bg);
+  --color-line: color-mix(in srgb, var(--brand-muted) 42%, transparent);
 
-  --color-void: #07090f;
+  --color-void: var(--brand-bg-deep);
+  --color-elevated: var(--brand-bg-elevated);
   --color-glass: rgb(255 255 255 / 0.06);
   --color-glass-border: rgb(255 255 255 / 0.1);
 
-  --shadow-lift: 0 18px 50px -20px rgb(6 38 47 / 0.35);
-  --shadow-glow: 0 0 40px rgb(20 184 166 / 0.25);
+  --color-brand-text: var(--brand-text);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-2: var(--brand-accent-2);
+  --color-brand-accent-3: var(--brand-accent-3);
+
+  --color-phone-bg: var(--phone-bg);
+  --color-phone-ink: var(--phone-ink);
+  --color-phone-muted: var(--phone-muted);
+  --color-phone-chip: var(--phone-chip);
+  --color-phone-card: var(--phone-card);
+
+  --shadow-lift: 0 18px 50px -20px rgb(0 0 0 / 0.55);
+  --shadow-glow: 0 0 40px rgb(var(--brand-accent-rgb) / 0.35);
 }
 
 @layer base {
@@ -33,5 +79,45 @@
 
   #root {
     @apply min-h-dvh;
+  }
+}
+
+/* Shared panel chrome for experiment / finder shells */
+@layer components {
+  .brand-panel {
+    @apply rounded-[1.75rem] p-6 shadow-lift ring-1 backdrop-blur-md md:p-8;
+    background: color-mix(in srgb, var(--brand-bg-elevated) 88%, transparent);
+    border-color: transparent;
+    --tw-ring-color: rgb(255 255 255 / 0.12);
+  }
+
+  .brand-aside {
+    @apply overflow-hidden rounded-[1.75rem] p-6 text-mist shadow-lift ring-1;
+    background: linear-gradient(
+      165deg,
+      rgb(var(--brand-accent-rgb) / 0.22),
+      var(--brand-bg-deep) 42%,
+      var(--brand-bg-elevated)
+    );
+    --tw-ring-color: rgb(255 255 255 / 0.1);
+  }
+
+  .brand-chip {
+    @apply rounded-full px-3 py-1.5 text-xs font-semibold ring-1;
+    background: rgb(255 255 255 / 0.08);
+    color: var(--brand-text);
+    --tw-ring-color: rgb(255 255 255 / 0.14);
+  }
+
+  /*
+   * Remap ink/mist inside light phone mocks so existing text-ink / bg-mist
+   * utilities stay readable without rewriting every screen.
+   */
+  .phone-ui {
+    --color-ink: var(--phone-ink);
+    --color-ink-soft: var(--phone-muted);
+    --color-mist: var(--phone-chip);
+    background: var(--phone-bg);
+    color: var(--phone-ink);
   }
 }

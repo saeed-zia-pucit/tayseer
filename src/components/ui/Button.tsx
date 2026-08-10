@@ -6,11 +6,11 @@ type ButtonVariant = 'primary' | 'secondary' | 'ghost'
 
 const variantClass: Record<ButtonVariant, string> = {
   primary:
-    'bg-ink text-mist shadow-lift hover:bg-ink-soft focus-visible:ring-lagoon-bright',
+    'bg-lagoon text-mist shadow-lift hover:bg-lagoon-bright focus-visible:ring-lagoon-bright focus-visible:ring-offset-surface',
   secondary:
-    'bg-white/80 text-ink ring-1 ring-line backdrop-blur hover:bg-white focus-visible:ring-lagoon',
+    'bg-white/10 text-ink ring-1 ring-white/15 backdrop-blur hover:bg-white/15 focus-visible:ring-lagoon focus-visible:ring-offset-surface',
   ghost:
-    'bg-transparent text-ink/80 hover:bg-white/40 focus-visible:ring-lagoon',
+    'bg-transparent text-ink/80 hover:bg-white/10 focus-visible:ring-lagoon focus-visible:ring-offset-surface',
 }
 
 interface ButtonProps extends ComponentPropsWithoutRef<'button'> {

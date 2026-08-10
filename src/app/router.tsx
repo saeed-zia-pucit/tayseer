@@ -10,6 +10,12 @@ import {
   MbukeDemoFinderPage,
   MbukeDemoResultsPage,
 } from '@/screens/MbukeDemo'
+import { ExperimentsPage } from '@/screens/Experiments'
+import { ThemeLabPage } from '@/screens/ThemeLab'
+import {
+  ProductDemoFinderPage,
+  ProductDemoResultsPage,
+} from '@/screens/ProductDemo'
 import { ProductFinderPage } from '@/screens/ProductFinder'
 import { ResultsPage } from '@/screens/Results'
 import {
@@ -40,6 +46,14 @@ export function AppRouter() {
         element={<MbukeDemoResultsPage />}
       />
       <Route
+        path="/demo/:productId"
+        element={<ProductDemoFinderPage />}
+      />
+      <Route
+        path="/demo/:productId/results"
+        element={<ProductDemoResultsPage />}
+      />
+      <Route
         path={routes.coreIntegrations}
         element={<CoreIntegrationsFinderPage />}
       />
@@ -52,6 +66,8 @@ export function AppRouter() {
         element={<ImplementationJourneyPage />}
       />
       <Route path={routes.results} element={<ResultsPage />} />
+      <Route path={routes.experiments} element={<ExperimentsPage />} />
+      <Route path={routes.themeLab} element={<ThemeLabPage />} />
       <Route path="*" element={<Navigate to={routes.home} replace />} />
     </Routes>
   )

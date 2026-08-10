@@ -22,7 +22,7 @@ export function ApiExplorerPanel() {
   return (
     <div className="flex h-full flex-col">
       <div className="mb-4 px-1">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-300/80">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-lagoon-bright/80">
           Live API Explorer
         </p>
         <p className="mt-1 text-sm text-white/40">
@@ -52,7 +52,7 @@ export function ApiExplorerPanel() {
                   {tab === t ? (
                     <motion.span
                       layoutId="api-tab-underline"
-                      className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-cyan-300"
+                      className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-lagoon-bright"
                     />
                   ) : null}
                 </button>
@@ -92,7 +92,7 @@ function EmptyState() {
         animate={{ y: [0, -6, 0] }}
         transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <Terminal className="h-6 w-6 text-cyan-300/70" />
+        <Terminal className="h-6 w-6 text-lagoon-bright/70" />
       </motion.div>
       <p className="text-sm font-medium text-white/60">Nothing selected yet</p>
       <p className="max-w-[220px] text-xs text-white/35">
@@ -105,7 +105,7 @@ function EmptyState() {
 function LoadingState({ label }: { label: string }) {
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-3 p-8 text-center">
-      <Loader2 className="h-7 w-7 animate-spin text-cyan-300" />
+      <Loader2 className="h-7 w-7 animate-spin text-lagoon-bright" />
       <p className="text-sm font-medium text-white/70">
         Loading {label} documentation…
       </p>
@@ -133,7 +133,7 @@ function OverviewTab({ nodeId }: { nodeId: keyof typeof journeyNodes }) {
           ))}
         </div>
       </div>
-      <p className="rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.05] p-3 text-xs leading-relaxed text-cyan-100/80">
+      <p className="rounded-2xl border border-lagoon-bright/20 bg-lagoon-bright/[0.05] p-3 text-xs leading-relaxed text-mist/80">
         {node.recommendation}
       </p>
     </div>
@@ -224,7 +224,7 @@ function TypedCodeBlock({
   const shown = code.slice(0, count)
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#060b12]">
+    <div className="overflow-hidden rounded-2xl border border-white/10 bg-void/95">
       <div className="flex items-center justify-between border-b border-white/8 px-3.5 py-2">
         <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
           {title}
@@ -246,10 +246,10 @@ function TypedCodeBlock({
           {copied ? 'Copied' : 'Copy'}
         </button>
       </div>
-      <pre className="min-h-[72px] whitespace-pre-wrap p-3.5 font-mono text-[11px] leading-relaxed text-cyan-100/90">
+      <pre className="min-h-[72px] whitespace-pre-wrap p-3.5 font-mono text-[11px] leading-relaxed text-mist/90">
         {shown}
         {count < code.length ? (
-          <span className="animate-pulse text-cyan-300">▍</span>
+          <span className="animate-pulse text-lagoon-bright">▍</span>
         ) : null}
       </pre>
     </div>
@@ -279,7 +279,7 @@ function SequenceTab() {
               initial={{ scaleY: 0, opacity: 0 }}
               animate={{ scaleY: 1, opacity: 1 }}
               transition={{ delay: i * 0.25 + 0.12, duration: 0.2 }}
-              className="my-0.5 h-5 w-px origin-top bg-gradient-to-b from-cyan-300/70 to-cyan-300/20"
+              className="my-0.5 h-5 w-px origin-top bg-gradient-to-b from-lagoon-bright/70 to-lagoon-bright/20"
             />
           ) : null}
         </div>
@@ -336,7 +336,7 @@ function Playground({ live }: { live: boolean }) {
         className={cn(
           'mt-2.5 flex w-full items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold transition-colors',
           live
-            ? 'bg-cyan-300 text-[#04222b] hover:bg-cyan-200'
+            ? 'bg-lagoon-bright text-void hover:brightness-110'
             : 'cursor-not-allowed bg-white/8 text-white/30',
         )}
       >
@@ -360,7 +360,7 @@ function Playground({ live }: { live: boolean }) {
             exit={{ opacity: 0, height: 0 }}
             className="overflow-hidden"
           >
-            <div className="mt-2.5 rounded-xl border border-emerald-400/25 bg-[#060b12] p-3">
+            <div className="mt-2.5 rounded-xl border border-emerald-400/25 bg-void/95 p-3">
               <p className="mb-1.5 font-mono text-[10px] font-bold text-emerald-400">
                 200 OK
               </p>
@@ -392,7 +392,7 @@ function PlaygroundField({
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-lg border border-white/10 bg-black/30 px-2.5 py-1.5 font-mono text-[11px] text-white outline-none transition-colors focus:border-cyan-300/50"
+        className="w-full rounded-lg border border-white/10 bg-black/30 px-2.5 py-1.5 font-mono text-[11px] text-white outline-none transition-colors focus:border-lagoon-bright/50"
       />
     </label>
   )

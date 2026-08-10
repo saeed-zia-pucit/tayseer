@@ -14,7 +14,7 @@ export function Header({ className }: { className?: string }) {
       )}
     >
       <Link to={routes.home} className="group flex items-center gap-2.5">
-        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-ink text-sm font-bold text-mist">
+        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-void text-sm font-bold text-mist">
           T
         </span>
         <span className="font-display text-lg font-bold tracking-tight text-ink">
@@ -22,7 +22,7 @@ export function Header({ className }: { className?: string }) {
         </span>
       </Link>
 
-      <div className="flex items-center gap-2 rounded-full bg-white/50 p-1 ring-1 ring-line backdrop-blur">
+      <div className="flex items-center gap-2 rounded-full bg-white/5 p-1 ring-1 ring-white/12 backdrop-blur">
         {(['en', 'ar'] as const).map((code) => (
           <button
             key={code}
@@ -31,8 +31,8 @@ export function Header({ className }: { className?: string }) {
             className={cn(
               'rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wide transition',
               locale === code
-                ? 'bg-ink text-mist'
-                : 'text-ink/55 hover:text-ink',
+                ? 'bg-lagoon text-mist'
+                : 'text-ink/55 hover:bg-white/5 hover:text-ink',
             )}
           >
             {code}

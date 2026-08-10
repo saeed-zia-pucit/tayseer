@@ -19,28 +19,28 @@ const layerStyle: Record<
   { ring: string; bg: string; label: string }
 > = {
   core: {
-    ring: 'ring-lagoon-bright/50',
-    bg: 'bg-ink text-mist',
+    ring: 'ring-lagoon-bright/55',
+    bg: 'bg-lagoon/25 text-mist',
     label: 'Core',
   },
   channel: {
-    ring: 'ring-teal-300/60',
-    bg: 'bg-teal-50 text-teal-900',
+    ring: 'ring-lagoon-bright/40',
+    bg: 'bg-white/8 text-mist',
     label: 'Channel',
   },
   rail: {
-    ring: 'ring-sky-300/60',
-    bg: 'bg-sky-50 text-sky-900',
+    ring: 'ring-[var(--brand-accent-3)]/45',
+    bg: 'bg-white/8 text-mist',
     label: 'Rail',
   },
   risk: {
-    ring: 'ring-amber-300/60',
-    bg: 'bg-amber-50 text-amber-950',
+    ring: 'ring-sand/50',
+    bg: 'bg-sand/15 text-mist',
     label: 'Risk',
   },
   legacy: {
-    ring: 'ring-stone-300/70',
-    bg: 'bg-stone-100 text-stone-800',
+    ring: 'ring-white/20',
+    bg: 'bg-white/5 text-mist/80',
     label: 'Legacy',
   },
 }
@@ -138,7 +138,7 @@ export function ArchitectureCanvas({
         </div>
       ) : null}
 
-      <div className="overflow-hidden rounded-[1.75rem] bg-ink p-5 text-mist shadow-lift ring-1 ring-white/10 md:p-6">
+      <div className="brand-aside !p-5 md:!p-6">
         <div className="mb-5 flex items-center justify-between gap-3">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-lagoon-bright">

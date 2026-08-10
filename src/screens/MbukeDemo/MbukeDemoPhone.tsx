@@ -206,7 +206,7 @@ function OnboardingScreen({
         Hold your national ID inside the frame
       </p>
 
-      <div className="relative mx-auto mt-5 w-full max-w-[210px] overflow-hidden rounded-2xl border-2 border-dashed border-ink/15 bg-white p-4">
+      <div className="relative mx-auto mt-5 w-full max-w-[210px] overflow-hidden rounded-2xl border-2 border-dashed border-void/15 bg-white p-4">
         <div className="flex items-center gap-3">
           <span
             className={cn(
@@ -217,9 +217,9 @@ function OnboardingScreen({
             <ScanFace className={cn('h-6 w-6', theme.text)} />
           </span>
           <div className="space-y-1.5">
-            <div className="h-2 w-24 rounded bg-ink/10" />
-            <div className="h-2 w-16 rounded bg-ink/10" />
-            <div className="h-2 w-20 rounded bg-ink/10" />
+            <div className="h-2 w-24 rounded bg-void/10" />
+            <div className="h-2 w-16 rounded bg-void/10" />
+            <div className="h-2 w-20 rounded bg-void/10" />
           </div>
         </div>
         {/* Scan line */}
@@ -237,7 +237,7 @@ function OnboardingScreen({
             initial={{ opacity: 0, x: -8 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 + i * 0.55 }}
-            className="flex items-center justify-between rounded-xl bg-white px-3 py-2 text-[11px] ring-1 ring-ink/5"
+            className="flex items-center justify-between rounded-xl bg-white px-3 py-2 text-[11px] ring-1 ring-void/5"
           >
             <span className="font-medium text-ink">{row}</span>
             <motion.span
@@ -278,7 +278,7 @@ function HomeScreen({ result }: { result: MbukeDemoResult }) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 + i * 0.1 }}
-            className="flex flex-col items-center gap-1 rounded-xl bg-white py-2.5 ring-1 ring-ink/5"
+            className="flex flex-col items-center gap-1 rounded-xl bg-white py-2.5 ring-1 ring-void/5"
           >
             <span
               className={cn(
@@ -303,7 +303,7 @@ function HomeScreen({ result }: { result: MbukeDemoResult }) {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.7 + i * 0.15 }}
-            className="flex justify-between rounded-xl bg-white px-3 py-2.5 text-[11px] ring-1 ring-ink/5"
+            className="flex justify-between rounded-xl bg-white px-3 py-2.5 text-[11px] ring-1 ring-void/5"
           >
             <span className="font-medium text-ink">{row}</span>
             <span className={cn('font-bold', theme.text)}>{amount}</span>
@@ -330,7 +330,7 @@ function SendScreen({
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.25 }}
-        className="mt-3 flex items-center gap-3 rounded-2xl bg-white px-3 py-3 ring-1 ring-ink/5"
+        className="mt-3 flex items-center gap-3 rounded-2xl bg-white px-3 py-3 ring-1 ring-void/5"
       >
         <span className="flex h-10 w-10 items-center justify-center rounded-full bg-coral/15 text-sm font-bold text-coral">
           A
@@ -341,7 +341,7 @@ function SendScreen({
         </div>
       </motion.div>
 
-      <div className="mt-4 rounded-2xl bg-white px-4 py-5 text-center ring-1 ring-ink/5">
+      <div className="mt-4 rounded-2xl bg-white px-4 py-5 text-center ring-1 ring-void/5">
         <p className="text-[9px] uppercase tracking-[0.14em] text-ink/40">Amount</p>
         <p className="mt-1 font-display text-3xl font-bold text-ink">
           SAR <CountUp to={250} />
@@ -349,7 +349,7 @@ function SendScreen({
       </div>
 
       {/* Send button fills like a hold-to-confirm */}
-      <div className="relative mt-4 h-11 overflow-hidden rounded-2xl bg-ink/8">
+      <div className="relative mt-4 h-11 overflow-hidden rounded-2xl bg-void/8">
         <motion.div
           className={cn('absolute inset-y-0 left-0 rounded-2xl bg-gradient-to-r', theme.gradient)}
           initial={{ width: '0%' }}
@@ -391,7 +391,7 @@ function BillsScreen({
             transition={{ delay: 0.25 + i * 0.15 }}
             className={cn(
               'flex items-center justify-between rounded-2xl bg-white px-3 py-3 ring-1',
-              active ? 'ring-2 ring-emerald-400/60' : 'ring-ink/5',
+              active ? 'ring-2 ring-emerald-400/60' : 'ring-void/5',
             )}
           >
             <div>
@@ -406,13 +406,13 @@ function BillsScreen({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="mt-4 rounded-2xl bg-white p-3 ring-1 ring-ink/5"
+        className="mt-4 rounded-2xl bg-white p-3 ring-1 ring-void/5"
       >
         <div className="mb-1.5 flex justify-between text-[10px] font-semibold text-ink/50">
           <span>Processing payment</span>
           <span>SEC</span>
         </div>
-        <div className="h-1.5 overflow-hidden rounded-full bg-ink/8">
+        <div className="h-1.5 overflow-hidden rounded-full bg-void/8">
           <motion.div
             className={cn('h-full rounded-full bg-gradient-to-r', theme.gradient)}
             initial={{ width: '0%' }}
@@ -450,7 +450,7 @@ function AgentsScreen({
               transition={{ delay: 0.25 + i * 0.15 }}
               className={cn(
                 'flex items-center justify-between rounded-2xl bg-white px-3 py-3 ring-1',
-                i === 0 ? 'ring-2 ring-emerald-400/60' : 'ring-ink/5',
+                i === 0 ? 'ring-2 ring-emerald-400/60' : 'ring-void/5',
               )}
             >
               <span className="text-sm font-semibold text-ink">{agent}</span>
@@ -503,7 +503,7 @@ function AnalyticsScreen({ result }: { result: MbukeDemoResult }) {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25 + i * 0.12 }}
-            className="rounded-2xl bg-white px-3 py-3 ring-1 ring-ink/5"
+            className="rounded-2xl bg-white px-3 py-3 ring-1 ring-void/5"
           >
             <p className={cn('font-display text-lg font-bold', theme.text)}>{value}</p>
             <p className="text-[9px] font-semibold uppercase tracking-[0.1em] text-ink/40">
@@ -512,7 +512,7 @@ function AnalyticsScreen({ result }: { result: MbukeDemoResult }) {
           </motion.div>
         ))}
       </div>
-      <div className="mt-3 flex flex-1 items-end gap-2 rounded-2xl bg-white p-4 ring-1 ring-ink/5">
+      <div className="mt-3 flex flex-1 items-end gap-2 rounded-2xl bg-white p-4 ring-1 ring-void/5">
         {bars.map((h, i) => (
           <motion.div
             key={i}

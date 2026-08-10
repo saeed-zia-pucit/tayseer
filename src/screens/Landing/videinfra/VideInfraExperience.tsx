@@ -5,14 +5,14 @@ import {
   useState,
   type CSSProperties,
 } from 'react'
+import { Link } from 'react-router-dom'
 import {
   VI_SEGMENT_COUNT,
   viSlides,
   type ViSlide,
 } from '@/screens/Landing/videinfra/slideData'
+import { resolvePalette, THEME_CHANGE_EVENT } from '@/theme'
 
-const INTRO_COLOR = '#3a2a6e'
-const COLOR_STOPS = [INTRO_COLOR, ...viSlides.map((s) => s.color)]
 /** Full travel time — long so the path feels slow once motion has started */
 const SNAP_MS = 2600
 /** Brief pin after settle (visual only — does not block the next scroll) */
@@ -42,6 +42,7 @@ export function VideInfraExperience() {
   const pendingDirRef = useRef<0 | 1 | -1>(0)
   const idleTimerRef = useRef(0)
   const pinningRef = useRef(false)
+  const skippingRef = useRef(false)
   const rafRef = useRef(0)
   const animRef = useRef(0)
   const animateToRef = useRef<(index: number) => void>(() => {})
@@ -53,13 +54,27 @@ export function VideInfraExperience() {
     Math.max(0, Math.round(progress)),
   )
   const bar =
-    segment === 0 ? 0 : (segment / viSlides.length) * 100
+    VI_SEGMENT_COUNT <= 1
+      ? 100
+      : ((segment + 1) / VI_SEGMENT_COUNT) * 100
 
-  const atmos = useMemo(() => atmosFromProgress(progress), [progress])
+  const [themeTick, setThemeTick] = useState(0)
+  const atmos = useMemo(
+    () => atmosFromProgress(progress),
+    [progress, themeTick],
+  )
+
+  useEffect(() => {
+    const onTheme = () => setThemeTick((n) => n + 1)
+    window.addEventListener(THEME_CHANGE_EVENT, onTheme)
+    return () => window.removeEventListener(THEME_CHANGE_EVENT, onTheme)
+  }, [])
 
   useEffect(() => {
     const track = trackRef.current
     if (!track) return
+
+    const progressMax = Math.max(VI_SEGMENT_COUNT - 1, 1)
 
     const readProgress = () => {
       const total = track.offsetHeight - window.innerHeight
@@ -76,7 +91,7 @@ export function VideInfraExperience() {
       const absTop =
         track.getBoundingClientRect().top +
         window.scrollY +
-        (p / (VI_SEGMENT_COUNT - 1)) * total
+        (p / progressMax) * total
       pinningRef.current = true
       window.scrollTo(0, absTop)
       requestAnimationFrame(() => {
@@ -95,12 +110,14 @@ export function VideInfraExperience() {
     }
 
     const onScroll = () => {
-      if (pinningRef.current || animatingRef.current) return
+      if (pinningRef.current || animatingRef.current || skippingRef.current)
+        return
 
       if (rafRef.current) return
       rafRef.current = requestAnimationFrame(() => {
         rafRef.current = 0
-        if (pinningRef.current || animatingRef.current) return
+        if (pinningRef.current || animatingRef.current || skippingRef.current)
+          return
 
         // Hold the settled slide so inertia can't flash the next product
         if (isExperiencePinned()) {
@@ -189,6 +206,7 @@ export function VideInfraExperience() {
     animateToRef.current = animateTo
 
     const onWheel = (e: WheelEvent) => {
+      if (skippingRef.current) return
       if (!isExperiencePinned()) return
 
       const goingDown = e.deltaY > 0
@@ -247,11 +265,37 @@ export function VideInfraExperience() {
     animateToRef.current(index)
   }
 
+  const skipToModules = () => {
+    if (animRef.current) cancelAnimationFrame(animRef.current)
+    animRef.current = 0
+    animatingRef.current = false
+    skippingRef.current = true
+    gestureArmedRef.current = true
+    pendingDirRef.current = 0
+
+    const eco = document.getElementById('ecosystem')
+    if (eco) {
+      const top = eco.getBoundingClientRect().top + window.scrollY - 12
+      window.scrollTo({ top, behavior: 'smooth' })
+    } else {
+      const track = trackRef.current
+      if (track) {
+        const top =
+          track.getBoundingClientRect().bottom + window.scrollY - window.innerHeight
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+      }
+    }
+
+    window.setTimeout(() => {
+      skippingRef.current = false
+    }, 1400)
+  }
+
   return (
     <section
       className="vi-experience"
       id="hero"
-      aria-label="AI-driven banking features"
+      aria-label="Tayseer products"
       style={{ ['--vi-bg' as string]: atmos.base }}
     >
       <div
@@ -264,13 +308,12 @@ export function VideInfraExperience() {
           <div className="vi-atmos" style={atmos.style} aria-hidden />
 
           <div className="vi-stage">
-            <IntroPanel progress={progress} index={0} />
             {viSlides.map((s, i) => (
               <SlidePanel
                 key={s.id}
                 slide={s}
                 progress={progress}
-                index={i + 1}
+                index={i}
                 viewport={viewport}
               />
             ))}
@@ -281,20 +324,29 @@ export function VideInfraExperience() {
             <span style={{ width: `${Math.max(0, 100 - bar)}%` }} />
           </div>
 
+          <button
+            type="button"
+            className="vi-skip"
+            onClick={skipToModules}
+          >
+            Skip to content
+            <span aria-hidden>↓</span>
+          </button>
+
           <p className="vi-hint">
-            <span /> {segment === 0 ? 'scroll to explore' : 'scroll'}
+            <span /> scroll
           </p>
 
-          <div className="vi-dots" role="tablist" aria-label="Features">
+          <div className="vi-dots" role="tablist" aria-label="Products">
             {viSlides.map((s, i) => (
               <button
                 key={s.id}
                 type="button"
                 role="tab"
                 aria-label={s.title}
-                aria-selected={segment === i + 1}
-                className={segment === i + 1 ? 'is-active' : undefined}
-                onClick={() => goToSegment(i + 1)}
+                aria-selected={segment === i}
+                className={segment === i ? 'is-active' : undefined}
+                onClick={() => goToSegment(i)}
               />
             ))}
           </div>
@@ -342,17 +394,19 @@ function shade(hex: string, amount: number) {
 }
 
 function atmosFromProgress(progress: number) {
-  const max = COLOR_STOPS.length - 1
+  const brand = resolvePalette()
+  const stops = [...brand.slides]
+  const max = Math.max(stops.length - 1, 1)
   const i = Math.min(max - 1, Math.max(0, Math.floor(progress)))
   const t = Math.min(1, Math.max(0, progress - i))
-  const base = mixHex(COLOR_STOPS[i], COLOR_STOPS[i + 1], t)
+  const base = mixHex(stops[i] ?? brand.bg, stops[i + 1] ?? stops[i] ?? brand.bg, t)
   // Stronger depth like the live js-gradient-canvas scenes
-  const deep = mixHex(shade(base, -0.55), '#12081f', 0.35)
+  const deep = mixHex(shade(base, -0.55), brand.bgDeep, 0.35)
   const mid = shade(base, -0.18)
   const lift = shade(base, 0.32)
-  const glow = mixHex(shade(base, 0.45), '#e0d2ff', 0.25)
-  const accent = mixHex(base, '#d4a8f0', 0.4)
-  const cool = mixHex(base, '#7aa0e8', 0.35)
+  const glow = mixHex(shade(base, 0.45), brand.accent3, 0.25)
+  const accent = mixHex(base, brand.accent3, 0.4)
+  const cool = mixHex(base, brand.accent2, 0.35)
 
   return {
     base,
@@ -409,55 +463,6 @@ function childOffset(progress: number, index: number, order: number) {
   }
 }
 
-function IntroPanel({
-  progress,
-  index,
-}: {
-  progress: number
-  index: number
-}) {
-  const style = panelStyle(progress, index)
-  const settle = Number(style['--vi-settle'])
-  return (
-    <div
-      className={`vi-panel vi-intro${settle > 0.55 ? ' is-active' : ''}`}
-      style={style}
-      aria-hidden={settle < 0.4}
-    >
-      <img
-        className="vi-intro-bg"
-        src="/videinfra/images/siri.avif"
-        alt=""
-        aria-hidden
-      />
-      <div className="vi-intro-veil" aria-hidden />
-      <p
-        className="vi-intro-kicker vi-anim"
-        style={childOffset(progress, index, 0)}
-      >
-        A fresh look at finance UX
-      </p>
-      <p
-        className="vi-intro-count vi-anim"
-        style={childOffset(progress, index, 1)}
-      >
-        10
-      </p>
-      <div
-        className="vi-intro-copy vi-anim"
-        style={childOffset(progress, index, 2)}
-      >
-        <h1>
-          AI-driven
-          <br />
-          Features
-        </h1>
-        <p>Revolutionizing Banking UX</p>
-      </div>
-    </div>
-  )
-}
-
 function SlidePanel({
   slide,
   progress,
@@ -480,14 +485,8 @@ function SlidePanel({
     >
       <div className="vi-slide-copy">
         <p
-          className="vi-slide-number vi-anim"
-          style={childOffset(progress, index, 0)}
-        >
-          {slide.id}
-        </p>
-        <p
           className="vi-slide-caption vi-anim"
-          style={childOffset(progress, index, 1)}
+          style={childOffset(progress, index, 0)}
         >
           {slide.caption}
         </p>
@@ -496,12 +495,24 @@ function SlidePanel({
             <span
               key={line}
               className="vi-anim"
-              style={childOffset(progress, index, 2 + i)}
+              style={childOffset(progress, index, 1 + i)}
             >
               {line}
             </span>
           ))}
         </h2>
+        <div
+          className="vi-slide-actions vi-anim"
+          style={childOffset(progress, index, 1 + slide.titleLines.length)}
+        >
+          <Link
+            to={slide.demoPath}
+            className="vi-demo-btn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            Try interactive demo
+          </Link>
+        </div>
       </div>
 
       <div className="vi-slide-media" aria-hidden>
@@ -517,7 +528,7 @@ function SlidePanel({
               viewport,
             )}
           >
-            <img src={`${src}?v=4`} alt="" draggable={false} />
+            <img src={`${src}?v=6`} alt="" draggable={false} />
           </figure>
         ))}
       </div>

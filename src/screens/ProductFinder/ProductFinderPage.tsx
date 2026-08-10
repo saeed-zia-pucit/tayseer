@@ -54,7 +54,7 @@ export function ProductFinderPage({ variant }: ProductFinderPageProps) {
 
       <header className="relative z-10 flex items-center justify-between px-5 py-5 md:px-8">
         <Link to={routes.home} className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-ink text-sm font-bold text-mist">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-lagoon text-sm font-bold text-mist">
             T
           </span>
           <div>
@@ -96,7 +96,7 @@ export function ProductFinderPage({ variant }: ProductFinderPageProps) {
             isPhone ? 'lg:grid-cols-[1.35fr_auto]' : 'lg:grid-cols-[1.45fr_1fr]',
           )}
         >
-          <section className="rounded-[1.75rem] bg-white/70 p-6 shadow-[0_20px_60px_-40px_rgb(6_38_47_/_0.45)] ring-1 ring-line backdrop-blur md:p-8">
+          <section className="brand-panel">
             <QuestionPanel
               step={step}
               answers={answers}

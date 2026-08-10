@@ -53,7 +53,7 @@ export function IntegrationJourneyPanel() {
     <div className="flex h-full flex-col">
       <div className="mb-4 flex items-start justify-between gap-3 px-1">
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-300/80">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-lagoon-bright/80">
             Integration Journey
           </p>
           <p className="mt-1 text-sm text-white/40">Stages unlock in order</p>
@@ -82,7 +82,7 @@ export function IntegrationJourneyPanel() {
                 done
                   ? 'border-emerald-400/30 bg-emerald-400/[0.05]'
                   : current
-                    ? 'border-cyan-300/40 bg-white/[0.05] shadow-[0_0_32px_rgb(34_211_238_/_0.12)]'
+                    ? 'border-lagoon-bright/40 bg-white/[0.05] shadow-[0_0_32px_rgb(var(--brand-accent-2-rgb)_/_0.12)]'
                     : unlocked
                       ? 'border-white/10 bg-white/[0.04]'
                       : 'border-white/5 bg-white/[0.015] opacity-45',
@@ -96,7 +96,7 @@ export function IntegrationJourneyPanel() {
                       done
                         ? 'bg-emerald-400 text-[#05231a]'
                         : current
-                          ? 'bg-cyan-300/20 text-cyan-300'
+                          ? 'bg-lagoon-bright/20 text-lagoon-bright'
                           : 'bg-white/8 text-white/40',
                     )}
                     animate={done ? { scale: [1, 1.15, 1] } : undefined}
@@ -130,9 +130,9 @@ export function IntegrationJourneyPanel() {
                         isOn
                           ? 'border-emerald-400/35 bg-emerald-400/[0.07]'
                           : isConnecting
-                            ? 'border-cyan-300/60 bg-cyan-300/[0.06]'
+                            ? 'border-lagoon-bright/60 bg-lagoon-bright/[0.06]'
                             : selectedId === id
-                              ? 'border-cyan-300/40 bg-white/[0.04]'
+                              ? 'border-lagoon-bright/40 bg-white/[0.04]'
                               : can
                                 ? 'border-white/10 bg-black/20 hover:border-sky-400/40'
                                 : 'border-white/5 bg-black/10 opacity-50',
@@ -144,7 +144,7 @@ export function IntegrationJourneyPanel() {
                           isOn
                             ? 'bg-emerald-400/15 text-emerald-300'
                             : isConnecting
-                              ? 'bg-cyan-300/15 text-cyan-300'
+                              ? 'bg-lagoon-bright/15 text-lagoon-bright'
                               : 'bg-white/8 text-white/50',
                         )}
                       >
@@ -164,7 +164,7 @@ export function IntegrationJourneyPanel() {
                             isOn
                               ? 'text-emerald-400'
                               : isConnecting
-                                ? 'text-cyan-300'
+                                ? 'text-lagoon-bright'
                                 : 'text-white/30',
                           )}
                         >
@@ -187,9 +187,9 @@ export function IntegrationJourneyPanel() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="mt-3 rounded-[1.5rem] border border-cyan-300/30 bg-[#08131d]/95 p-4 shadow-[0_0_40px_rgb(34_211_238_/_0.15)] backdrop-blur-xl"
+            className="mt-3 rounded-[1.5rem] border border-lagoon-bright/30 bg-void/95 p-4 shadow-[0_0_40px_rgb(var(--brand-accent-2-rgb)_/_0.15)] backdrop-blur-xl"
           >
-            <p className="text-xs font-semibold text-cyan-300">
+            <p className="text-xs font-semibold text-lagoon-bright">
               Connecting {journeyNodes[connectingId].label}…
             </p>
             <div className="mt-3 space-y-2.5">
@@ -218,7 +218,7 @@ export function IntegrationJourneyPanel() {
                       <motion.div
                         className={cn(
                           'h-full rounded-full',
-                          doneStep ? 'bg-emerald-400' : 'bg-cyan-300',
+                          doneStep ? 'bg-emerald-400' : 'bg-lagoon-bright',
                         )}
                         initial={{ width: 0 }}
                         animate={{

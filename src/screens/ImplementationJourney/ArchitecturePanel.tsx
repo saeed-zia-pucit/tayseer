@@ -39,7 +39,7 @@ export function ArchitecturePanel() {
   return (
     <div className="flex h-full flex-col">
       <div className="mb-4 px-1">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-300/80">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-lagoon-bright/80">
           Interactive Architecture
         </p>
         <p className="mt-1 text-sm text-white/40">
@@ -179,9 +179,9 @@ export function ArchitecturePanel() {
                 'bg-white/[0.06] shadow-[0_12px_32px_-12px_rgb(0_0_0_/_0.7)]',
                 // Hierarchy
                 isCore &&
-                  'min-w-[8rem] border-cyan-300/40 bg-[#0a1622]/90 shadow-[0_0_44px_rgb(34_211_238_/_0.3)]',
+                  'min-w-[8rem] border-lagoon-bright/40 bg-void/90 shadow-[0_0_44px_rgb(var(--brand-accent-2-rgb)_/_0.3)]',
                 !isCore && isSelected
-                  ? 'border-cyan-300/80 shadow-[0_0_36px_rgb(34_211_238_/_0.55)]'
+                  ? 'border-lagoon-bright/80 shadow-[0_0_36px_rgb(var(--brand-accent-2-rgb)_/_0.55)]'
                   : !isCore && isConnected
                     ? 'border-emerald-400/40 shadow-[0_0_20px_rgb(52_211_153_/_0.2)]'
                     : !isCore && unlocked
@@ -194,7 +194,7 @@ export function ArchitecturePanel() {
               {/* Pulse ring on selected */}
               {(isSelected || isConnecting) && !isCore ? (
                 <motion.span
-                  className="pointer-events-none absolute inset-0 rounded-[1.25rem] border border-cyan-300/60"
+                  className="pointer-events-none absolute inset-0 rounded-[1.25rem] border border-lagoon-bright/60"
                   animate={{ opacity: [0.7, 0, 0.7], scale: [1, 1.18, 1] }}
                   transition={{ duration: 1.6, repeat: Infinity }}
                   aria-hidden
@@ -213,7 +213,7 @@ export function ArchitecturePanel() {
                 className={cn(
                   'mt-0.5 text-[9px] font-semibold uppercase tracking-[0.12em]',
                   isConnecting
-                    ? 'text-cyan-300'
+                    ? 'text-lagoon-bright'
                     : isConnected
                       ? 'text-emerald-400'
                       : 'text-white/30',

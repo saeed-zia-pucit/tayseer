@@ -40,7 +40,7 @@
   height: 100dvh;
   width: 100%;
   overflow: hidden;
-  background-color: #2a1f4a;
+  background-color: var(--brand-bg-elevated);
   isolation: isolate;
 }
 
@@ -112,16 +112,6 @@
   text-transform: uppercase;
   opacity: 0.8;
 }
-.vi-intro-count {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  font-family: "VI Graphik", system-ui, sans-serif;
-  font-size: clamp(7rem, 22vw, 14rem);
-  line-height: 0.85;
-  letter-spacing: -0.04em;
-  font-weight: 500;
-}
 .vi-intro-copy {
   position: relative;
   z-index: 1;
@@ -161,19 +151,15 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+  pointer-events: none;
 }
 
-.vi-slide-number {
-  margin: 0;
-  font-family: "VI Graphik", system-ui, sans-serif;
-  font-size: clamp(5rem, 14vw, 9.5rem);
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-  font-weight: 500;
+.vi-slide-copy .vi-demo-btn {
+  pointer-events: auto;
 }
 
 .vi-slide-caption {
-  margin: 1.5rem 0 0;
+  margin: 0;
   max-width: 22rem;
   font-size: clamp(0.95rem, 1.4vw, 1.15rem);
   line-height: 1.45;
@@ -192,6 +178,47 @@
 }
 .vi-slide-title span {
   display: block;
+}
+
+.vi-slide-actions {
+  margin-top: 1.25rem;
+  pointer-events: auto;
+}
+
+.vi-demo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.75rem 1.35rem;
+  font-family: "VI Graphik", system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: var(--brand-accent);
+  border: 1px solid rgb(255 255 255 / 0.28);
+  box-shadow:
+    0 0 0 1px rgb(var(--brand-accent-rgb) / 0.35),
+    0 12px 32px rgb(0 0 0 / 0.35);
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+
+.vi-demo-btn:hover {
+  transform: translateY(-1px);
+  color: var(--brand-bg-deep);
+  background: var(--brand-accent-2);
+  border-color: rgb(255 255 255 / 0.45);
+  box-shadow:
+    0 0 0 1px rgb(var(--brand-accent-2-rgb) / 0.45),
+    0 14px 36px rgb(0 0 0 / 0.4);
 }
 
 .vi-slide-media {
@@ -258,6 +285,46 @@
 .vi-progress span {
   right: 0;
   background: rgba(255, 255, 255, 0.35);
+}
+
+.vi-skip {
+  position: absolute;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: 1.1rem;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.22);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+.vi-skip:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.55);
+  transform: translateY(-1px);
+}
+.vi-skip:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+.vi-skip span {
+  font-size: 0.85rem;
+  opacity: 0.85;
 }
 
 .vi-hint {
@@ -327,9 +394,6 @@
     min-height: 42vh;
     order: -1;
   }
-  .vi-slide-number {
-    font-size: clamp(4rem, 18vw, 6rem);
-  }
   .vi-slide-title {
     font-size: clamp(1.55rem, 6vw, 2.2rem);
   }
@@ -341,6 +405,16 @@
   }
   .vi-dots {
     right: 0.75rem;
+  }
+  .vi-skip {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.65rem;
+  }
+  .vi-hint {
+    left: 1rem;
+    transform: none;
   }
   .vi-intro-copy {
     justify-self: start;

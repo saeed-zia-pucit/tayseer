@@ -24,7 +24,7 @@ export function MbukeDemoResultsPage() {
 
       <header className="relative z-10 flex items-center justify-between px-5 py-5 md:px-8">
         <Link to={routes.home} className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-ink text-sm font-bold text-mist">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-lagoon text-sm font-bold text-mist">
             T
           </span>
           <span className="font-display text-lg font-bold text-ink">Tayseer</span>
@@ -59,7 +59,7 @@ export function MbukeDemoResultsPage() {
               (chip) => (
                 <span
                   key={chip}
-                  className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-ink/70 ring-1 ring-line"
+                  className="brand-chip"
                 >
                   {chip}
                 </span>
@@ -77,7 +77,7 @@ export function MbukeDemoResultsPage() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
-            className="rounded-[1.5rem] bg-white p-6 ring-1 ring-line md:p-7"
+            className="rounded-[1.5rem] bg-elevated/80 p-6 ring-1 ring-white/12 md:p-7"
           >
             <h2 className="font-display text-xl font-bold text-ink">
               Capabilities on tour
@@ -90,7 +90,7 @@ export function MbukeDemoResultsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.04 * i }}
-                  className="rounded-full bg-mist px-3.5 py-2 text-xs font-semibold text-ink-soft"
+                  className="brand-chip"
                 >
                   {mod.name}
                   <span className="ml-1.5 text-[10px] font-medium uppercase text-ink/35">
@@ -117,7 +117,7 @@ export function MbukeDemoResultsPage() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
-            className="rounded-[1.5rem] bg-ink p-6 text-mist md:p-7"
+            className="rounded-[1.5rem] bg-void p-6 text-mist md:p-7"
           >
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-lagoon-bright">
               Case study

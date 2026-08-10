@@ -31,7 +31,7 @@ export function CoreIntegrationsResultsPage() {
 
       <header className="relative z-10 flex items-center justify-between px-5 py-5 md:px-8">
         <Link to={routes.home} className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-ink text-sm font-bold text-mist">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-lagoon text-sm font-bold text-mist">
             T
           </span>
           <span className="font-display text-lg font-bold text-ink">Tayseer</span>
@@ -70,7 +70,7 @@ export function CoreIntegrationsResultsPage() {
             ].map((chip) => (
               <span
                 key={chip}
-                className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-ink/70 ring-1 ring-line"
+                className="brand-chip"
               >
                 {chip}
               </span>
@@ -91,7 +91,7 @@ export function CoreIntegrationsResultsPage() {
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.05 * i }}
-                    className="rounded-full bg-mist px-3.5 py-2 text-xs font-semibold text-ink-soft"
+                    className="brand-chip"
                   >
                     {label}
                   </motion.span>
@@ -117,14 +117,14 @@ export function CoreIntegrationsResultsPage() {
             </ul>
           </section>
 
-          <section className="mt-10 rounded-[1.5rem] bg-white p-6 ring-1 ring-line">
+          <section className="mt-10 rounded-[1.5rem] bg-elevated/80 p-6 ring-1 ring-white/12">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink/45">
               Estimated program
             </p>
             <p className="mt-2 font-display text-2xl font-bold text-ink">
               {result.timelineLabel}
             </p>
-            <div className="mt-4 h-2 overflow-hidden rounded-full bg-mist">
+            <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/10">
               <motion.div
                 className="h-full rounded-full bg-lagoon"
                 initial={{ width: 0 }}

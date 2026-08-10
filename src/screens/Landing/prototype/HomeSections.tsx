@@ -26,6 +26,9 @@ export function HomeNav() {
         <a href="#ecosystem" onClick={() => setOpen(false)}>
           AI Ecosystem
         </a>
+        <a href="/experiments">
+          Experiments
+        </a>
         <a href="#architecture" onClick={() => setOpen(false)}>
           Architecture
         </a>
@@ -776,6 +779,7 @@ export function HomeFooter() {
           Current site
         </a>
         <a href="mailto:info@tayseer.me">info@tayseer.me</a>
+        <Link to={routes.experiments}>Experiments</Link>
         <Link to={routes.finder}>Product Finder</Link>
       </div>
       <p className="footer-copy">

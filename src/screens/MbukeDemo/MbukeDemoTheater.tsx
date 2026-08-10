@@ -34,7 +34,7 @@ export function MbukeDemoTheater({ result }: { result: MbukeDemoResult }) {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="overflow-hidden rounded-[1.75rem] bg-ink shadow-[0_40px_90px_-30px_rgb(10_30_28_/_0.55)] ring-1 ring-white/10"
+      className="overflow-hidden rounded-[1.75rem] bg-void shadow-[0_40px_90px_-30px_rgb(10_30_28_/_0.55)] ring-1 ring-white/10"
     >
       {/* Window title bar */}
       <div className="flex items-center gap-3 border-b border-white/8 px-5 py-3">
@@ -90,7 +90,7 @@ export function MbukeDemoTheater({ result }: { result: MbukeDemoResult }) {
               )}
               style={{ top: `${step.calloutTop}%` }}
             >
-              <span className="whitespace-nowrap rounded-full bg-white px-3 py-1.5 text-[11px] font-bold text-ink shadow-lg">
+              <span className="whitespace-nowrap rounded-full bg-mist px-3 py-1.5 text-[11px] font-bold text-void shadow-lg">
                 {step.callout}
               </span>
               {/* Connector line + pulsing dot toward the phone */}
@@ -224,7 +224,7 @@ export function MbukeDemoTheater({ result }: { result: MbukeDemoResult }) {
             <button
               type="button"
               onClick={() => setPlaying((p) => !p)}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-ink transition-transform hover:scale-105"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-mist text-void transition-transform hover:scale-105"
               aria-label={playing ? 'Pause demo' : 'Play demo'}
             >
               {playing ? (

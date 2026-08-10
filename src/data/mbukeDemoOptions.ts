@@ -82,28 +82,28 @@ export const mbukeThemeStyles: Record<
   { gradient: string; soft: string; text: string; chip: string }
 > = {
   lagoon: {
-    gradient: 'from-[#0f766e] to-[#115e59]',
-    soft: 'bg-[#e8f4f2]',
-    text: 'text-[#0f766e]',
-    chip: 'bg-[#ccfbf1] text-[#115e59]',
+    gradient: 'from-[var(--brand-accent)] to-[var(--brand-bg-elevated)]',
+    soft: 'bg-phone-chip',
+    text: 'text-[var(--brand-accent)]',
+    chip: 'bg-phone-chip text-phone-ink',
   },
   sand: {
-    gradient: 'from-[#b45309] to-[#92400e]',
-    soft: 'bg-[#fef3c7]',
-    text: 'text-[#92400e]',
-    chip: 'bg-[#fde68a] text-[#92400e]',
+    gradient: 'from-[var(--brand-accent-soft)] to-[var(--brand-bg-elevated)]',
+    soft: 'bg-[#fce7f3]',
+    text: 'text-[#9d174d]',
+    chip: 'bg-[#fbcfe8] text-[#9d174d]',
   },
   ocean: {
-    gradient: 'from-[#0369a1] to-[#0c4a6e]',
-    soft: 'bg-[#e0f2fe]',
-    text: 'text-[#0369a1]',
-    chip: 'bg-[#bae6fd] text-[#0c4a6e]',
+    gradient: 'from-[var(--brand-accent-2)] to-[var(--brand-bg-deep)]',
+    soft: 'bg-[#cffafe]',
+    text: 'text-[#0e7490]',
+    chip: 'bg-[#a5f3fc] text-[#155e75]',
   },
   midnight: {
-    gradient: 'from-[#1e293b] to-[#0f172a]',
-    soft: 'bg-[#e2e8f0]',
-    text: 'text-[#1e293b]',
-    chip: 'bg-[#cbd5e1] text-[#0f172a]',
+    gradient: 'from-[var(--brand-bg-elevated)] to-[var(--brand-bg-deep)]',
+    soft: 'bg-phone-chip',
+    text: 'text-phone-ink',
+    chip: 'bg-phone-ink/10 text-phone-ink',
   },
 }
 

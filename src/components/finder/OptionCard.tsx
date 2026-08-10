@@ -28,8 +28,8 @@ export function OptionCard({
       className={cn(
         'group relative rounded-2xl border px-4 py-4 text-left transition duration-200',
         selected
-          ? 'border-ink bg-ink text-mist shadow-lift'
-          : 'border-line bg-white/80 text-ink hover:border-ink/30 hover:bg-white',
+          ? 'border-lagoon/60 bg-lagoon text-mist shadow-lift'
+          : 'border-white/10 bg-white/5 text-ink hover:border-lagoon/35 hover:bg-white/10',
         className,
       )}
     >
@@ -53,7 +53,7 @@ export function OptionCard({
           className={cn(
             'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-[10px]',
             selected
-              ? 'border-lagoon-bright bg-lagoon-bright text-ink'
+              ? 'border-lagoon-bright bg-lagoon-bright text-void'
               : 'border-line text-transparent',
             multi && !selected && 'rounded-md',
             multi && selected && 'rounded-md',
@@ -81,8 +81,8 @@ export function Chip({ label, selected, onClick }: ChipProps) {
       className={cn(
         'rounded-full px-3.5 py-2 text-xs font-semibold transition',
         selected
-          ? 'bg-lagoon text-white shadow-sm'
-          : 'bg-white text-ink/70 ring-1 ring-line hover:ring-ink/25',
+          ? 'bg-lagoon text-mist shadow-sm'
+          : 'bg-white/5 text-ink/70 ring-1 ring-white/12 hover:bg-white/10 hover:ring-lagoon/30',
       )}
     >
       {label}

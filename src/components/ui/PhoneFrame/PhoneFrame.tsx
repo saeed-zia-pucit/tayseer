@@ -61,7 +61,7 @@ export function PhoneFrame({
     <div className={cn('relative inline-flex', className)} role="img" aria-label={label}>
       {/* Soft device shadow */}
       <div
-        className="pointer-events-none absolute inset-3 rounded-[2.2rem] bg-ink/25 blur-2xl"
+        className="pointer-events-none absolute inset-3 rounded-[2.2rem] bg-void/25 blur-2xl"
         aria-hidden
       />
 
@@ -87,7 +87,7 @@ export function PhoneFrame({
 
         <div
           className={cn(
-            'relative flex flex-col overflow-hidden bg-[#f4f7f6]',
+            'phone-ui relative flex flex-col overflow-hidden',
             s.screen,
             screenClassName,
           )}
@@ -99,13 +99,13 @@ export function PhoneFrame({
           ) : null}
 
           {statusBar !== false ? (
-            <div className="relative z-10 flex items-center justify-between px-5 pb-1 pt-3 text-[10px] font-semibold text-ink/70">
+            <div className="relative z-10 flex items-center justify-between px-5 pb-1 pt-3 text-[10px] font-semibold text-phone-ink/70">
               {statusBar ?? (
                 <>
                   <span>9:41</span>
                   <span className="flex items-center gap-1 tracking-tight">
-                    <span className="inline-block h-1.5 w-3 rounded-sm bg-ink/70" />
-                    <span className="inline-block h-2 w-1 rounded-sm bg-ink/70" />
+                    <span className="inline-block h-1.5 w-3 rounded-sm bg-void/70" />
+                    <span className="inline-block h-2 w-1 rounded-sm bg-void/70" />
                   </span>
                 </>
               )}
@@ -118,7 +118,7 @@ export function PhoneFrame({
 
           {showHomeIndicator ? (
             <div className="relative z-10 flex justify-center pb-2 pt-1">
-              <div className="h-1 w-24 rounded-full bg-ink/20" />
+              <div className="h-1 w-24 rounded-full bg-void/20" />
             </div>
           ) : null}
         </div>

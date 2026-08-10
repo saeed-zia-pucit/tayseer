@@ -24,7 +24,7 @@ export function ResultsPage() {
 
       <header className="relative z-10 flex items-center justify-between px-5 py-5 md:px-8">
         <Link to={routes.home} className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-ink text-sm font-bold text-mist">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-lagoon text-sm font-bold text-mist">
             T
           </span>
           <span className="font-display text-lg font-bold text-ink">Tayseer</span>
@@ -60,7 +60,7 @@ export function ResultsPage() {
             ].map((chip) => (
               <span
                 key={chip}
-                className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-ink/70 ring-1 ring-line"
+                className="brand-chip"
               >
                 {chip}
               </span>
@@ -79,7 +79,7 @@ export function ResultsPage() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.08 * index }}
-                className="rounded-[1.5rem] bg-white p-6 shadow-[0_18px_50px_-36px_rgb(6_38_47_/_0.5)] ring-1 ring-line"
+                className="rounded-[1.5rem] bg-elevated/80 p-6 shadow-lift ring-1 ring-white/12"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>
@@ -91,7 +91,7 @@ export function ResultsPage() {
                     </h3>
                     <p className="mt-1 text-sm text-ink/55">{rec.product.tagline}</p>
                   </div>
-                  <span className="rounded-full bg-mist px-3 py-1 text-xs font-bold text-lagoon">
+                  <span className="brand-chip !text-lagoon-bright">
                     {rec.confidence}% match
                   </span>
                 </div>
@@ -115,7 +115,7 @@ export function ResultsPage() {
           <h2 className="font-display text-2xl font-bold text-ink">
             Suggested architecture
           </h2>
-          <div className="mt-6 overflow-x-auto rounded-[1.5rem] bg-ink p-6 text-mist shadow-lift md:p-8">
+          <div className="mt-6 overflow-x-auto rounded-[1.5rem] bg-void p-6 text-mist shadow-lift md:p-8">
             <div className="flex min-w-[36rem] items-center justify-between gap-2">
               {solution.architecture.map((node, i) => (
                 <div key={`${node}-${i}`} className="flex flex-1 items-center gap-2">
@@ -137,7 +137,7 @@ export function ResultsPage() {
         </section>
 
         <section className="mt-14 grid gap-6 md:grid-cols-[1.2fr_1fr]">
-          <div className="rounded-[1.5rem] bg-white p-6 ring-1 ring-line md:p-8">
+          <div className="rounded-[1.5rem] bg-elevated/80 p-6 ring-1 ring-white/12 md:p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink/45">
               Estimated implementation timeline
             </p>
@@ -148,7 +148,7 @@ export function ResultsPage() {
               Timeline reflects product type, market footprint, capability depth,
               and deployment posture. Final scoping happens in a discovery workshop.
             </p>
-            <div className="mt-6 h-2 overflow-hidden rounded-full bg-mist">
+            <div className="mt-6 h-2 overflow-hidden rounded-full bg-white/10">
               <motion.div
                 className="h-full rounded-full bg-lagoon"
                 initial={{ width: 0 }}
@@ -168,7 +168,7 @@ export function ResultsPage() {
             </div>
             <div className="mt-8 flex flex-col gap-3">
               <Button
-                className="!bg-white !text-ink hover:!bg-mist"
+                className="!bg-mist !text-void hover:!bg-white"
                 onClick={() =>
                   window.alert(
                     'Demo request captured (prototype). Connect Formspree or email later.',

@@ -44,10 +44,10 @@ export function FinderProgress({
             className={cn(
               'rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide',
               s.id === step
-                ? 'bg-ink text-mist'
+                ? 'bg-lagoon text-mist'
                 : s.id < step
-                  ? 'bg-lagoon/15 text-lagoon'
-                  : 'bg-white/60 text-ink/35',
+                  ? 'bg-lagoon/20 text-lagoon-bright'
+                  : 'bg-white/5 text-ink/40',
             )}
           >
             {s.short}

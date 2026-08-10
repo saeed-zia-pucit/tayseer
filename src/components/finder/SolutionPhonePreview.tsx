@@ -12,14 +12,14 @@ interface SolutionPhonePreviewProps {
 }
 
 const accentByType: Partial<Record<ProductType, string>> = {
-  digital_bank: 'from-[#0f766e] to-[#115e59]',
-  wallet: 'from-[#0d9488] to-[#0f766e]',
-  core_banking: 'from-[#0f3d4a] to-[#06262f]',
-  lending: 'from-[#b45309] to-[#92400e]',
-  remittance: 'from-[#0369a1] to-[#0c4a6e]',
-  islamic: 'from-[#047857] to-[#065f46]',
-  investment: 'from-[#0e7490] to-[#155e75]',
-  merchant: 'from-[#c2410c] to-[#9a3412]',
+  digital_bank: 'from-[var(--brand-accent)] to-[var(--brand-bg-elevated)]',
+  wallet: 'from-[var(--brand-accent-2)] to-[var(--brand-bg-elevated)]',
+  core_banking: 'from-[var(--brand-slide-1)] to-[var(--brand-bg-deep)]',
+  lending: 'from-[var(--brand-accent-soft)] to-[var(--brand-bg-elevated)]',
+  remittance: 'from-[var(--brand-slide-2)] to-[var(--brand-bg-deep)]',
+  islamic: 'from-[var(--brand-slide-3)] to-[var(--brand-bg-elevated)]',
+  investment: 'from-[var(--brand-slide-5)] to-[var(--brand-bg-deep)]',
+  merchant: 'from-[var(--brand-slide-4)] to-[var(--brand-bg-elevated)]',
 }
 
 function brandInitial(label: string) {
@@ -42,7 +42,7 @@ export function SolutionPhonePreview({
     : 'Your platform'
   const accent =
     (answers.productType && accentByType[answers.productType]) ||
-    'from-[#0f766e] to-[#0d3d4a]'
+    'from-[var(--brand-accent)] to-[var(--brand-bg-deep)]'
   const hasStart = Boolean(answers.productType)
 
   return (
@@ -84,7 +84,7 @@ export function SolutionPhonePreview({
                   </p>
                 </div>
               </div>
-              <span className="rounded-full bg-ink/5 px-2 py-0.5 text-[9px] font-semibold text-ink/50">
+              <span className="rounded-full bg-void/5 px-2 py-0.5 text-[9px] font-semibold text-ink/50">
                 Demo
               </span>
             </div>
@@ -127,7 +127,7 @@ export function SolutionPhonePreview({
             </motion.div>
 
             {/* Region + capabilities strip */}
-            <div className="mt-3 rounded-2xl bg-white px-3 py-2.5 ring-1 ring-ink/5">
+            <div className="mt-3 rounded-2xl bg-white px-3 py-2.5 ring-1 ring-void/5">
               <div className="flex items-center justify-between gap-2">
                 <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-ink/40">
                   Markets
@@ -189,7 +189,7 @@ export function SolutionPhonePreview({
                       key="empty-mods"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className="rounded-2xl border border-dashed border-ink/10 bg-white/60 px-3 py-6 text-center"
+                      className="rounded-2xl border border-dashed border-void/10 bg-white/60 px-3 py-6 text-center"
                     >
                       <p className="text-[11px] font-medium text-ink/40">
                         Answer questions to assemble modules
@@ -204,7 +204,7 @@ export function SolutionPhonePreview({
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, scale: 0.96 }}
                         transition={{ delay: index * 0.04 }}
-                        className="flex items-center gap-2.5 rounded-2xl bg-white px-2.5 py-2 ring-1 ring-ink/5"
+                        className="flex items-center gap-2.5 rounded-2xl bg-white px-2.5 py-2 ring-1 ring-void/5"
                       >
                         <div
                           className={cn(
@@ -233,7 +233,7 @@ export function SolutionPhonePreview({
             </div>
 
             {/* Bottom nav mock */}
-            <div className="mt-auto grid grid-cols-4 gap-1 rounded-2xl bg-white px-1 py-2 ring-1 ring-ink/5">
+            <div className="mt-auto grid grid-cols-4 gap-1 rounded-2xl bg-white px-1 py-2 ring-1 ring-void/5">
               {['Home', 'Pay', 'Cards', 'More'].map((item, i) => (
                 <div
                   key={item}

@@ -1,19 +1,20 @@
-/* Scoped prototype styles — served from /public, not processed by Tailwind */
+/* Scoped prototype styles — served from /public, not processed by Tailwind.
+   Colors come from :root brand tokens (src/theme) so landing matches the full app. */
 .tayseer-home{
-  --navy: #050B18;
-  --royal: #0066FF;
-  --cyan: #00F2FF;
-  --cyan-soft: #00E5FF;
-  --emerald: #00D4A8;
-  --gold: #FFE566;
-  --bg0: #03060F;
-  --bg1: #06101F;
-  --bg2: #0A1628;
-  --text: #EEF6FF;
-  --muted: #7E9BB8;
-  --glass: rgba(8, 20, 40, 0.55);
-  --glass-border: rgba(0, 242, 255, 0.22);
-  --glow: 0 0 48px rgba(0, 242, 255, 0.35);
+  --navy: var(--brand-bg-deep);
+  --royal: var(--brand-accent);
+  --cyan: var(--brand-accent-2);
+  --cyan-soft: var(--brand-accent-2);
+  --emerald: var(--brand-accent-3);
+  --gold: var(--brand-accent-soft);
+  --bg0: var(--brand-bg-deep);
+  --bg1: var(--brand-bg);
+  --bg2: var(--brand-bg-elevated);
+  --text: var(--brand-text);
+  --muted: var(--brand-muted);
+  --glass: color-mix(in srgb, var(--brand-bg-deep) 55%, transparent);
+  --glass-border: rgba(var(--brand-accent-2-rgb), 0.28);
+  --glow: 0 0 48px rgba(var(--brand-accent-2-rgb), 0.35);
   --radius: 20px;
   --font-h: "Sora", system-ui, sans-serif;
   --font-b: "Inter", system-ui, sans-serif;
@@ -39,9 +40,9 @@
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(0, 102, 255, 0.28), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 90% 20%, rgba(0, 242, 255, 0.16), transparent 50%),
-    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(0, 212, 168, 0.1), transparent 55%);
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(var(--brand-accent-rgb), 0.28), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 20%, rgba(var(--brand-accent-2-rgb), 0.18), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(var(--brand-accent-3-rgb), 0.12), transparent 55%);
   pointer-events: none;
   z-index: 0;
 }

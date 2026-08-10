@@ -11,8 +11,8 @@ import {
 } from '@/screens/Landing/prototype/HomeSections'
 import { VideInfraExperience } from '@/screens/Landing/videinfra/VideInfraExperience'
 
-const PROTO_CSS_HREF = '/prototype/styles.css?v=9'
-const VI_CSS_HREF = '/videinfra/styles.css?v=7'
+const PROTO_CSS_HREF = '/prototype/styles.css?v=10'
+const VI_CSS_HREF = '/videinfra/styles.css?v=12'
 
 /**
  * Homepage: Vide Infra–style horizontal product scroll for the top,
@@ -40,7 +40,7 @@ export function LandingPage() {
     const vi = ensureLink(VI_CSS_HREF, 'vi')
 
     const prevBg = document.body.style.background
-    document.body.style.background = '#2a1f4a'
+    document.body.style.background = 'var(--brand-bg)'
 
     const onScroll = () => {
       const max =

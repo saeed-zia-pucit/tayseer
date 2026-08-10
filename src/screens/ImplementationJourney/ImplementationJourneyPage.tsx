@@ -72,7 +72,7 @@ export function ImplementationJourneyPage() {
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative mt-6 overflow-hidden rounded-[1.75rem] border border-emerald-400/25 bg-gradient-to-br from-emerald-400/10 via-white/[0.03] to-cyan-400/10 p-6 md:p-8"
+            className="relative mt-6 overflow-hidden rounded-[1.75rem] border border-emerald-400/25 bg-gradient-to-br from-emerald-400/10 via-white/[0.03] to-lagoon-bright/10 p-6 md:p-8"
           >
             <motion.div
               className="pointer-events-none absolute inset-0"
@@ -98,7 +98,7 @@ export function ImplementationJourneyPage() {
               </div>
               <div className="flex flex-wrap gap-3">
                 <Button
-                  className="!bg-white !text-ink"
+                  className="!bg-mist !text-void"
                   onClick={() =>
                     window.alert('Delivery Journey — mocked for prototype.')
                   }
@@ -135,7 +135,7 @@ function Background() {
         }}
       />
       <motion.div
-        className="absolute -left-24 top-10 h-[26rem] w-[26rem] rounded-full bg-cyan-400/10 blur-[110px]"
+        className="absolute -left-24 top-10 h-[26rem] w-[26rem] rounded-full bg-lagoon-bright/10 blur-[110px]"
         animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
         transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
       />
@@ -160,7 +160,7 @@ function Background() {
       ].map((p, i) => (
         <motion.span
           key={i}
-          className="absolute h-1 w-1 rounded-full bg-cyan-200/40"
+          className="absolute h-1 w-1 rounded-full bg-lagoon-bright/40"
           style={{ left: p.left, top: p.top }}
           animate={{ y: [0, -24, 0], opacity: [0.15, 0.55, 0.15] }}
           transition={{

@@ -27,7 +27,7 @@ export function SolutionSummary({ answers, analyzing }: SolutionSummaryProps) {
 
   return (
     <aside className="lg:sticky lg:top-6">
-      <div className="overflow-hidden rounded-[1.75rem] bg-ink p-6 text-mist shadow-lift ring-1 ring-white/10">
+      <div className="brand-aside">
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-lagoon-bright">
