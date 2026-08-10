@@ -7,23 +7,23 @@
 :root {
   --brand-bg-deep: #0a0614;
   --brand-bg: #140c24;
-  --brand-bg-elevated: #24183f;
-  --brand-text: #f4f0ff;
-  --brand-muted: #a99bc8;
-  --brand-accent: #9b7cff;
-  --brand-accent-2: #2dd4e8;
-  --brand-accent-3: #c4b5fd;
+  --brand-bg-elevated: #2a1848;
+  --brand-text: #f7f2ff;
+  --brand-muted: #b7a6de;
+  --brand-accent: #8b5cf6;
+  --brand-accent-2: #06b6d4;
+  --brand-accent-3: #a855f7;
   --brand-accent-soft: #f0abfc;
-  --brand-intro: #2a184f;
+  --brand-intro: #4c1d95;
   --brand-slide-1: #8b5cf6;
   --brand-slide-2: #06b6d4;
   --brand-slide-3: #6366f1;
   --brand-slide-4: #a855f7;
   --brand-slide-5: #0ea5e9;
   --brand-slide-6: #d8b4fe;
-  --brand-accent-rgb: 155, 124, 255;
-  --brand-accent-2-rgb: 45, 212, 232;
-  --brand-accent-3-rgb: 196, 181, 253;
+  --brand-accent-rgb: 139, 92, 246;
+  --brand-accent-2-rgb: 6, 182, 212;
+  --brand-accent-3-rgb: 168, 85, 247;
 
   /* Light phone / mock-app chrome (scoped via .phone-ui) */
   --phone-bg: #f3eef9;

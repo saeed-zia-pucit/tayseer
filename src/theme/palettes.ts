@@ -25,28 +25,27 @@ export type BrandPalette = {
 }
 
 /**
- * Default — deep indigo + violet/cyan.
- * Tuned so landing slides and inner finder side-by-sides share one readable scheme.
+ * Default — deep indigo + punchy violet/cyan (matches Vide Infra hero slides).
  */
 export const violetAurora: BrandPalette = {
   id: 'violet-aurora',
   name: 'Violet Aurora',
   blurb:
-    'Deep indigo canvas with violet and cyan accents — readable on landing and inner demos.',
+    'Saturated violet and cyan atmospheres — same energy as the product hero slides.',
   bgDeep: '#0a0614',
   bg: '#140c24',
-  bgElevated: '#24183f',
-  text: '#f4f0ff',
-  muted: '#a99bc8',
-  accent: '#9b7cff',
-  accent2: '#2dd4e8',
-  accent3: '#c4b5fd',
+  bgElevated: '#2a1848',
+  text: '#f7f2ff',
+  muted: '#b7a6de',
+  accent: '#8b5cf6',
+  accent2: '#06b6d4',
+  accent3: '#a855f7',
   accentSoft: '#f0abfc',
-  intro: '#2a184f',
+  intro: '#4c1d95',
   slides: ['#8b5cf6', '#06b6d4', '#6366f1', '#a855f7', '#0ea5e9', '#d8b4fe'],
-  accentRgb: '155, 124, 255',
-  accent2Rgb: '45, 212, 232',
-  accent3Rgb: '196, 181, 253',
+  accentRgb: '139, 92, 246',
+  accent2Rgb: '6, 182, 212',
+  accent3Rgb: '168, 85, 247',
 }
 
 export const lagoonPrism: BrandPalette = {

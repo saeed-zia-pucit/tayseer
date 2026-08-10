@@ -1,20 +1,21 @@
 /* Scoped prototype styles — served from /public, not processed by Tailwind.
-   Colors come from :root brand tokens (src/theme) so landing matches the full app. */
+   Colours mirror the Vide Infra hero: saturated slide washes + brand accents. */
 .tayseer-home{
   --navy: var(--brand-bg-deep);
-  --royal: var(--brand-accent);
-  --cyan: var(--brand-accent-2);
-  --cyan-soft: var(--brand-accent-2);
-  --emerald: var(--brand-accent-3);
-  --gold: var(--brand-accent-soft);
+  --royal: var(--brand-slide-1);
+  --cyan: var(--brand-slide-2);
+  --cyan-soft: var(--brand-slide-5);
+  --emerald: var(--brand-slide-3);
+  --gold: var(--brand-slide-4);
+  --lilac: var(--brand-slide-6);
   --bg0: var(--brand-bg-deep);
   --bg1: var(--brand-bg);
   --bg2: var(--brand-bg-elevated);
   --text: var(--brand-text);
   --muted: var(--brand-muted);
-  --glass: color-mix(in srgb, var(--brand-bg-deep) 55%, transparent);
-  --glass-border: rgba(var(--brand-accent-2-rgb), 0.28);
-  --glow: 0 0 48px rgba(var(--brand-accent-2-rgb), 0.35);
+  --glass: color-mix(in srgb, var(--brand-slide-1) 18%, var(--brand-bg-deep) 82%);
+  --glass-border: color-mix(in srgb, var(--brand-slide-2) 45%, transparent);
+  --glow: 0 0 56px color-mix(in srgb, var(--brand-slide-2) 45%, transparent);
   --radius: 20px;
   --font-h: "Sora", system-ui, sans-serif;
   --font-b: "Inter", system-ui, sans-serif;
@@ -28,7 +29,11 @@
 .tayseer-home{ /* body */
   font-family: var(--font-b);
   color: var(--text);
-  background: linear-gradient(165deg, var(--bg0), var(--bg1) 45%, var(--bg2));
+  background:
+    radial-gradient(ellipse 90% 60% at 10% 0%, color-mix(in srgb, var(--brand-slide-1) 38%, transparent), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 95% 15%, color-mix(in srgb, var(--brand-slide-2) 32%, transparent), transparent 52%),
+    radial-gradient(ellipse 60% 45% at 50% 100%, color-mix(in srgb, var(--brand-slide-4) 28%, transparent), transparent 55%),
+    linear-gradient(165deg, var(--bg0), color-mix(in srgb, var(--brand-slide-3) 22%, var(--bg1)) 48%, var(--bg2));
   min-height: 100vh;
   /* Do NOT set overflow-x on this wrapper — any non-visible overflow
      makes a scroll containment and kills position:sticky on the carousel. */
@@ -40,9 +45,10 @@
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(var(--brand-accent-rgb), 0.28), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 90% 20%, rgba(var(--brand-accent-2-rgb), 0.18), transparent 50%),
-    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(var(--brand-accent-3-rgb), 0.12), transparent 55%);
+    radial-gradient(ellipse 80% 50% at 18% -8%, color-mix(in srgb, var(--brand-slide-1) 42%, transparent), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 88% 18%, color-mix(in srgb, var(--brand-slide-2) 34%, transparent), transparent 50%),
+    radial-gradient(ellipse 55% 40% at 55% 105%, color-mix(in srgb, var(--brand-slide-4) 28%, transparent), transparent 55%),
+    radial-gradient(ellipse 40% 30% at 70% 60%, color-mix(in srgb, var(--brand-slide-6) 18%, transparent), transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -90,7 +96,14 @@
 
 .tayseer-home .mono{ font-family: var(--font-m); }
 .tayseer-home .gradient-text{
-  background: linear-gradient(120deg, #fff 8%, var(--cyan) 38%, var(--royal) 68%, var(--emerald) 92%);
+  background: linear-gradient(
+    115deg,
+    #fff 5%,
+    var(--brand-slide-2) 28%,
+    var(--brand-slide-1) 52%,
+    var(--brand-slide-4) 76%,
+    var(--brand-slide-6) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -156,9 +169,11 @@
 .tayseer-home .btn:active::after{ opacity: 1; }
 
 .tayseer-home .btn-primary{
-  background: linear-gradient(135deg, var(--royal), var(--cyan) 52%, var(--emerald));
-  color: var(--brand-bg-deep);
-  box-shadow: 0 0 28px rgba(var(--brand-accent-2-rgb), 0.45), 0 8px 32px rgba(var(--brand-accent-rgb), 0.4);
+  background: linear-gradient(135deg, var(--brand-slide-1), var(--brand-slide-2) 55%, var(--brand-slide-4));
+  color: #fff;
+  box-shadow:
+    0 0 32px color-mix(in srgb, var(--brand-slide-2) 50%, transparent),
+    0 8px 32px color-mix(in srgb, var(--brand-slide-1) 45%, transparent);
 }
 
 .tayseer-home .btn-primary:hover{ box-shadow: 0 12px 40px rgba(var(--brand-accent-2-rgb), 0.55); transform: translateY(-2px); }
@@ -177,12 +192,21 @@
 .tayseer-home .btn-sm{ padding: 0.55rem 1rem; font-size: 0.85rem; }
 
 .tayseer-home .glass-panel, .tayseer-home .glass-card{
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
+  background:
+    linear-gradient(
+      155deg,
+      color-mix(in srgb, var(--brand-slide-1) 22%, transparent),
+      color-mix(in srgb, var(--brand-bg-elevated) 72%, transparent) 55%,
+      color-mix(in srgb, var(--brand-slide-2) 16%, transparent)
+    );
+  border: 1px solid color-mix(in srgb, var(--brand-slide-2) 42%, transparent);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-radius: var(--radius);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.35),
+    0 0 40px color-mix(in srgb, var(--brand-slide-1) 18%, transparent),
+    inset 0 1px 0 rgba(255,255,255,0.1);
 }
 
 /* Nav */
@@ -1830,21 +1854,26 @@
   animation: pulse 1.2s ease-in-out infinite;
 }
 
-/* Ecosystem — neon neural brain */
+/* Ecosystem — hero-grade saturated atmosphere */
 .tayseer-home .eco-canvas{
   position: relative;
   height: 560px;
   border-radius: 24px;
-  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.28);
+  border: 1px solid color-mix(in srgb, var(--brand-slide-2) 50%, transparent);
   background:
-    radial-gradient(circle at 50% 48%, rgba(var(--brand-accent-2-rgb), 0.22), transparent 42%),
-    radial-gradient(circle at 28% 30%, rgba(var(--brand-accent-rgb), 0.3), transparent 48%),
-    radial-gradient(circle at 78% 70%, rgba(var(--brand-accent-3-rgb), 0.22), transparent 50%),
-    linear-gradient(160deg, var(--brand-bg-deep), color-mix(in srgb, var(--brand-bg-elevated) 85%, transparent));
+    radial-gradient(ellipse 95% 75% at 12% 92%, color-mix(in srgb, var(--brand-slide-1) 55%, transparent) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 55% at 78% 8%, color-mix(in srgb, var(--brand-slide-2) 50%, transparent) 0%, transparent 50%),
+    radial-gradient(ellipse 55% 45% at 40% 35%, color-mix(in srgb, var(--brand-slide-4) 38%, transparent) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 55% 55%, color-mix(in srgb, var(--brand-slide-6) 22%, transparent) 0%, transparent 60%),
+    linear-gradient(148deg,
+      color-mix(in srgb, var(--brand-slide-1) 42%, var(--brand-bg-deep)) 0%,
+      color-mix(in srgb, var(--brand-slide-3) 38%, var(--brand-bg)) 38%,
+      color-mix(in srgb, var(--brand-slide-2) 48%, var(--brand-bg-elevated)) 72%,
+      color-mix(in srgb, var(--brand-slide-4) 35%, var(--brand-bg-elevated)) 100%);
   overflow: hidden;
   box-shadow:
-    inset 0 0 80px rgba(var(--brand-accent-2-rgb), 0.08),
-    0 0 60px rgba(var(--brand-accent-rgb), 0.18);
+    inset 0 0 90px color-mix(in srgb, var(--brand-slide-2) 18%, transparent),
+    0 0 70px color-mix(in srgb, var(--brand-slide-1) 28%, transparent);
 }
 
 .tayseer-home .eco-circuit-bg{
@@ -1855,15 +1884,15 @@
       90deg,
       transparent 0,
       transparent 48px,
-      rgba(var(--brand-accent-2-rgb), 0.03) 48px,
-      rgba(var(--brand-accent-2-rgb), 0.03) 49px
+      color-mix(in srgb, var(--brand-slide-2) 10%, transparent) 48px,
+      color-mix(in srgb, var(--brand-slide-2) 10%, transparent) 49px
     ),
     repeating-linear-gradient(
       0deg,
       transparent 0,
       transparent 48px,
-      rgba(var(--brand-accent-2-rgb), 0.03) 48px,
-      rgba(var(--brand-accent-2-rgb), 0.03) 49px
+      color-mix(in srgb, var(--brand-slide-1) 8%, transparent) 48px,
+      color-mix(in srgb, var(--brand-slide-1) 8%, transparent) 49px
     );
   mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 70%);
   -webkit-mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 70%);
@@ -1886,17 +1915,17 @@
 
 .tayseer-home .eco-link-base{
   fill: none;
-  stroke: rgba(var(--brand-accent-2-rgb), 0.22);
-  stroke-width: 1.5;
+  stroke: color-mix(in srgb, var(--brand-slide-6) 55%, transparent);
+  stroke-width: 1.6;
 }
 
 .tayseer-home .eco-link-pulse{
   fill: none;
   stroke: url(#signalGrad);
-  stroke-width: 2.4;
+  stroke-width: 2.8;
   stroke-linecap: round;
   stroke-dasharray: 14 42;
-  filter: drop-shadow(0 0 6px var(--brand-accent-2));
+  filter: drop-shadow(0 0 10px var(--brand-slide-2));
   animation: signalFlow 1.8s linear infinite;
 }
 
@@ -1912,8 +1941,8 @@
 }
 
 .tayseer-home .eco-signal-dot{
-  fill: var(--brand-accent-2);
-  filter: drop-shadow(0 0 8px var(--brand-accent-2));
+  fill: var(--brand-slide-2);
+  filter: drop-shadow(0 0 12px var(--brand-slide-2));
 }
 
 .tayseer-home .eco-core{
@@ -1930,10 +1959,14 @@
 
 .tayseer-home .brain-glow{
   position: absolute;
-  inset: -50px;
+  inset: -55px;
   border-radius: 50%;
   background:
-    radial-gradient(circle, rgba(var(--brand-accent-2-rgb), 0.45), rgba(var(--brand-accent-rgb), 0.18) 45%, transparent 70%);
+    radial-gradient(circle,
+      color-mix(in srgb, var(--brand-slide-2) 70%, transparent),
+      color-mix(in srgb, var(--brand-slide-1) 45%, transparent) 42%,
+      color-mix(in srgb, var(--brand-slide-4) 25%, transparent) 62%,
+      transparent 75%);
   animation: orbPulse 3s ease-in-out infinite;
   pointer-events: none;
 }
@@ -1947,15 +1980,21 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.35);
+  border: 1.5px solid color-mix(in srgb, var(--brand-slide-2) 65%, transparent);
   animation: ringPulse 3.6s ease-out infinite;
 }
-.tayseer-home .brain-rings span:nth-child(2){ animation-delay: 1.2s; }
-.tayseer-home .brain-rings span:nth-child(3){ animation-delay: 2.4s; }
+.tayseer-home .brain-rings span:nth-child(2){
+  animation-delay: 1.2s;
+  border-color: color-mix(in srgb, var(--brand-slide-1) 55%, transparent);
+}
+.tayseer-home .brain-rings span:nth-child(3){
+  animation-delay: 2.4s;
+  border-color: color-mix(in srgb, var(--brand-slide-4) 55%, transparent);
+}
 
 @keyframes ringPulse {
-  0% { transform: scale(0.85); opacity: 0.7; }
-  100% { transform: scale(1.45); opacity: 0; }
+  0% { transform: scale(0.85); opacity: 0.85; }
+  100% { transform: scale(1.5); opacity: 0; }
 }
 
 .tayseer-home .brain-visual{
@@ -1963,87 +2002,36 @@
   z-index: 2;
   width: 168px;
   height: 168px;
-  filter: drop-shadow(0 0 18px rgba(var(--brand-accent-2-rgb), 0.55));
+  filter: drop-shadow(0 0 24px color-mix(in srgb, var(--brand-slide-2) 70%, transparent));
   animation: brainFloat 4.5s ease-in-out infinite;
   display: grid;
   place-items: center;
 }
 
 .tayseer-home .brain-orb{
-  width: 120px;
-  height: 120px;
+  width: 128px;
+  height: 128px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-family: var(--font-h);
   font-weight: 800;
-  font-size: 28px;
+  font-size: 30px;
   letter-spacing: 2px;
   color: #fff;
   background:
-    radial-gradient(circle at 40% 35%, var(--brand-accent-2), var(--brand-accent) 55%, var(--brand-accent-3) 110%);
+    radial-gradient(circle at 35% 30%, #fff 0%, transparent 28%),
+    radial-gradient(circle at 40% 35%, var(--brand-slide-2), var(--brand-slide-1) 48%, var(--brand-slide-4) 100%);
   box-shadow:
-    0 0 40px rgba(var(--brand-accent-2-rgb), 0.55),
-    0 0 70px rgba(var(--brand-accent-rgb), 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.28);
+    0 0 48px color-mix(in srgb, var(--brand-slide-2) 70%, transparent),
+    0 0 90px color-mix(in srgb, var(--brand-slide-1) 55%, transparent),
+    inset 0 0 30px rgba(255,255,255,0.25);
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 @keyframes brainFloat {
   0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-6px) scale(1.03); }
-}
-
-.tayseer-home .brain-svg{
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.tayseer-home .brain-outline{
-  stroke-dasharray: 520;
-  stroke-dashoffset: 520;
-  animation: brainDraw 2.8s ease forwards, brainPulse 3.2s ease-in-out 2.8s infinite;
-}
-
-@keyframes brainDraw {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes brainPulse {
-  0%, 100% { stroke-opacity: 1; filter: drop-shadow(0 0 4px var(--brand-accent-2)); }
-  50% { stroke-opacity: 0.75; filter: drop-shadow(0 0 12px var(--brand-accent-2)); }
-}
-
-.tayseer-home .brain-fold{
-  stroke-dasharray: 80;
-  animation: foldPulse 2.4s linear infinite;
-}
-
-@keyframes foldPulse {
-  to { stroke-dashoffset: -80; }
-}
-
-.tayseer-home .brain-circuits path{
-  stroke-dasharray: 6 8;
-  animation: circuitPulse 1.8s linear infinite;
-}
-
-@keyframes circuitPulse {
-  to { stroke-dashoffset: -28; }
-}
-
-.tayseer-home .brain-inner-ring{
-  animation: orbPulse 2.4s ease-in-out infinite;
-}
-
-.tayseer-home .brain-ai-label{
-  filter: drop-shadow(0 0 10px rgba(var(--brand-accent-2-rgb), 0.9));
-  animation: aiGlow 2.2s ease-in-out infinite;
-}
-
-@keyframes aiGlow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.72; }
+  50% { transform: translateY(-6px) scale(1.04); }
 }
 
 .tayseer-home .brain-label{
@@ -2062,11 +2050,11 @@
   font-size: 0.85rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--cyan);
-  text-shadow: 0 0 12px rgba(var(--brand-accent-2-rgb), 0.6);
+  color: #fff;
+  text-shadow: 0 0 18px var(--brand-slide-2);
 }
 .tayseer-home .brain-label small{
-  color: var(--muted);
+  color: color-mix(in srgb, #fff 70%, var(--brand-slide-6));
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2075,36 +2063,48 @@
 .tayseer-home .eco-node{
   position: absolute;
   transform: translate(-50%, -50%);
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1.05rem;
   border-radius: 14px;
-  background: color-mix(in srgb, var(--brand-bg-elevated) 82%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.4);
-  box-shadow: 0 0 24px rgba(var(--brand-accent-rgb), 0.12), inset 0 0 20px rgba(var(--brand-accent-2-rgb), 0.06);
+  background:
+    linear-gradient(145deg,
+      color-mix(in srgb, var(--brand-slide-1) 35%, transparent),
+      color-mix(in srgb, var(--brand-bg-elevated) 70%, transparent));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid color-mix(in srgb, var(--brand-slide-2) 55%, transparent);
+  box-shadow:
+    0 0 28px color-mix(in srgb, var(--brand-slide-1) 30%, transparent),
+    inset 0 0 18px color-mix(in srgb, var(--brand-slide-2) 12%, transparent);
   font-size: 0.78rem;
-  font-weight: 500;
+  font-weight: 600;
+  color: #fff;
   white-space: nowrap;
   z-index: 4;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s;
   cursor: default;
 }
 .tayseer-home .eco-node::before{
   content: "";
   display: inline-block;
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   margin-right: 0.45rem;
-  background: var(--cyan);
-  box-shadow: 0 0 10px var(--cyan);
+  background: var(--brand-slide-2);
+  box-shadow: 0 0 14px var(--brand-slide-2);
   vertical-align: middle;
   animation: pulse 1.6s ease-in-out infinite;
 }
+.tayseer-home .eco-node:nth-child(3n)::before{ background: var(--brand-slide-1); box-shadow: 0 0 14px var(--brand-slide-1); }
+.tayseer-home .eco-node:nth-child(3n+1)::before{ background: var(--brand-slide-4); box-shadow: 0 0 14px var(--brand-slide-4); }
 .tayseer-home .eco-node:hover, .tayseer-home .eco-node.active{
-  transform: translate(-50%, -50%) scale(1.08);
-  border-color: var(--cyan);
-  box-shadow: 0 0 28px rgba(var(--brand-accent-2-rgb), 0.4);
+  transform: translate(-50%, -50%) scale(1.1);
+  border-color: #fff;
+  background:
+    linear-gradient(145deg,
+      color-mix(in srgb, var(--brand-slide-2) 45%, transparent),
+      color-mix(in srgb, var(--brand-slide-1) 40%, transparent));
+  box-shadow: 0 0 40px color-mix(in srgb, var(--brand-slide-2) 55%, transparent);
 }
 
 /* Architecture */
@@ -2114,36 +2114,51 @@
   justify-content: center;
   align-items: center;
   gap: 0.75rem 0.35rem;
+  padding: 1.5rem;
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse 70% 80% at 20% 50%, color-mix(in srgb, var(--brand-slide-1) 35%, transparent), transparent 60%),
+    radial-gradient(ellipse 60% 70% at 85% 40%, color-mix(in srgb, var(--brand-slide-2) 32%, transparent), transparent 58%),
+    linear-gradient(160deg,
+      color-mix(in srgb, var(--brand-slide-3) 28%, var(--brand-bg-deep)),
+      color-mix(in srgb, var(--brand-slide-4) 22%, var(--brand-bg-elevated)));
+  border: 1px solid color-mix(in srgb, var(--brand-slide-2) 40%, transparent);
+  box-shadow: 0 0 50px color-mix(in srgb, var(--brand-slide-1) 20%, transparent);
 }
 
 .tayseer-home .arch-node{
   padding: 1rem 1.15rem;
   border-radius: 14px;
-  background: color-mix(in srgb, var(--brand-bg-elevated) 78%, transparent);
-  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.2);
+  background: color-mix(in srgb, var(--brand-bg-deep) 45%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-slide-6) 40%, transparent);
   min-width: 120px;
   text-align: center;
   cursor: pointer;
   transition: all 0.35s;
   font-size: 0.85rem;
   font-weight: 600;
+  color: #fff;
 }
-.tayseer-home .arch-node small{ display: block; font-weight: 400; color: var(--muted); font-size: 0.7rem; margin-top: 0.25rem; }
+.tayseer-home .arch-node small{ display: block; font-weight: 400; color: color-mix(in srgb, #fff 65%, var(--brand-slide-6)); font-size: 0.7rem; margin-top: 0.25rem; }
 .tayseer-home .arch-node.active{
-  border-color: var(--cyan);
-  background: rgba(var(--brand-accent-rgb), 0.25);
-  box-shadow: 0 0 30px rgba(var(--brand-accent-2-rgb), 0.35);
+  border-color: #fff;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--brand-slide-1) 55%, transparent), color-mix(in srgb, var(--brand-slide-2) 45%, transparent));
+  box-shadow: 0 0 36px color-mix(in srgb, var(--brand-slide-2) 50%, transparent);
   transform: translateY(-4px);
 }
 .tayseer-home .arch-arrow{
-  color: var(--cyan);
-  opacity: 0.5;
-  font-size: 1.2rem;
-  transition: opacity 0.3s, color 0.3s;
+  color: var(--brand-slide-2);
+  font-size: 1.25rem;
+  opacity: 0.45;
+  transition: all 0.35s;
 }
-.tayseer-home .arch-arrow.lit{ opacity: 1; color: var(--emerald); text-shadow: 0 0 12px var(--emerald); }
+.tayseer-home .arch-arrow.lit{
+  opacity: 1;
+  color: var(--brand-slide-4);
+  text-shadow: 0 0 16px var(--brand-slide-4);
+}
 
-/* Stats */
+/* Stats — vibrant ring cards */
 .tayseer-home .stats-grid{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -2156,39 +2171,70 @@
   align-items: center;
   text-align: center;
   gap: 1rem;
-  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+  background:
+    linear-gradient(160deg,
+      color-mix(in srgb, var(--brand-slide-1) 28%, transparent),
+      color-mix(in srgb, var(--brand-bg-elevated) 70%, transparent) 55%,
+      color-mix(in srgb, var(--brand-slide-2) 22%, transparent));
+  border: 1px solid color-mix(in srgb, var(--brand-slide-2) 45%, transparent);
+  box-shadow: 0 0 36px color-mix(in srgb, var(--brand-slide-1) 18%, transparent);
+}
+.tayseer-home .stats-grid .stat-card:nth-child(1){
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--brand-slide-1) 40%, transparent), color-mix(in srgb, var(--brand-bg-elevated) 65%, transparent));
+  border-color: color-mix(in srgb, var(--brand-slide-1) 55%, transparent);
+}
+.tayseer-home .stats-grid .stat-card:nth-child(2){
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--brand-slide-2) 40%, transparent), color-mix(in srgb, var(--brand-bg-elevated) 65%, transparent));
+  border-color: color-mix(in srgb, var(--brand-slide-2) 55%, transparent);
+}
+.tayseer-home .stats-grid .stat-card:nth-child(3){
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--brand-slide-4) 40%, transparent), color-mix(in srgb, var(--brand-bg-elevated) 65%, transparent));
+  border-color: color-mix(in srgb, var(--brand-slide-4) 55%, transparent);
+}
+.tayseer-home .stats-grid .stat-card:nth-child(4){
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--brand-slide-3) 40%, transparent), color-mix(in srgb, var(--brand-bg-elevated) 65%, transparent));
+  border-color: color-mix(in srgb, var(--brand-slide-3) 55%, transparent);
 }
 .tayseer-home .stat-card.is-counting{
-  border-color: rgba(var(--brand-accent-2-rgb), 0.45);
-  box-shadow: 0 0 28px rgba(var(--brand-accent-2-rgb), 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 0 48px color-mix(in srgb, var(--brand-slide-2) 40%, transparent);
 }
-.tayseer-home .stat-card strong{ font-size: 2rem; }
+.tayseer-home .stat-card strong{ font-size: 2rem; color: #fff; }
 .tayseer-home .stat-card.is-counting strong{
-  color: var(--cyan);
-  text-shadow: 0 0 18px rgba(var(--brand-accent-2-rgb), 0.35);
+  color: #fff;
+  text-shadow: 0 0 22px var(--brand-slide-2);
 }
-.tayseer-home .stat-card span{ font-family: var(--font-m); color: var(--cyan); font-size: 1.4rem; }
-.tayseer-home .stat-card p{ color: var(--muted); font-size: 0.85rem; }
+.tayseer-home .stat-card span{ font-family: var(--font-m); color: var(--brand-slide-2); font-size: 1.4rem; }
+.tayseer-home .stats-grid .stat-card:nth-child(1) span{ color: var(--brand-slide-1); }
+.tayseer-home .stats-grid .stat-card:nth-child(3) span{ color: var(--brand-slide-4); }
+.tayseer-home .stats-grid .stat-card:nth-child(4) span{ color: var(--brand-slide-3); }
+.tayseer-home .stat-card p{ color: color-mix(in srgb, #fff 72%, var(--brand-slide-6)); font-size: 0.85rem; }
 .tayseer-home .ring{ position: relative; width: 120px; height: 120px; }
 .tayseer-home .stat-card.is-counting .ring{
-  filter: drop-shadow(0 0 10px rgba(var(--brand-accent-2-rgb), 0.35));
+  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--brand-slide-2) 55%, transparent));
 }
 
 /* Presence */
 .tayseer-home .map-wrap{ display: grid; gap: 1.5rem; }
 .tayseer-home .world-map{ width: 100%; max-height: 380px; }
 .tayseer-home .map-land{
-  fill: rgba(var(--brand-accent-rgb), 0.08);
-  stroke: rgba(var(--brand-accent-2-rgb), 0.2);
-  stroke-width: 1;
+  fill: color-mix(in srgb, var(--brand-slide-1) 22%, transparent);
+  stroke: color-mix(in srgb, var(--brand-slide-2) 55%, transparent);
+  stroke-width: 1.5;
 }
 .tayseer-home .map-arc{
   stroke-dasharray: 8 10;
   animation: dashMove 2s linear infinite;
+  filter: drop-shadow(0 0 8px var(--brand-slide-2));
 }
 .tayseer-home .city-dot{
-  fill: var(--cyan);
-  filter: drop-shadow(0 0 8px var(--cyan));
+  fill: var(--brand-slide-2);
+  filter: drop-shadow(0 0 12px var(--brand-slide-2));
 }
 .tayseer-home .city text{
   fill: var(--text);

@@ -239,13 +239,13 @@ export function EcosystemSection() {
         >
           <defs>
             <linearGradient id="signalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="var(--brand-accent)" stopOpacity="0.15" />
-              <stop offset="40%" stopColor="var(--brand-accent-2)" />
-              <stop offset="100%" stopColor="var(--brand-accent-3)" />
+              <stop offset="0%" stopColor="var(--brand-slide-1)" stopOpacity="0.2" />
+              <stop offset="45%" stopColor="var(--brand-slide-2)" />
+              <stop offset="100%" stopColor="var(--brand-slide-4)" />
             </linearGradient>
             <radialGradient id="nodeHalo" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="var(--brand-accent-2)" stopOpacity="0.95" />
-              <stop offset="100%" stopColor="var(--brand-accent-2)" stopOpacity="0" />
+              <stop offset="0%" stopColor="var(--brand-slide-2)" stopOpacity="1" />
+              <stop offset="100%" stopColor="var(--brand-slide-1)" stopOpacity="0" />
             </radialGradient>
             <filter id="softNeon" x="-50%" y="-50%" width="200%" height="200%">
               <feGaussianBlur stdDeviation="2.5" result="b" />
@@ -432,9 +432,9 @@ function StatCard({
         <svg width="120" height="120" viewBox="0 0 120 120">
           <defs>
             <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="var(--brand-accent)" />
-              <stop offset="55%" stopColor="var(--brand-accent-2)" />
-              <stop offset="100%" stopColor="var(--brand-accent-3)" />
+              <stop offset="0%" stopColor="var(--brand-slide-1)" />
+              <stop offset="50%" stopColor="var(--brand-slide-2)" />
+              <stop offset="100%" stopColor="var(--brand-slide-4)" />
             </linearGradient>
           </defs>
           <circle
@@ -442,7 +442,7 @@ function StatCard({
             cy="60"
             r="48"
             fill="none"
-            stroke="rgba(var(--brand-accent-2-rgb), 0.14)"
+            stroke="color-mix(in srgb, var(--brand-slide-6) 35%, transparent)"
             strokeWidth="8"
           />
           <circle
@@ -564,12 +564,12 @@ export function PresenceSection() {
         >
           <defs>
             <radialGradient id="cityGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="var(--brand-accent-2)" stopOpacity="0.95" />
-              <stop offset="100%" stopColor="var(--brand-accent-2)" stopOpacity="0" />
+              <stop offset="0%" stopColor="var(--brand-slide-2)" stopOpacity="1" />
+              <stop offset="100%" stopColor="var(--brand-slide-1)" stopOpacity="0" />
             </radialGradient>
             <linearGradient id="linkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="var(--brand-accent)" />
-              <stop offset="100%" stopColor="var(--brand-accent-2)" />
+              <stop offset="0%" stopColor="var(--brand-slide-1)" />
+              <stop offset="100%" stopColor="var(--brand-slide-2)" />
             </linearGradient>
           </defs>
           <ellipse className="map-land" cx="450" cy="220" rx="380" ry="150" />
@@ -721,8 +721,8 @@ export function ContactSection() {
                 marginLeft: m.role === 'user' ? 'auto' : 0,
                 background:
                   m.role === 'bot'
-                    ? 'rgba(var(--brand-accent-2-rgb), 0.12)'
-                    : 'rgba(var(--brand-accent-rgb), 0.28)',
+                    ? 'color-mix(in srgb, var(--brand-slide-2) 22%, transparent)'
+                    : 'color-mix(in srgb, var(--brand-slide-1) 38%, transparent)',
               }}
             >
               {m.text}

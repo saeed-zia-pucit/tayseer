@@ -1,16 +1,22 @@
 import { useEffect, useRef } from 'react'
 
-function readBrandRgb(
-  name: '--brand-accent-rgb' | '--brand-accent-2-rgb' | '--brand-accent-3-rgb',
-  fallback: string,
-) {
+function readSlide(i: number, fallback: string) {
   const value = getComputedStyle(document.documentElement)
-    .getPropertyValue(name)
+    .getPropertyValue(`--brand-slide-${i}`)
     .trim()
   return value || fallback
 }
 
-/** Particle neural background — colours follow the central brand theme. */
+function hexToRgb(hex: string) {
+  const h = hex.replace('#', '')
+  const full =
+    h.length === 3 ? h.split('').map((c) => c + c).join('') : h
+  const n = Number.parseInt(full, 16)
+  if (Number.isNaN(n)) return '139, 92, 246'
+  return `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`
+}
+
+/** Particle neural background — saturated hero slide colours. */
 export function NeuralCanvas() {
   const ref = useRef<HTMLCanvasElement>(null)
 
@@ -31,13 +37,13 @@ export function NeuralCanvas() {
       w = canvas.width = window.innerWidth
       h = canvas.height = window.innerHeight
       particles = Array.from(
-        { length: Math.min(70, Math.floor((w * h) / 18000)) },
+        { length: Math.min(80, Math.floor((w * h) / 16000)) },
         () => ({
           x: Math.random() * w,
           y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.35,
-          vy: (Math.random() - 0.5) * 0.35,
-          r: Math.random() * 1.8 + 0.4,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          r: Math.random() * 2 + 0.5,
         }),
       )
     }
@@ -48,9 +54,14 @@ export function NeuralCanvas() {
     }
 
     const frame = () => {
-      const accent = readBrandRgb('--brand-accent-rgb', '155, 124, 255')
-      const accent2 = readBrandRgb('--brand-accent-2-rgb', '45, 212, 232')
-      const accent3 = readBrandRgb('--brand-accent-3-rgb', '196, 181, 253')
+      const tones = [
+        hexToRgb(readSlide(1, '#8b5cf6')),
+        hexToRgb(readSlide(2, '#06b6d4')),
+        hexToRgb(readSlide(3, '#6366f1')),
+        hexToRgb(readSlide(4, '#a855f7')),
+        hexToRgb(readSlide(5, '#0ea5e9')),
+        hexToRgb(readSlide(6, '#d8b4fe')),
+      ]
 
       ctx.clearRect(0, 0, w, h)
       for (let i = 0; i < particles.length; i++) {
@@ -70,19 +81,19 @@ export function NeuralCanvas() {
           }
         }
 
-        const tone = i % 3 === 0 ? accent : i % 3 === 1 ? accent2 : accent3
+        const tone = tones[i % tones.length]
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(${tone},0.65)`
+        ctx.fillStyle = `rgba(${tone},0.75)`
         ctx.fill()
 
         for (let j = i + 1; j < particles.length; j++) {
           const q = particles[j]
           const d = Math.hypot(p.x - q.x, p.y - q.y)
-          if (d < 130) {
-            const link = j % 2 === 0 ? accent2 : accent
-            ctx.strokeStyle = `rgba(${link},${(1 - d / 130) * 0.32})`
-            ctx.lineWidth = 1
+          if (d < 140) {
+            const link = tones[j % tones.length]
+            ctx.strokeStyle = `rgba(${link},${(1 - d / 140) * 0.4})`
+            ctx.lineWidth = 1.1
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(q.x, q.y)
