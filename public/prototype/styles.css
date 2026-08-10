@@ -2247,7 +2247,7 @@
 
 .tayseer-home .presence-cards{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 .tayseer-home .presence-cards .glass-panel{ padding: 1.35rem; }

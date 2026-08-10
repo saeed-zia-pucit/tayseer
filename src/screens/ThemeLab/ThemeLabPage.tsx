@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { routes } from '@/lib/constants'
+import { SiteHeader } from '@/components/layout/SiteHeader'
 import {
   PALETTE_LIST,
   THEME_COLOR_FIELDS,
@@ -86,41 +85,34 @@ export function ThemeLabPage() {
 
   return (
     <div className="min-h-dvh bg-surface text-ink">
-      <header className="sticky top-0 z-20 border-b border-line/60 bg-surface/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
-          <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-lagoon">
-              Temporary · Theme lab
-            </p>
-            <h1 className="font-display text-lg font-bold">Colour playground</h1>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <Link
-              to={routes.home}
-              className="rounded-full px-4 py-2 text-xs font-semibold text-ink/70 ring-1 ring-white/15 hover:bg-white/5"
-            >
-              Open homepage
-            </Link>
-            <button
-              type="button"
-              onClick={reset}
-              className="rounded-full px-4 py-2 text-xs font-semibold text-ink/70 ring-1 ring-white/15 hover:bg-white/5"
-            >
-              Reset
-            </button>
-            <button
-              type="button"
-              onClick={persist}
-              className="rounded-full bg-lagoon px-4 py-2 text-xs font-semibold text-mist shadow-lift hover:bg-lagoon-bright"
-            >
-              Save prefs
-            </button>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main className="mx-auto grid max-w-6xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[1fr_320px]">
         <div className="space-y-8">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-lagoon">
+                Temporary · Theme lab
+              </p>
+              <h1 className="font-display text-lg font-bold">Colour playground</h1>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                onClick={reset}
+                className="rounded-full px-4 py-2 text-xs font-semibold text-ink/70 ring-1 ring-white/15 hover:bg-white/5"
+              >
+                Reset
+              </button>
+              <button
+                type="button"
+                onClick={persist}
+                className="rounded-full bg-lagoon px-4 py-2 text-xs font-semibold text-mist shadow-lift hover:bg-lagoon-bright"
+              >
+                Save prefs
+              </button>
+            </div>
+          </div>
           <section className="rounded-2xl bg-void/40 p-5 ring-1 ring-white/10">
             <h2 className="font-display text-base font-bold">Presets</h2>
             <p className="mt-1 text-sm text-ink-soft">

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Header } from '@/components/layout/Header'
+import { SiteHeader } from '@/components/layout/SiteHeader'
 import { cn } from '@/lib/cn'
 
 interface AppShellProps {
@@ -15,8 +15,8 @@ export function AppShell({
   showHeader = true,
 }: AppShellProps) {
   return (
-    <div className={cn('relative min-h-dvh overflow-hidden', className)}>
-      {showHeader ? <Header /> : null}
+    <div className={cn('relative min-h-dvh overflow-hidden bg-surface text-ink', className)}>
+      {showHeader ? <SiteHeader /> : null}
       {children}
     </div>
   )

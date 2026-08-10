@@ -4,15 +4,15 @@ import {
   ContactSection,
   EcosystemSection,
   HomeFooter,
-  HomeNav,
   PresenceSection,
   StatsSection,
   StoriesSection,
 } from '@/screens/Landing/prototype/HomeSections'
+import { SiteHeader } from '@/components/layout/SiteHeader'
 import { VideInfraExperience } from '@/screens/Landing/videinfra/VideInfraExperience'
 
-const PROTO_CSS_HREF = '/prototype/styles.css?v=10'
-const VI_CSS_HREF = '/videinfra/styles.css?v=12'
+const PROTO_CSS_HREF = '/prototype/styles.css?v=11'
+const VI_CSS_HREF = '/videinfra/styles.css?v=17'
 
 /**
  * Homepage: Vide Infra–style horizontal product scroll for the top,
@@ -65,7 +65,7 @@ export function LandingPage() {
         style={{ width: `${progress}%` }}
       />
 
-      <HomeNav />
+      <SiteHeader />
 
       <main>
         <VideInfraExperience />

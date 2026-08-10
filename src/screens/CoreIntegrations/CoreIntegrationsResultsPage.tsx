@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { useCoreIntegrations } from '@/app/coreIntegrationsProvider'
+import { SiteHeader } from '@/components/layout/SiteHeader'
 import { Button, ButtonLink } from '@/components/ui/Button'
 import { buildCoreResult } from '@/engine/coreIntegrations'
 import { routes } from '@/lib/constants'
@@ -29,28 +30,23 @@ export function CoreIntegrationsResultsPage() {
         <div className="absolute bottom-10 right-10 h-72 w-72 rounded-full bg-coral/15 blur-3xl" />
       </div>
 
-      <header className="relative z-10 flex items-center justify-between px-5 py-5 md:px-8">
-        <Link to={routes.home} className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-lagoon text-sm font-bold text-mist">
-            T
-          </span>
-          <span className="font-display text-lg font-bold text-ink">Tayseer</span>
-        </Link>
-        <ButtonLink
-          to={routes.coreIntegrations}
-          variant="secondary"
-          className="!py-2 !text-xs"
-        >
-          Edit blueprint
-        </ButtonLink>
-      </header>
+      <SiteHeader />
 
-      <main className="relative z-10 mx-auto grid max-w-6xl items-start gap-12 px-5 pb-20 md:px-8 lg:grid-cols-[1fr_1.05fr]">
+      <main className="relative z-10 mx-auto grid max-w-6xl items-start gap-12 px-5 pb-20 pt-6 md:px-8 lg:grid-cols-[1fr_1.05fr]">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
         >
+          <div className="mb-4">
+            <ButtonLink
+              to={routes.coreIntegrations}
+              variant="secondary"
+              className="!py-2 !text-xs"
+            >
+              Edit blueprint
+            </ButtonLink>
+          </div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-lagoon">
             Core & integrations
           </p>

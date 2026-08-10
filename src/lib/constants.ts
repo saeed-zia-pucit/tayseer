@@ -34,6 +34,10 @@ export const routes = {
   coreIntegrationsResults: '/core-integrations/results',
   implementationJourney: '/implementation-journey',
   results: '/results',
+  /** Marketing site pages */
+  products: '/products',
+  architecture: '/architecture',
+  contact: '/contact',
   /** Hub for internal interactive flows */
   experiments: '/experiments',
   /** Temporary colour playground — remove when experiments are done */

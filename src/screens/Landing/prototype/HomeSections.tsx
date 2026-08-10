@@ -3,57 +3,7 @@ import { Link } from 'react-router-dom'
 import { routes } from '@/lib/constants'
 import { archNodes, ecoNodes } from '@/screens/Landing/prototype/storyData'
 
-export function HomeNav() {
-  const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  return (
-    <nav className={`nav${scrolled ? ' scrolled' : ''}${open ? ' open' : ''}`} id="nav">
-      <a href="#hero" className="nav-brand">
-        <span className="brand-mark" />
-        <span>Tayseer</span>
-      </a>
-      <div className="nav-links">
-        <a href="#hero" onClick={() => setOpen(false)}>
-          Products
-        </a>
-        <a href="#ecosystem" onClick={() => setOpen(false)}>
-          AI Ecosystem
-        </a>
-        <a href="/experiments">
-          Experiments
-        </a>
-        <a href="#architecture" onClick={() => setOpen(false)}>
-          Architecture
-        </a>
-        <a href="#presence" onClick={() => setOpen(false)}>
-          Presence
-        </a>
-        <a href="#contact" onClick={() => setOpen(false)}>
-          Connect
-        </a>
-      </div>
-      <a href="#contact" className="btn btn-primary btn-sm magnetic">
-        Book a Demo
-      </a>
-      <button
-        className="nav-toggle"
-        id="navToggle"
-        aria-label="Menu"
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-      >
-        <span /><span />
-      </button>
-    </nav>
-  )
-}
+export { SiteHeader as HomeNav } from '@/components/layout/SiteHeader'
 
 export function HeroSection() {
   return (
@@ -580,6 +530,22 @@ export function PresenceSection() {
             stroke="url(#linkGrad)"
             strokeWidth="2"
           />
+          <path
+            className="map-arc"
+            d="M310 250 Q360 300 420 305"
+            fill="none"
+            stroke="url(#linkGrad)"
+            strokeWidth="2"
+            opacity="0.7"
+          />
+          <path
+            className="map-arc"
+            d="M580 230 Q500 290 420 305"
+            fill="none"
+            stroke="url(#linkGrad)"
+            strokeWidth="2"
+            opacity="0.7"
+          />
           <g className="city" transform="translate(310,250)">
             <circle className="city-glow" r="28" fill="url(#cityGlow)" />
             <circle className="city-dot" r="6" />
@@ -589,6 +555,11 @@ export function PresenceSection() {
             <circle className="city-glow" r="28" fill="url(#cityGlow)" />
             <circle className="city-dot" r="6" />
             <text y="-18">Dubai · UAE</text>
+          </g>
+          <g className="city" transform="translate(420,305)">
+            <circle className="city-glow" r="28" fill="url(#cityGlow)" />
+            <circle className="city-dot" r="6" />
+            <text y="28">Sana'a · Yemen</text>
           </g>
           <g className="city soft" transform="translate(450,180)">
             <circle className="city-dot" r="4" />
@@ -605,6 +576,11 @@ export function PresenceSection() {
             <h4>United Arab Emirates</h4>
             <p>601, One Lake Plaza, Cluster T, JLT, Dubai</p>
             <span className="mono">+971 43997558</span>
+          </div>
+          <div className="glass-panel">
+            <h4>Yemen</h4>
+            <p>Digital banking &amp; agent networks across Yemen</p>
+            <span className="mono">info@tayseer.me</span>
           </div>
         </div>
       </div>
@@ -767,7 +743,7 @@ export function HomeFooter() {
           Current site
         </a>
         <a href="mailto:info@tayseer.me">info@tayseer.me</a>
-        <Link to={routes.experiments}>Experiments</Link>
+        <Link to={routes.experiments}>AI Playground</Link>
         <Link to={routes.finder}>Product Finder</Link>
       </div>
       <p className="footer-copy">

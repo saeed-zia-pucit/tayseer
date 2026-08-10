@@ -11,6 +11,11 @@ import {
   MbukeDemoResultsPage,
 } from '@/screens/MbukeDemo'
 import { ExperimentsPage } from '@/screens/Experiments'
+import {
+  ArchitecturePage,
+  ContactPage,
+  ProductsPage,
+} from '@/screens/Marketing'
 import { ThemeLabPage } from '@/screens/ThemeLab'
 import {
   ProductDemoFinderPage,
@@ -27,6 +32,9 @@ export function AppRouter() {
   return (
     <Routes>
       <Route path={routes.home} element={<LandingPage />} />
+      <Route path={routes.products} element={<ProductsPage />} />
+      <Route path={routes.architecture} element={<ArchitecturePage />} />
+      <Route path={routes.contact} element={<ContactPage />} />
       <Route
         path={routes.finder}
         element={<ProductFinderPage variant="panel" />}
@@ -45,10 +53,7 @@ export function AppRouter() {
         path={routes.mbukeDemoResults}
         element={<MbukeDemoResultsPage />}
       />
-      <Route
-        path="/demo/:productId"
-        element={<ProductDemoFinderPage />}
-      />
+      <Route path="/demo/:productId" element={<ProductDemoFinderPage />} />
       <Route
         path="/demo/:productId/results"
         element={<ProductDemoResultsPage />}

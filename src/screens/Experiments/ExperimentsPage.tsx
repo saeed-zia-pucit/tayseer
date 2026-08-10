@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { routes } from '@/lib/constants'
+import { SiteHeader } from '@/components/layout/SiteHeader'
 import { experiments, type ExperimentItem } from '@/screens/Experiments/experiments'
 
 const accentVar: Record<ExperimentItem['accent'], string> = {
@@ -29,43 +29,19 @@ export function ExperimentsPage() {
         }}
       />
 
-      <header className="relative z-10 mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-5 sm:px-6">
-        <Link to={routes.home} className="group flex items-center gap-3">
-          <span
-            className="flex h-9 w-9 items-center justify-center rounded-xl text-sm font-bold text-mist"
-            style={{ background: 'var(--brand-accent)' }}
-          >
-            T
-          </span>
-          <span>
-            <span className="block font-display text-lg font-bold leading-none">
-              Tayseer
-            </span>
-            <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-soft">
-              Experiments
-            </span>
-          </span>
-        </Link>
-        <Link
-          to={routes.home}
-          className="rounded-full px-4 py-2 text-xs font-semibold text-ink/80 ring-1 ring-white/15 hover:bg-white/5"
-        >
-          Back to site
-        </Link>
-      </header>
+      <SiteHeader />
 
-      <main className="relative z-10 mx-auto max-w-6xl px-4 pb-16 pt-4 sm:px-6">
+      <main className="relative z-10 mx-auto max-w-6xl px-4 pb-16 pt-6 sm:px-6">
         <section className="max-w-2xl">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-lagoon-bright">
-            Interactive lab
+            AI Playground
           </p>
           <h1 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Experiment with Tayseer flows
+            Experiment in the AI Playground
           </h1>
           <p className="mt-4 text-base leading-relaxed text-ink-soft">
-            Open any experience below — product finders, demo builders, and
-            delivery journeys. Try different answers and see how the product
-            story changes.
+            Internal flows for discovery, white-label demos, delivery, and
+            architecture. Product demos live on the homepage carousel.
           </p>
         </section>
 

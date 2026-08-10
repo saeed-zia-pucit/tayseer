@@ -108,11 +108,34 @@ export const northernLights: BrandPalette = {
   accent3Rgb: '52, 211, 153',
 }
 
+/** Light canvas — for demos / daytime review of the same accent system. */
+export const pearlLagoon: BrandPalette = {
+  id: 'pearl-lagoon',
+  name: 'Pearl Lagoon',
+  blurb:
+    'Soft pearl surfaces with teal and indigo accents — a light theme for daytime review.',
+  bgDeep: '#dce6f0',
+  bg: '#eef3f8',
+  bgElevated: '#ffffff',
+  text: '#0f1c2e',
+  muted: '#5a6f86',
+  accent: '#0d9488',
+  accent2: '#2563eb',
+  accent3: '#7c3aed',
+  accentSoft: '#0ea5e9',
+  intro: '#c7d7e8',
+  slides: ['#0d9488', '#2563eb', '#7c3aed', '#0891b2', '#4f46e5', '#14b8a6'],
+  accentRgb: '13, 148, 136',
+  accent2Rgb: '37, 99, 235',
+  accent3Rgb: '124, 58, 237',
+}
+
 export const PALETTES: Record<string, BrandPalette> = {
   [violetAurora.id]: violetAurora,
   [lagoonPrism.id]: lagoonPrism,
   [sunsetCircuit.id]: sunsetCircuit,
   [northernLights.id]: northernLights,
+  [pearlLagoon.id]: pearlLagoon,
 }
 
 export const PALETTE_LIST = Object.values(PALETTES)

@@ -89,14 +89,14 @@ const coreModules: DemoOption[] = [
 ]
 
 const fahimModules: DemoOption[] = [
-  { value: 'chat', label: 'Natural-language chat', hint: 'Ask & explain' },
-  { value: 'codegen', label: 'Code generation', hint: 'Write & refactor' },
-  { value: 'review', label: 'Code review', hint: 'Catch issues early' },
-  { value: 'tests', label: 'Test authoring', hint: 'Unit & integration' },
-  { value: 'docs', label: 'Inline docs', hint: 'Comments & READMEs' },
-  { value: 'arabic', label: 'Arabic-first prompts', hint: 'Dialect aware' },
-  { value: 'banking', label: 'Banking snippets', hint: 'IBAN, KYC, payments' },
-  { value: 'security', label: 'Secure coding tips', hint: 'OWASP-aware' },
+  { value: 'chat', label: 'Customer chat', hint: '24/7 CX' },
+  { value: 'onboarding', label: 'Guided onboarding', hint: 'Step-by-step' },
+  { value: 'kyc', label: 'KYC assist', hint: 'Document & ID help' },
+  { value: 'arabic', label: 'Arabic-first', hint: 'Dialect aware' },
+  { value: 'handoff', label: 'Human handoff', hint: 'Agent escalate' },
+  { value: 'insights', label: 'Next-best action', hint: 'Product nudges' },
+  { value: 'fraud', label: 'Risk prompts', hint: 'Soft alerts' },
+  { value: 'white_label', label: 'White-label voice', hint: 'Your brand' },
 ]
 
 const smsModules: DemoOption[] = [
@@ -153,10 +153,10 @@ const focusCore: DemoOption[] = [
 ]
 
 const focusFahim: DemoOption[] = [
-  { value: 'devtools', label: 'Developer productivity', hint: 'Ship faster' },
-  { value: 'onboard', label: 'Engineer onboarding', hint: 'Learn the stack' },
-  { value: 'quality', label: 'Code quality', hint: 'Reviews & tests' },
-  { value: 'banking_api', label: 'Banking API work', hint: 'Payments & core' },
+  { value: 'retail_cx', label: 'Retail CX', hint: 'Always-on support' },
+  { value: 'onboard', label: 'Faster onboarding', hint: 'Higher completion' },
+  { value: 'islamic', label: 'Islamic banking UX', hint: 'Sharia-aware' },
+  { value: 'wallet', label: 'Wallet / MBuke', hint: 'In-app assistant' },
 ]
 
 const focusSms: DemoOption[] = [
@@ -306,25 +306,25 @@ export const PRODUCT_DEMO_CONFIGS: Partial<Record<ProductId, ProductDemoConfig>>
       'fahim-ai',
       'var(--brand-accent-2)',
       'Fahim AI demo',
-      'Configure your AI code editor session — pick the team focus and capabilities, then watch Fahim write code live.',
+      'Configure Fahim for your white-label banking app — pick the CX focus and modules, then preview the assistant journey.',
       focusFahim,
       fahimModules,
       [
-        'Open editor session',
-        'Ask a banking question',
-        'Fahim explains the approach',
-        'Request generated code',
-        'Review the file together',
+        'Open the banking app',
+        'Ask Fahim in Arabic or English',
+        'Guided onboarding & KYC tips',
+        'Next-best product suggestion',
+        'Hand off to a human agent',
       ],
       [
-        'Chat-to-code workflow for banking engineers',
-        'Streams explanations and TypeScript side by side',
-        'Banking-aware snippets (IBAN, KYC, payments)',
-        'Arabic-first prompts when your team needs them',
+        'Arabic-first assistant inside white-label apps',
+        'Onboarding and KYC guidance that feels native',
+        'Works with MBuke and branded mobile channels',
+        'Escalates cleanly when a human is needed',
       ],
-      (org) => `Fahim editor · ${org}`,
+      (org) => `Fahim · ${org}`,
       (org, focus, region) =>
-        `Fahim AI code editor configured for ${focus.toLowerCase()} inside a ${org.toLowerCase()} footprint in ${region}.`,
+        `Fahim AI assistant tuned for ${focus.toLowerCase()} inside a ${org.toLowerCase()} white-label experience in ${region}.`,
     ),
 
     'software-management': makeConfig(

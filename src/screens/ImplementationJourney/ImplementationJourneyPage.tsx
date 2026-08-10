@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
 import { useImplementationJourney } from '@/app/implementationJourneyProvider'
+import { SiteHeader } from '@/components/layout/SiteHeader'
 import { Button } from '@/components/ui/Button'
-import { routes } from '@/lib/constants'
 import { ApiExplorerPanel } from '@/screens/ImplementationJourney/ApiExplorerPanel'
 import { ArchitecturePanel } from '@/screens/ImplementationJourney/ArchitecturePanel'
 import { ConsolePanel } from '@/screens/ImplementationJourney/ConsolePanel'
@@ -16,40 +15,30 @@ export function ImplementationJourneyPage() {
     <div className="relative min-h-dvh overflow-hidden bg-void text-white">
       <Background />
 
-      <header className="relative z-10 flex flex-wrap items-center justify-between gap-4 px-5 py-5 md:px-8">
-        <Link to={routes.home} className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-white/10 text-sm font-bold backdrop-blur">
-            T
-          </span>
-          <div>
-            <p className="font-display text-base font-bold leading-none">Tayseer</p>
-            <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/40">
-              Implementation Journey
-            </p>
-          </div>
-        </Link>
-        <button
-          type="button"
-          onClick={() => reset()}
-          className="text-xs font-semibold text-white/45 underline-offset-4 hover:text-white hover:underline"
-        >
-          Reset journey
-        </button>
-      </header>
+      <SiteHeader />
 
-      <div className="relative z-10 mx-auto max-w-[1680px] px-5 pb-6 md:px-8">
+      <div className="relative z-10 mx-auto max-w-[1680px] px-5 pb-6 pt-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-7 max-w-3xl"
+          className="mb-7 flex max-w-3xl flex-wrap items-start justify-between gap-4"
         >
-          <h1 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
-            Watch your platform come alive
-          </h1>
-          <p className="mt-3 text-base leading-relaxed text-white/50">
-            Connect each capability and see the architecture, APIs, and logs
-            respond in real time.
-          </p>
+          <div>
+            <h1 className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+              Watch your platform come alive
+            </h1>
+            <p className="mt-3 text-base leading-relaxed text-white/50">
+              Connect each capability and see the architecture, APIs, and logs
+              respond in real time.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => reset()}
+            className="text-xs font-semibold text-white/45 underline-offset-4 hover:text-white hover:underline"
+          >
+            Reset journey
+          </button>
         </motion.div>
 
         <div className="grid gap-4 xl:grid-cols-[35fr_30fr_35fr] xl:gap-5">

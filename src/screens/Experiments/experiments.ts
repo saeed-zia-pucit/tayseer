@@ -1,4 +1,3 @@
-import { PRODUCT_CATALOG } from '@/data/productCatalog'
 import { routes } from '@/lib/constants'
 
 export type ExperimentItem = {
@@ -10,30 +9,11 @@ export type ExperimentItem = {
   accent: 'accent' | 'accent2' | 'accent3' | 'soft'
 }
 
-const accents: ExperimentItem['accent'][] = [
-  'accent',
-  'accent2',
-  'accent3',
-  'soft',
-  'accent',
-  'accent2',
-]
-
-/** Product interactive demos — one card per Tayseer product. */
-const productExperiments: ExperimentItem[] = PRODUCT_CATALOG.map(
-  (product, index) => ({
-    id: `demo-${product.id}`,
-    title: `${product.name} Demo`,
-    blurb: product.blurb,
-    tag: product.tag,
-    path: product.demoPath,
-    accent: accents[index % accents.length],
-  }),
-)
-
-/** Internal flows users can open and try from the Experiments hub. */
+/**
+ * Internal lab hub only — product demos live on the homepage carousel CTAs.
+ * White-Label covers the branded mobile/app shell (includes MBuke-style flows).
+ */
 export const experiments: ExperimentItem[] = [
-  ...productExperiments,
   {
     id: 'product-finder',
     title: 'Product Finder',
@@ -47,10 +27,19 @@ export const experiments: ExperimentItem[] = [
     id: 'white-label',
     title: 'White-Label Demo Builder',
     blurb:
-      'Configure brand, modules, and language — then preview a tailored banking app shell live.',
+      'Configure brand, modules, and language — then preview a tailored banking app shell live (MBuke-ready).',
     tag: 'Demo builder',
     path: routes.whiteLabel,
     accent: 'accent2',
+  },
+  {
+    id: 'implementation',
+    title: 'Implementation Journey',
+    blurb:
+      'Follow an interactive delivery path from kickoff through integration and go-live milestones.',
+    tag: 'Delivery',
+    path: routes.implementationJourney,
+    accent: 'accent3',
   },
   {
     id: 'core-integrations',
@@ -60,15 +49,6 @@ export const experiments: ExperimentItem[] = [
     tag: 'Architecture',
     path: routes.coreIntegrations,
     accent: 'soft',
-  },
-  {
-    id: 'implementation',
-    title: 'Implementation Journey',
-    blurb:
-      'Follow an interactive delivery path from kickoff through integration and go-live milestones.',
-    tag: 'Delivery',
-    path: routes.implementationJourney,
-    accent: 'accent',
   },
   {
     id: 'theme-lab',

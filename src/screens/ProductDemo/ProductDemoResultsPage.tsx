@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useProductDemo } from '@/app/productDemoProvider'
+import { SiteHeader } from '@/components/layout/SiteHeader'
 import { Button, ButtonLink } from '@/components/ui/Button'
 import { getProduct, type ProductId } from '@/data/productCatalog'
 import { getProductDemoConfig } from '@/demos/configs'
 import type { ProductDemoResult } from '@/demos/types'
 import { routes } from '@/lib/constants'
-import { FahimAiEditorDemo } from '@/screens/ProductDemo/FahimAiEditorDemo'
 
 export function ProductDemoResultsPage() {
   const { productId: rawId } = useParams<{ productId: string }>()
@@ -44,23 +44,18 @@ function ProductDemoResultsInner({ productId }: { productId: ProductId }) {
         <div className="absolute bottom-10 right-10 h-72 w-72 rounded-full bg-coral/15 blur-3xl" />
       </div>
 
-      <header className="relative z-10 flex items-center justify-between px-5 py-5 md:px-8">
-        <Link to={routes.home} className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-lagoon text-sm font-bold text-mist">
-            T
-          </span>
-          <span className="font-display text-lg font-bold text-ink">Tayseer</span>
-        </Link>
-        <ButtonLink
-          to={product.demoPath}
-          variant="secondary"
-          className="!py-2 !text-xs"
-        >
-          Edit demo
-        </ButtonLink>
-      </header>
+      <SiteHeader />
 
-      <main className="relative z-10 mx-auto max-w-6xl px-5 pb-20 md:px-8">
+      <main className="relative z-10 mx-auto max-w-6xl px-5 pb-20 pt-6 md:px-8">
+        <div className="mb-4 flex justify-end">
+          <ButtonLink
+            to={product.demoPath}
+            variant="secondary"
+            className="!py-2 !text-xs"
+          >
+            Edit demo
+          </ButtonLink>
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,9 +68,7 @@ function ProductDemoResultsInner({ productId }: { productId: ProductId }) {
             {result.title}
           </h1>
           <p className="mt-4 text-base leading-relaxed text-ink/60">
-            {productId === 'fahim-ai'
-              ? 'Watch a live Fahim coding session — the developer asks questions, Fahim answers, then writes TypeScript in the editor. No typing required.'
-              : result.summary}
+            {result.summary}
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-2">
             {result.chips.map((chip) => (
@@ -86,11 +79,7 @@ function ProductDemoResultsInner({ productId }: { productId: ProductId }) {
           </div>
         </motion.div>
 
-        {productId === 'fahim-ai' ? (
-          <FahimAiEditorDemo />
-        ) : (
-          <DemoTheater result={result} accent={config.accent} />
-        )}
+        <DemoTheater result={result} accent={config.accent} />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <section className="rounded-[1.5rem] bg-elevated/80 p-6 ring-1 ring-white/12 md:p-7">

@@ -37,7 +37,7 @@ export const PRODUCT_CATALOG: TayseerCatalogProduct[] = [
     name: 'Core Banking',
     tagline: 'Future-Proof Core Banking. Growth Unleashed.',
     blurb:
-      'Modern core ledgers, product factories, and real-time posting — built to scale retail, SME, and Islamic portfolios without rip-and-replace pain.',
+      'Tayseer’s future-ready core for banks that want to grow — launch retail, SME, and Islamic products faster, keep ledgers real-time, and connect cleanly to MBuke, Fahim, and your channels.',
     titleLines: ['Future-Proof', 'Core Banking'],
     demoPath: '/demo/core-banking',
     demoResultsPath: '/demo/core-banking/results',
@@ -53,8 +53,8 @@ export const PRODUCT_CATALOG: TayseerCatalogProduct[] = [
     name: 'Fahim AI',
     tagline: 'Intelligence to Revolutionize Your Business',
     blurb:
-      'AI code editor for banking teams — ask in natural language, get explanations, and watch Fahim write production-ready code beside you.',
-    titleLines: ['Fahim AI', 'Code Editor'],
+      'Arabic-first AI for white-label banking apps — guide onboarding, answer customers, and support KYC inside MBuke and your branded channels.',
+    titleLines: ['Fahim AI', 'Banking Assistant'],
     demoPath: '/demo/fahim-ai',
     demoResultsPath: '/demo/fahim-ai/results',
     images: [img('slider-7-1@xxl.webp')],

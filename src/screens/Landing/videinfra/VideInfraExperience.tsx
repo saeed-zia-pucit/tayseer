@@ -12,6 +12,7 @@ import {
   type ViSlide,
 } from '@/screens/Landing/videinfra/slideData'
 import { resolvePalette, THEME_CHANGE_EVENT } from '@/theme'
+import { routes } from '@/lib/constants'
 
 /** Full travel time — long so the path feels slow once motion has started */
 const SNAP_MS = 2600
@@ -53,10 +54,6 @@ export function VideInfraExperience() {
     VI_SEGMENT_COUNT - 1,
     Math.max(0, Math.round(progress)),
   )
-  const bar =
-    VI_SEGMENT_COUNT <= 1
-      ? 100
-      : ((segment + 1) / VI_SEGMENT_COUNT) * 100
 
   const [themeTick, setThemeTick] = useState(0)
   const atmos = useMemo(
@@ -319,23 +316,30 @@ export function VideInfraExperience() {
             ))}
           </div>
 
-          <div className="vi-progress" aria-hidden>
-            <i style={{ width: `${bar}%` }} />
-            <span style={{ width: `${Math.max(0, 100 - bar)}%` }} />
+          <Link to={routes.experiments} className="vi-experiments-fab">
+            <span className="vi-experiments-fab__pulse" aria-hidden />
+            <span className="vi-experiments-fab__label">
+              <span className="vi-experiments-fab__eyebrow">Experiment in</span>
+              AI Playground
+            </span>
+            <span className="vi-experiments-fab__arrow" aria-hidden>
+              →
+            </span>
+          </Link>
+
+          <div className="vi-bottom-bar">
+            <p className="vi-hint">
+              <span /> scroll
+            </p>
+            <button
+              type="button"
+              className="vi-skip"
+              onClick={skipToModules}
+            >
+              Skip to content
+              <span aria-hidden>↓</span>
+            </button>
           </div>
-
-          <button
-            type="button"
-            className="vi-skip"
-            onClick={skipToModules}
-          >
-            Skip to content
-            <span aria-hidden>↓</span>
-          </button>
-
-          <p className="vi-hint">
-            <span /> scroll
-          </p>
 
           <div className="vi-dots" role="tablist" aria-label="Products">
             {viSlides.map((s, i) => (
