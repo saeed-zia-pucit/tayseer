@@ -239,13 +239,13 @@ export function EcosystemSection() {
         >
           <defs>
             <linearGradient id="signalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#0066FF" stopOpacity="0.1" />
-              <stop offset="40%" stopColor="#00F2FF" />
-              <stop offset="100%" stopColor="#7CFFB2" />
+              <stop offset="0%" stopColor="var(--brand-accent)" stopOpacity="0.15" />
+              <stop offset="40%" stopColor="var(--brand-accent-2)" />
+              <stop offset="100%" stopColor="var(--brand-accent-3)" />
             </linearGradient>
             <radialGradient id="nodeHalo" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#00F2FF" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#00F2FF" stopOpacity="0" />
+              <stop offset="0%" stopColor="var(--brand-accent-2)" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="var(--brand-accent-2)" stopOpacity="0" />
             </radialGradient>
             <filter id="softNeon" x="-50%" y="-50%" width="200%" height="200%">
               <feGaussianBlur stdDeviation="2.5" result="b" />
@@ -283,21 +283,8 @@ export function EcosystemSection() {
           </div>
           <div className="brain-visual" aria-hidden>
             <div
-              style={{
-                width: 120,
-                height: 120,
-                borderRadius: '50%',
-                background:
-                  'radial-gradient(circle at 40% 35%, #00F2FF, #0066FF 70%)',
-                display: 'grid',
-                placeItems: 'center',
-                fontFamily: 'var(--font-h)',
-                fontWeight: 800,
-                fontSize: 28,
-                letterSpacing: 2,
-                color: '#fff',
-                boxShadow: '0 0 40px rgba(0,242,255,0.5)',
-              }}
+              className="brain-orb"
+              aria-hidden
             >
               AI
             </div>
@@ -445,8 +432,9 @@ function StatCard({
         <svg width="120" height="120" viewBox="0 0 120 120">
           <defs>
             <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#0066FF" />
-              <stop offset="100%" stopColor="#00F2FF" />
+              <stop offset="0%" stopColor="var(--brand-accent)" />
+              <stop offset="55%" stopColor="var(--brand-accent-2)" />
+              <stop offset="100%" stopColor="var(--brand-accent-3)" />
             </linearGradient>
           </defs>
           <circle
@@ -454,7 +442,7 @@ function StatCard({
             cy="60"
             r="48"
             fill="none"
-            stroke="rgba(0,242,255,0.12)"
+            stroke="rgba(var(--brand-accent-2-rgb), 0.14)"
             strokeWidth="8"
           />
           <circle
@@ -576,12 +564,12 @@ export function PresenceSection() {
         >
           <defs>
             <radialGradient id="cityGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#00E5FF" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#00E5FF" stopOpacity="0" />
+              <stop offset="0%" stopColor="var(--brand-accent-2)" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="var(--brand-accent-2)" stopOpacity="0" />
             </radialGradient>
             <linearGradient id="linkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#0066FF" />
-              <stop offset="100%" stopColor="#00E5FF" />
+              <stop offset="0%" stopColor="var(--brand-accent)" />
+              <stop offset="100%" stopColor="var(--brand-accent-2)" />
             </linearGradient>
           </defs>
           <ellipse className="map-land" cx="450" cy="220" rx="380" ry="150" />
@@ -733,8 +721,8 @@ export function ContactSection() {
                 marginLeft: m.role === 'user' ? 'auto' : 0,
                 background:
                   m.role === 'bot'
-                    ? 'rgba(0,242,255,0.08)'
-                    : 'rgba(0,102,255,0.25)',
+                    ? 'rgba(var(--brand-accent-2-rgb), 0.12)'
+                    : 'rgba(var(--brand-accent-rgb), 0.28)',
               }}
             >
               {m.text}

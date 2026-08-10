@@ -62,7 +62,7 @@
   width: 420px;
   height: 420px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 229, 255, 0.12), transparent 65%);
+  background: radial-gradient(circle, rgba(var(--brand-accent-rgb), 0.18), transparent 55%), radial-gradient(circle, rgba(var(--brand-accent-2-rgb), 0.14), transparent 70%);
   pointer-events: none;
   z-index: 1;
   transform: translate(-50%, -50%);
@@ -90,7 +90,7 @@
 
 .tayseer-home .mono{ font-family: var(--font-m); }
 .tayseer-home .gradient-text{
-  background: linear-gradient(120deg, #fff 10%, var(--cyan) 45%, var(--royal) 75%, var(--emerald));
+  background: linear-gradient(120deg, #fff 8%, var(--cyan) 38%, var(--royal) 68%, var(--emerald) 92%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -156,12 +156,12 @@
 .tayseer-home .btn:active::after{ opacity: 1; }
 
 .tayseer-home .btn-primary{
-  background: linear-gradient(135deg, var(--royal), #00A3FF 50%, var(--cyan));
-  color: #031018;
-  box-shadow: 0 0 28px rgba(0, 242, 255, 0.45), 0 8px 32px rgba(0, 102, 255, 0.4);
+  background: linear-gradient(135deg, var(--royal), var(--cyan) 52%, var(--emerald));
+  color: var(--brand-bg-deep);
+  box-shadow: 0 0 28px rgba(var(--brand-accent-2-rgb), 0.45), 0 8px 32px rgba(var(--brand-accent-rgb), 0.4);
 }
 
-.tayseer-home .btn-primary:hover{ box-shadow: 0 12px 40px rgba(0, 242, 255, 0.55); transform: translateY(-2px); }
+.tayseer-home .btn-primary:hover{ box-shadow: 0 12px 40px rgba(var(--brand-accent-2-rgb), 0.55); transform: translateY(-2px); }
 
 .tayseer-home .btn-ghost{
   border: 1px solid var(--glass-border);
@@ -170,8 +170,8 @@
 }
 
 .tayseer-home .btn-ghost:hover{
-  border-color: rgba(0, 229, 255, 0.45);
-  background: rgba(0, 229, 255, 0.08);
+  border-color: rgba(var(--brand-accent-2-rgb), 0.45);
+  background: rgba(var(--brand-accent-2-rgb), 0.08);
 }
 
 .tayseer-home .btn-sm{ padding: 0.55rem 1rem; font-size: 0.85rem; }
@@ -210,7 +210,7 @@
 }
 
 .tayseer-home .nav.scrolled{
-  border-bottom-color: rgba(0, 229, 255, 0.12);
+  border-bottom-color: rgba(var(--brand-accent-2-rgb), 0.12);
   background: rgba(2, 6, 23, 0.82);
 }
 
@@ -339,7 +339,7 @@
   height: 72px;
   border-radius: 12px;
   background:
-    linear-gradient(180deg, rgba(0,229,255,0.15), transparent),
+    linear-gradient(180deg, rgba(var(--brand-accent-2-rgb),0.15), transparent),
     repeating-linear-gradient(90deg, transparent, transparent 18px, rgba(255,255,255,0.04) 18px, rgba(255,255,255,0.04) 19px);
   position: relative;
   overflow: hidden;
@@ -392,7 +392,7 @@
   font-weight: 700;
   font-size: 0.7rem;
   background: linear-gradient(135deg, var(--royal), var(--cyan));
-  color: #031018;
+  color: var(--brand-bg-deep);
   flex-shrink: 0;
 }
 
@@ -427,7 +427,7 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: rgba(0, 200, 150, 0.15);
+  background: rgba(var(--brand-accent-3-rgb), 0.15);
   color: var(--emerald);
 }
 
@@ -437,7 +437,7 @@
   font-size: 0.65rem;
   padding: 0.2rem 0.45rem;
   border-radius: 999px;
-  border: 1px solid rgba(0, 229, 255, 0.3);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.3);
   color: var(--cyan);
 }
 
@@ -454,8 +454,8 @@
   border-radius: 18px;
   padding: 6px;
   background: linear-gradient(160deg, #1a2a44, #0a1220);
-  border: 1px solid rgba(0, 229, 255, 0.35);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(0, 102, 255, 0.25);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.35);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(var(--brand-accent-rgb), 0.25);
   animation: phoneFloat 5s ease-in-out infinite;
 }
 
@@ -479,7 +479,7 @@
 .tayseer-home .mini-chart{
   height: 40px;
   border-radius: 8px;
-  background: linear-gradient(180deg, rgba(0,102,255,0.35), transparent);
+  background: linear-gradient(180deg, rgba(var(--brand-accent-rgb),0.35), transparent);
   position: relative;
   overflow: hidden;
 }
@@ -501,7 +501,7 @@
 .tayseer-home .signal-rings span{
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(0, 229, 255, 0.35);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.35);
   border-radius: 50%;
   animation: signal 2.8s ease-out infinite;
 }
@@ -550,7 +550,7 @@
 }
 
 .tayseer-home .scroll-story-sticky{
-  --scene-glow: rgba(15, 118, 110, 0.28);
+  --scene-glow: rgba(var(--brand-accent-rgb), 0.28);
   position: sticky;
   top: 0;
   height: 100vh;
@@ -606,7 +606,7 @@
   top: -10%;
   width: 1px;
   height: 120%;
-  background: linear-gradient(180deg, transparent, rgba(15, 118, 110, 0.55), transparent);
+  background: linear-gradient(180deg, transparent, rgba(var(--brand-accent-rgb), 0.55), transparent);
   animation: streamFall 4.5s linear infinite;
   box-shadow: none;
 }
@@ -663,7 +663,7 @@
   width: 160px;
   height: 3px;
   border-radius: 999px;
-  background: rgba(0, 242, 255, 0.15);
+  background: rgba(var(--brand-accent-2-rgb), 0.15);
   overflow: hidden;
 }
 
@@ -673,7 +673,7 @@
   width: 0%;
   border-radius: inherit;
   background: linear-gradient(90deg, var(--royal), var(--cyan));
-  box-shadow: 0 0 14px rgba(0, 242, 255, 0.7);
+  box-shadow: 0 0 14px rgba(var(--brand-accent-2-rgb), 0.7);
 }
 
 /* Circular carousel layout */
@@ -721,11 +721,11 @@
   height: min(180px, 24vw);
   border-radius: 50%;
   background:
-    radial-gradient(ellipse at center, rgba(15, 118, 110, 0.16), transparent 65%),
+    radial-gradient(ellipse at center, rgba(var(--brand-accent-rgb), 0.16), transparent 65%),
     rgba(22, 50, 79, 0.12);
   border: 1px solid rgba(232, 226, 212, 0.14);
   transform: rotateX(72deg) translateY(48px);
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.25), inset 0 0 30px rgba(15, 118, 110, 0.08);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.25), inset 0 0 30px rgba(var(--brand-accent-rgb), 0.08);
   pointer-events: none;
 }
 
@@ -830,7 +830,7 @@
   padding: 0.4rem 0.7rem;
   border-radius: 999px;
   background: rgba(6, 16, 32, 0.55);
-  border: 1px solid rgba(0, 242, 255, 0.2);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.2);
   color: var(--muted);
   font-size: 0.72rem;
   transition: border-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
@@ -844,14 +844,14 @@
   place-items: center;
   font-family: var(--font-m);
   font-size: 0.65rem;
-  background: rgba(0, 242, 255, 0.12);
+  background: rgba(var(--brand-accent-2-rgb), 0.12);
   color: var(--cyan);
 }
 
 .tayseer-home .carousel-thumb.active{
   color: var(--text);
   border-color: var(--cyan);
-  box-shadow: 0 0 18px var(--thumb-glow, rgba(0, 242, 255, 0.35));
+  box-shadow: 0 0 18px var(--thumb-glow, rgba(var(--brand-accent-2-rgb), 0.35));
   transform: translateY(-2px);
 }
 
@@ -873,13 +873,13 @@
   padding: clamp(1.25rem, 2.5vw, 2rem);
   border-radius: 24px;
   background: rgba(6, 14, 28, 0.55);
-  border: 1px solid rgba(0, 242, 255, 0.28);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.28);
   backdrop-filter: blur(22px) saturate(1.2);
   -webkit-backdrop-filter: blur(22px) saturate(1.2);
   box-shadow:
     0 24px 80px rgba(0, 0, 0, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 40px rgba(0, 242, 255, 0.06);
+    0 0 40px rgba(var(--brand-accent-2-rgb), 0.06);
 }
 
 .tayseer-home .story-info .eyebrow{ margin-bottom: 0.55rem; }
@@ -924,13 +924,13 @@
 }
 
 .tayseer-home .btn-glow{
-  box-shadow: 0 0 28px rgba(0, 242, 255, 0.55), 0 8px 28px rgba(0, 102, 255, 0.4) !important;
+  box-shadow: 0 0 28px rgba(var(--brand-accent-2-rgb), 0.55), 0 8px 28px rgba(var(--brand-accent-rgb), 0.4) !important;
   animation: ctaPulse 2.4s ease-in-out infinite;
 }
 
 @keyframes ctaPulse {
-  0%, 100% { box-shadow: 0 0 22px rgba(0, 242, 255, 0.4), 0 8px 28px rgba(0, 102, 255, 0.35); }
-  50% { box-shadow: 0 0 36px rgba(0, 242, 255, 0.7), 0 8px 36px rgba(0, 102, 255, 0.5); }
+  0%, 100% { box-shadow: 0 0 22px rgba(var(--brand-accent-2-rgb), 0.4), 0 8px 28px rgba(var(--brand-accent-rgb), 0.35); }
+  50% { box-shadow: 0 0 36px rgba(var(--brand-accent-2-rgb), 0.7), 0 8px 36px rgba(var(--brand-accent-rgb), 0.5); }
 }
 
 .tayseer-home .story-dots{
@@ -946,14 +946,14 @@
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: rgba(0, 242, 255, 0.25);
+  background: rgba(var(--brand-accent-2-rgb), 0.25);
   transition: width 0.35s, background 0.35s, box-shadow 0.35s;
 }
 
 .tayseer-home .story-dots button.active{
   width: 30px;
   background: var(--cyan);
-  box-shadow: 0 0 16px rgba(0, 242, 255, 0.6);
+  box-shadow: 0 0 16px rgba(var(--brand-accent-2-rgb), 0.6);
 }
 
 .tayseer-home .story-hint{
@@ -1080,7 +1080,7 @@
   box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 .tayseer-home .eco-chip.cards{ top: 22%; left: 4%; }
-.tayseer-home .eco-chip.pay{ top: 48%; right: 2%; background: #0f766e; color: #ecfdf8; }
+.tayseer-home .eco-chip.pay{ top: 48%; right: 2%; background: var(--brand-accent); color: #ecfdf8; }
 
 /* ATM */
 .tayseer-home .atm-body{
@@ -1235,7 +1235,7 @@
 }
 .tayseer-home .core-panel li b{
   font-weight: 600;
-  color: #0f766e;
+  color: var(--brand-accent);
 }
 .tayseer-home .core-panel li:last-child b{ color: #b45309; }
 
@@ -1275,7 +1275,7 @@
 }
 .tayseer-home .assist-msg.me{
   align-self: flex-end;
-  background: #0f766e;
+  background: var(--brand-accent);
   color: #ecfdf8;
 }
 .tayseer-home .assist-msg.soft{ opacity: 0.85; }
@@ -1287,7 +1287,7 @@
   height: 150px;
   border-radius: 16px;
   background:
-    radial-gradient(circle at 30% 55%, rgba(15, 118, 110, 0.18), transparent 40%),
+    radial-gradient(circle at 30% 55%, rgba(var(--brand-accent-rgb), 0.18), transparent 40%),
     radial-gradient(circle at 72% 42%, rgba(22, 50, 79, 0.25), transparent 42%),
     linear-gradient(160deg, #e9e2d4, #d8d0c0);
   border: 1px solid rgba(36, 49, 58, 0.12);
@@ -1307,8 +1307,8 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #0f766e;
-  box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.2);
+  background: var(--brand-accent);
+  box-shadow: 0 0 0 4px rgba(var(--brand-accent-rgb), 0.2);
 }
 .tayseer-home .net-city.left{ left: 18%; top: 52%; }
 .tayseer-home .net-city.right{ right: 16%; top: 38%; }
@@ -1318,7 +1318,7 @@
   right: 28%;
   top: 48%;
   height: 2px;
-  background: linear-gradient(90deg, #0f766e, #16324f);
+  background: linear-gradient(90deg, var(--brand-accent), #16324f);
   transform: rotate(-12deg);
   opacity: 0.7;
 }
@@ -1349,8 +1349,8 @@
   display: grid;
   place-items: center;
   margin-bottom: 1.25rem;
-  background: rgba(0, 102, 255, 0.15);
-  border: 1px solid rgba(0, 229, 255, 0.25);
+  background: rgba(var(--brand-accent-rgb), 0.15);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.25);
   font-size: 1.4rem;
 }
 
@@ -1393,8 +1393,8 @@
 .tayseer-home .detail-visual{
   position: relative;
   background:
-    radial-gradient(circle at 30% 40%, rgba(0, 102, 255, 0.35), transparent 50%),
-    radial-gradient(circle at 70% 70%, rgba(0, 229, 255, 0.2), transparent 45%),
+    radial-gradient(circle at 30% 40%, rgba(var(--brand-accent-rgb), 0.35), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(var(--brand-accent-2-rgb), 0.2), transparent 45%),
     linear-gradient(160deg, #061428, #0a1a30);
   display: grid;
   place-items: center;
@@ -1433,8 +1433,8 @@
   border-radius: 28px;
   padding: 10px;
   background: linear-gradient(160deg, #243555, #0b1424);
-  border: 2px solid rgba(0, 229, 255, 0.4);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0, 102, 255, 0.3);
+  border: 2px solid rgba(var(--brand-accent-2-rgb), 0.4);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(var(--brand-accent-rgb), 0.3);
   animation: phoneFloat 4s ease-in-out infinite;
 }
 
@@ -1462,8 +1462,8 @@
   font-size: 0.65rem;
   padding: 0.35rem 0.55rem;
   border-radius: 8px;
-  background: rgba(0, 102, 255, 0.2);
-  border: 1px solid rgba(0, 229, 255, 0.2);
+  background: rgba(var(--brand-accent-rgb), 0.2);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.2);
 }
 .tayseer-home .viz-row{
   display: flex;
@@ -1479,14 +1479,14 @@
   width: 260px;
   height: 260px;
   border-radius: 50%;
-  border: 1px dashed rgba(0, 229, 255, 0.25);
+  border: 1px dashed rgba(var(--brand-accent-2-rgb), 0.25);
   animation: spinSlow 18s linear infinite;
 }
 .tayseer-home .viz-rings::before, .tayseer-home .viz-rings::after{
   content: "";
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(0, 102, 255, 0.3);
+  border: 1px solid rgba(var(--brand-accent-rgb), 0.3);
 }
 .tayseer-home .viz-rings::before{ inset: 24px; animation: spinSlow 12s linear infinite reverse; }
 .tayseer-home .viz-rings::after{ inset: 48px; border-style: dashed; }
@@ -1501,8 +1501,8 @@
 .tayseer-home .viz-cube i{
   position: absolute;
   inset: 0;
-  background: rgba(0, 102, 255, 0.25);
-  border: 1px solid rgba(0, 229, 255, 0.45);
+  background: rgba(var(--brand-accent-rgb), 0.25);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.45);
   backdrop-filter: blur(4px);
 }
 .tayseer-home .viz-cube i:nth-child(1){ transform: translateZ(60px); }
@@ -1516,9 +1516,9 @@
   width: 140px;
   height: 160px;
   background:
-    linear-gradient(160deg, rgba(0, 229, 255, 0.35), rgba(0, 102, 255, 0.15)),
+    linear-gradient(160deg, rgba(var(--brand-accent-2-rgb), 0.35), rgba(var(--brand-accent-rgb), 0.15)),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath fill='%2300E5FF33' stroke='%2300E5FF' stroke-width='2' d='M50 8 L90 28 V62 C90 88 70 108 50 114 C30 108 10 88 10 62 V28 Z'/%3E%3C/svg%3E") center/contain no-repeat;
-  filter: drop-shadow(0 0 24px rgba(0, 229, 255, 0.45));
+  filter: drop-shadow(0 0 24px rgba(var(--brand-accent-2-rgb), 0.45));
   animation: floatY 4s ease-in-out infinite;
 }
 
@@ -1530,9 +1530,9 @@
 .tayseer-home .viz-cloud span{
   position: absolute;
   border-radius: 999px;
-  background: rgba(0, 102, 255, 0.35);
-  border: 1px solid rgba(0, 229, 255, 0.4);
-  box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+  background: rgba(var(--brand-accent-rgb), 0.35);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.4);
+  box-shadow: 0 0 30px rgba(var(--brand-accent-2-rgb), 0.2);
   animation: floatY 3.5s ease-in-out infinite;
 }
 .tayseer-home .viz-cloud span:nth-child(1){ width: 90px; height: 50px; left: 20px; top: 40px; }
@@ -1546,7 +1546,7 @@
   background:
     radial-gradient(circle at 35% 30%, #fff, transparent 25%),
     radial-gradient(circle at 50% 50%, var(--cyan), var(--royal) 50%, #061018 75%);
-  box-shadow: 0 0 60px rgba(0, 229, 255, 0.55), inset 0 0 40px rgba(255,255,255,0.2);
+  box-shadow: 0 0 60px rgba(var(--brand-accent-2-rgb), 0.55), inset 0 0 40px rgba(255,255,255,0.2);
   animation: orbPulse 3s ease-in-out infinite;
   position: relative;
   z-index: 1;
@@ -1557,7 +1557,7 @@
   height: 220px;
   border-radius: 16px;
   background: linear-gradient(180deg, #1a2b44, #0a1422);
-  border: 1px solid rgba(0, 229, 255, 0.35);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.35);
   padding: 1rem;
   box-shadow: 0 20px 50px rgba(0,0,0,0.45);
   animation: floatY 5s ease-in-out infinite;
@@ -1613,7 +1613,7 @@
   display: grid;
   place-items: center;
   background:
-    radial-gradient(circle at 50% 30%, rgba(0, 102, 255, 0.2), transparent 50%),
+    radial-gradient(circle at 50% 30%, rgba(var(--brand-accent-rgb), 0.2), transparent 50%),
     #050d1a;
   position: relative;
   overflow: hidden;
@@ -1645,8 +1645,8 @@
   border-radius: 36px;
   padding: 12px;
   background: linear-gradient(160deg, #2a3f5f, #0c1526);
-  border: 2px solid rgba(0, 229, 255, 0.45);
-  box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 50px rgba(0, 102, 255, 0.3);
+  border: 2px solid rgba(var(--brand-accent-2-rgb), 0.45);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 50px rgba(var(--brand-accent-rgb), 0.3);
   position: relative;
   z-index: 2;
   animation: phoneTilt 8s ease-in-out infinite;
@@ -1695,8 +1695,8 @@
 .tayseer-home .demo-screen .grid-acts span{
   padding: 0.75rem 0.5rem;
   border-radius: 12px;
-  background: rgba(0, 102, 255, 0.15);
-  border: 1px solid rgba(0, 229, 255, 0.2);
+  background: rgba(var(--brand-accent-rgb), 0.15);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.2);
   text-align: center;
   font-size: 0.72rem;
 }
@@ -1728,7 +1728,7 @@
 }
 .tayseer-home .card-stack i:nth-child(2){
   top: 18px;
-  background: linear-gradient(135deg, #0f766e, var(--emerald));
+  background: linear-gradient(135deg, var(--brand-accent), var(--emerald));
   animation-delay: 0.15s;
   transform: scale(0.96);
 }
@@ -1748,7 +1748,7 @@
 .tayseer-home .demo-signal span{
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(0, 229, 255, 0.25);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.25);
   border-radius: 50%;
   animation: signal 3s ease-out infinite;
 }
@@ -1787,7 +1787,7 @@
   padding: 1.25rem;
   border-radius: 16px;
   background: rgba(15, 30, 55, 0.7);
-  border: 1px solid rgba(0, 229, 255, 0.2);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.2);
 }
 .tayseer-home .demo-dashboard .chart-bars{
   display: flex;
@@ -1812,8 +1812,8 @@
 .tayseer-home .demo-server .rack{
   padding: 1rem 1.25rem;
   border-radius: 14px;
-  background: rgba(15,30,55,0.8);
-  border: 1px solid rgba(0,229,255,0.25);
+  background: color-mix(in srgb, var(--brand-bg-elevated) 85%, transparent);
+  border: 1px solid rgba(var(--brand-accent-2-rgb),0.25);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -1835,13 +1835,16 @@
   position: relative;
   height: 560px;
   border-radius: 24px;
-  border: 1px solid rgba(0, 242, 255, 0.2);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.28);
   background:
-    radial-gradient(circle at 50% 48%, rgba(0, 242, 255, 0.14), transparent 42%),
-    radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.18), transparent 62%),
-    rgba(2, 6, 16, 0.72);
+    radial-gradient(circle at 50% 48%, rgba(var(--brand-accent-2-rgb), 0.22), transparent 42%),
+    radial-gradient(circle at 28% 30%, rgba(var(--brand-accent-rgb), 0.3), transparent 48%),
+    radial-gradient(circle at 78% 70%, rgba(var(--brand-accent-3-rgb), 0.22), transparent 50%),
+    linear-gradient(160deg, var(--brand-bg-deep), color-mix(in srgb, var(--brand-bg-elevated) 85%, transparent));
   overflow: hidden;
-  box-shadow: inset 0 0 80px rgba(0, 242, 255, 0.06), 0 0 60px rgba(0, 102, 255, 0.12);
+  box-shadow:
+    inset 0 0 80px rgba(var(--brand-accent-2-rgb), 0.08),
+    0 0 60px rgba(var(--brand-accent-rgb), 0.18);
 }
 
 .tayseer-home .eco-circuit-bg{
@@ -1852,15 +1855,15 @@
       90deg,
       transparent 0,
       transparent 48px,
-      rgba(0, 242, 255, 0.03) 48px,
-      rgba(0, 242, 255, 0.03) 49px
+      rgba(var(--brand-accent-2-rgb), 0.03) 48px,
+      rgba(var(--brand-accent-2-rgb), 0.03) 49px
     ),
     repeating-linear-gradient(
       0deg,
       transparent 0,
       transparent 48px,
-      rgba(0, 242, 255, 0.03) 48px,
-      rgba(0, 242, 255, 0.03) 49px
+      rgba(var(--brand-accent-2-rgb), 0.03) 48px,
+      rgba(var(--brand-accent-2-rgb), 0.03) 49px
     );
   mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 70%);
   -webkit-mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 70%);
@@ -1883,7 +1886,7 @@
 
 .tayseer-home .eco-link-base{
   fill: none;
-  stroke: rgba(0, 242, 255, 0.22);
+  stroke: rgba(var(--brand-accent-2-rgb), 0.22);
   stroke-width: 1.5;
 }
 
@@ -1893,7 +1896,7 @@
   stroke-width: 2.4;
   stroke-linecap: round;
   stroke-dasharray: 14 42;
-  filter: drop-shadow(0 0 6px #00F2FF);
+  filter: drop-shadow(0 0 6px var(--brand-accent-2));
   animation: signalFlow 1.8s linear infinite;
 }
 
@@ -1909,8 +1912,8 @@
 }
 
 .tayseer-home .eco-signal-dot{
-  fill: #00F2FF;
-  filter: drop-shadow(0 0 8px #00F2FF);
+  fill: var(--brand-accent-2);
+  filter: drop-shadow(0 0 8px var(--brand-accent-2));
 }
 
 .tayseer-home .eco-core{
@@ -1930,7 +1933,7 @@
   inset: -50px;
   border-radius: 50%;
   background:
-    radial-gradient(circle, rgba(0, 242, 255, 0.45), rgba(0, 102, 255, 0.18) 45%, transparent 70%);
+    radial-gradient(circle, rgba(var(--brand-accent-2-rgb), 0.45), rgba(var(--brand-accent-rgb), 0.18) 45%, transparent 70%);
   animation: orbPulse 3s ease-in-out infinite;
   pointer-events: none;
 }
@@ -1944,7 +1947,7 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 1px solid rgba(0, 242, 255, 0.35);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.35);
   animation: ringPulse 3.6s ease-out infinite;
 }
 .tayseer-home .brain-rings span:nth-child(2){ animation-delay: 1.2s; }
@@ -1960,8 +1963,29 @@
   z-index: 2;
   width: 168px;
   height: 168px;
-  filter: drop-shadow(0 0 18px rgba(0, 242, 255, 0.55));
+  filter: drop-shadow(0 0 18px rgba(var(--brand-accent-2-rgb), 0.55));
   animation: brainFloat 4.5s ease-in-out infinite;
+  display: grid;
+  place-items: center;
+}
+
+.tayseer-home .brain-orb{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-h);
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 40% 35%, var(--brand-accent-2), var(--brand-accent) 55%, var(--brand-accent-3) 110%);
+  box-shadow:
+    0 0 40px rgba(var(--brand-accent-2-rgb), 0.55),
+    0 0 70px rgba(var(--brand-accent-rgb), 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.28);
 }
 
 @keyframes brainFloat {
@@ -1986,8 +2010,8 @@
 }
 
 @keyframes brainPulse {
-  0%, 100% { stroke-opacity: 1; filter: drop-shadow(0 0 4px #00F2FF); }
-  50% { stroke-opacity: 0.75; filter: drop-shadow(0 0 12px #00F2FF); }
+  0%, 100% { stroke-opacity: 1; filter: drop-shadow(0 0 4px var(--brand-accent-2)); }
+  50% { stroke-opacity: 0.75; filter: drop-shadow(0 0 12px var(--brand-accent-2)); }
 }
 
 .tayseer-home .brain-fold{
@@ -2013,7 +2037,7 @@
 }
 
 .tayseer-home .brain-ai-label{
-  filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.9));
+  filter: drop-shadow(0 0 10px rgba(var(--brand-accent-2-rgb), 0.9));
   animation: aiGlow 2.2s ease-in-out infinite;
 }
 
@@ -2039,7 +2063,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--cyan);
-  text-shadow: 0 0 12px rgba(0, 242, 255, 0.6);
+  text-shadow: 0 0 12px rgba(var(--brand-accent-2-rgb), 0.6);
 }
 .tayseer-home .brain-label small{
   color: var(--muted);
@@ -2053,11 +2077,11 @@
   transform: translate(-50%, -50%);
   padding: 0.75rem 1rem;
   border-radius: 14px;
-  background: rgba(6, 18, 36, 0.82);
+  background: color-mix(in srgb, var(--brand-bg-elevated) 82%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 242, 255, 0.35);
-  box-shadow: 0 0 20px rgba(0, 242, 255, 0.08), inset 0 0 20px rgba(0, 242, 255, 0.04);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.4);
+  box-shadow: 0 0 24px rgba(var(--brand-accent-rgb), 0.12), inset 0 0 20px rgba(var(--brand-accent-2-rgb), 0.06);
   font-size: 0.78rem;
   font-weight: 500;
   white-space: nowrap;
@@ -2080,7 +2104,7 @@
 .tayseer-home .eco-node:hover, .tayseer-home .eco-node.active{
   transform: translate(-50%, -50%) scale(1.08);
   border-color: var(--cyan);
-  box-shadow: 0 0 28px rgba(0, 242, 255, 0.4);
+  box-shadow: 0 0 28px rgba(var(--brand-accent-2-rgb), 0.4);
 }
 
 /* Architecture */
@@ -2095,8 +2119,8 @@
 .tayseer-home .arch-node{
   padding: 1rem 1.15rem;
   border-radius: 14px;
-  background: rgba(15, 30, 55, 0.65);
-  border: 1px solid rgba(0, 229, 255, 0.2);
+  background: color-mix(in srgb, var(--brand-bg-elevated) 78%, transparent);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.2);
   min-width: 120px;
   text-align: center;
   cursor: pointer;
@@ -2107,8 +2131,8 @@
 .tayseer-home .arch-node small{ display: block; font-weight: 400; color: var(--muted); font-size: 0.7rem; margin-top: 0.25rem; }
 .tayseer-home .arch-node.active{
   border-color: var(--cyan);
-  background: rgba(0, 102, 255, 0.25);
-  box-shadow: 0 0 30px rgba(0, 229, 255, 0.35);
+  background: rgba(var(--brand-accent-rgb), 0.25);
+  box-shadow: 0 0 30px rgba(var(--brand-accent-2-rgb), 0.35);
   transform: translateY(-4px);
 }
 .tayseer-home .arch-arrow{
@@ -2135,27 +2159,27 @@
   transition: border-color 0.35s ease, box-shadow 0.35s ease;
 }
 .tayseer-home .stat-card.is-counting{
-  border-color: rgba(0, 242, 255, 0.45);
-  box-shadow: 0 0 28px rgba(0, 242, 255, 0.12);
+  border-color: rgba(var(--brand-accent-2-rgb), 0.45);
+  box-shadow: 0 0 28px rgba(var(--brand-accent-2-rgb), 0.12);
 }
 .tayseer-home .stat-card strong{ font-size: 2rem; }
 .tayseer-home .stat-card.is-counting strong{
   color: var(--cyan);
-  text-shadow: 0 0 18px rgba(0, 242, 255, 0.35);
+  text-shadow: 0 0 18px rgba(var(--brand-accent-2-rgb), 0.35);
 }
 .tayseer-home .stat-card span{ font-family: var(--font-m); color: var(--cyan); font-size: 1.4rem; }
 .tayseer-home .stat-card p{ color: var(--muted); font-size: 0.85rem; }
 .tayseer-home .ring{ position: relative; width: 120px; height: 120px; }
 .tayseer-home .stat-card.is-counting .ring{
-  filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.35));
+  filter: drop-shadow(0 0 10px rgba(var(--brand-accent-2-rgb), 0.35));
 }
 
 /* Presence */
 .tayseer-home .map-wrap{ display: grid; gap: 1.5rem; }
 .tayseer-home .world-map{ width: 100%; max-height: 380px; }
 .tayseer-home .map-land{
-  fill: rgba(0, 102, 255, 0.08);
-  stroke: rgba(0, 229, 255, 0.2);
+  fill: rgba(var(--brand-accent-rgb), 0.08);
+  stroke: rgba(var(--brand-accent-2-rgb), 0.2);
   stroke-width: 1;
 }
 .tayseer-home .map-arc{
@@ -2226,13 +2250,13 @@
 }
 .tayseer-home .bubble.ai{
   align-self: flex-start;
-  background: rgba(0, 102, 255, 0.2);
-  border: 1px solid rgba(0, 229, 255, 0.25);
+  background: rgba(var(--brand-accent-rgb), 0.2);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.25);
 }
 .tayseer-home .bubble.user{
   align-self: flex-end;
-  background: linear-gradient(135deg, rgba(0, 102, 255, 0.45), rgba(0, 229, 255, 0.25));
-  border: 1px solid rgba(0, 229, 255, 0.35);
+  background: linear-gradient(135deg, rgba(var(--brand-accent-rgb), 0.45), rgba(var(--brand-accent-2-rgb), 0.25));
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.35);
 }
 .tayseer-home .chat-options{
   display: flex;
@@ -2242,13 +2266,13 @@
 .tayseer-home .chat-options button{
   padding: 0.65rem 1rem;
   border-radius: 999px;
-  border: 1px solid rgba(0, 229, 255, 0.3);
+  border: 1px solid rgba(var(--brand-accent-2-rgb), 0.3);
   background: rgba(255,255,255,0.03);
   font-size: 0.85rem;
   transition: all 0.25s;
 }
 .tayseer-home .chat-options button:hover{
-  background: rgba(0, 229, 255, 0.12);
+  background: rgba(var(--brand-accent-2-rgb), 0.12);
   border-color: var(--cyan);
   transform: translateY(-2px);
 }
@@ -2258,7 +2282,7 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 3rem clamp(1.25rem, 4vw, 4rem) 2.5rem;
-  border-top: 1px solid rgba(0, 229, 255, 0.1);
+  border-top: 1px solid rgba(var(--brand-accent-2-rgb), 0.1);
   display: grid;
   gap: 1.25rem;
 }
@@ -2371,7 +2395,7 @@
     right: 0;
     padding: 1rem 1.25rem 1.5rem;
     background: rgba(2, 6, 23, 0.95);
-    border-bottom: 1px solid rgba(0, 229, 255, 0.12);
+    border-bottom: 1px solid rgba(var(--brand-accent-2-rgb), 0.12);
   }
   .tayseer-home .solutions-grid{ grid-template-columns: 1fr; }
   .tayseer-home .presence-cards{ grid-template-columns: 1fr; }
