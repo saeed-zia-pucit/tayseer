@@ -100,7 +100,7 @@ export function MbukeDemoFinderPage() {
                 </h2>
                 <p className="mt-3 max-w-xl text-sm text-ink/55">
                   AI-powered white-label mobile finance — tour the same capabilities
-                  from tayseer.me/mbuke.
+                  from the white-label demo.
                 </p>
 
                 <div className="mt-8">

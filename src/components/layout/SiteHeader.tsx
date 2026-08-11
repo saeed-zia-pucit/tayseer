@@ -1,27 +1,28 @@
 import { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
+import { BRAND_ASSETS, SITE_NAME } from '@/lib/brand'
 import { routes } from '@/lib/constants'
 import { cn } from '@/lib/cn'
 
-const nav = [
-  { to: routes.products, label: 'Products' },
-  { to: routes.architecture, label: 'Architecture' },
-  { to: routes.contact, label: 'Contact' },
+/** Same labels / structure as marketing home header. */
+const homeNav = [
+  { label: 'Solutions', href: '/' },
+  { label: 'Services', href: '/' },
+  { label: 'Expertise', href: '/' },
+  { label: 'Case Studies', href: '/' },
+  { label: 'Company', href: '/' },
+  { label: 'Blog', href: '/' },
+  { label: 'Partnership', href: '/' },
 ] as const
 
-function goHome() {
-  window.dispatchEvent(new Event('tayseer-scroll-home'))
-  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
-}
-
 /**
- * Global site header — identical on home, marketing, demos, and lab pages.
+ * Top bar for /app screens — Tayseer logo, center pill, Contact Us.
+ * Marketing homepage lives at `/` (static).
  */
 export function SiteHeader({ className }: { className?: string }) {
   const { pathname } = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const onHome = pathname === routes.home
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -37,55 +38,41 @@ export function SiteHeader({ className }: { className?: string }) {
   return (
     <header className={cn('site-header', scrolled && 'is-scrolled', className)}>
       <nav className={cn('site-nav', open && 'is-open')} id="nav" aria-label="Site">
-        <Link
-          to={routes.home}
-          className="site-nav__brand"
-          onClick={() => {
-            setOpen(false)
-            goHome()
-          }}
-        >
-          <span className="site-nav__mark" aria-hidden />
-          <span>Tayseer</span>
-        </Link>
+        <a href="/" className="site-nav__brand" onClick={() => setOpen(false)}>
+          <img
+            className="site-nav__logo"
+            src={BRAND_ASSETS.logoLight}
+            alt={SITE_NAME}
+            width={180}
+            height={39}
+          />
+        </a>
 
-        <div className="site-nav__links">
-          <Link
-            to={routes.home}
-            className={cn(onHome && 'is-active')}
-            onClick={(e) => {
-              setOpen(false)
-              if (onHome) {
-                e.preventDefault()
-                goHome()
-              } else {
-                // Navigate home then scroll after mount
-                window.setTimeout(goHome, 0)
-              }
-            }}
-          >
-            Home
-          </Link>
-          {nav.map((item) => (
+        <div className="site-nav__pill" role="presentation">
+          <div className="site-nav__links">
+            {homeNav.map((item) => (
+              <a key={item.label} href={item.href} onClick={() => setOpen(false)}>
+                {item.label}
+              </a>
+            ))}
             <NavLink
-              key={item.label}
-              to={item.to}
+              to={routes.contact}
+              className="site-nav__contact-mobile"
               onClick={() => setOpen(false)}
-              className={({ isActive }) => (isActive ? 'is-active' : undefined)}
             >
-              {item.label}
+              Contact Us
             </NavLink>
-          ))}
+          </div>
         </div>
 
         <div className="site-nav__right">
-          <Link
-            to={routes.experiments}
-            className="site-nav__lab"
+          <NavLink
+            to={routes.contact}
+            className="site-nav__contact"
             onClick={() => setOpen(false)}
           >
-            AI Playground
-          </Link>
+            Contact Us
+          </NavLink>
           <button
             className="site-nav__toggle"
             type="button"

@@ -2,8 +2,11 @@
   command = "npm run build"
   publish = "dist"
 
-# React Router SPA — serve index.html for client routes
+# React app under /app/* (MPA) — deep links must hit app/index.html
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/app/*"
+  to = "/app/index.html"
   status = 200
+
+# Marketing homepage is dist/index.html at /
+# Do not catch-all rewrite everything to root (that breaks /app).

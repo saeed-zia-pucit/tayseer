@@ -9,7 +9,7 @@ import { AppRouter } from '@/app/router'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/app">
       <FinderProvider>
         <WhiteLabelProvider>
           <MbukeDemoProvider>

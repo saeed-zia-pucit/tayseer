@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useWhiteLabel } from '@/app/whiteLabelProvider'
-import { SiteHeader } from '@/components/layout/SiteHeader'
+import { ExperimentShell } from '@/components/layout/ExperimentShell'
 import { AnalyzingIndicator } from '@/components/finder/AnalyzingIndicator'
 import { FinderProgress } from '@/components/finder/FinderProgress'
 import { Chip, OptionCard, SectionLabel } from '@/components/finder/OptionCard'
@@ -60,153 +60,144 @@ export function WhiteLabelFinderPage() {
   const ok = canProceed(step, answers)
 
   return (
-    <div className="relative min-h-dvh bg-surface">
-      <div className="pointer-events-none absolute inset-0 opacity-80" aria-hidden>
-        <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-lagoon-bright/15 blur-3xl" />
-        <div className="absolute right-0 top-40 h-64 w-64 rounded-full bg-coral/10 blur-3xl" />
+    <ExperimentShell contentClassName="mx-auto max-w-7xl px-5 pb-12 pt-6 md:px-8">
+      <div className="mb-8 flex max-w-xl flex-wrap items-center justify-between gap-3">
+        <FinderProgress step={step} total={WL_TOTAL_STEPS} steps={wlStepMeta} />
+        <div className="flex items-center gap-3">
+          <AnalyzingIndicator show={analyzing} />
+          <button
+            type="button"
+            onClick={() => reset()}
+            className="text-xs font-semibold text-ink/50 underline-offset-4 hover:underline"
+          >
+            Reset
+          </button>
+        </div>
       </div>
 
-      <SiteHeader />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-5 pb-12 pt-6 md:px-8">
-        <div className="mb-8 flex max-w-xl flex-wrap items-center justify-between gap-3">
-          <FinderProgress step={step} total={WL_TOTAL_STEPS} steps={wlStepMeta} />
-          <div className="flex items-center gap-3">
-            <AnalyzingIndicator show={analyzing} />
-            <button
-              type="button"
-              onClick={() => reset()}
-              className="text-xs font-semibold text-ink/50 underline-offset-4 hover:underline"
+      <div className="grid items-start gap-8 lg:grid-cols-[1.35fr_auto]">
+        <section className="brand-panel">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={step}
+              initial={{ opacity: 0, x: 16 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -12 }}
+              transition={{ duration: 0.28 }}
             >
-              Reset
-            </button>
-          </div>
-        </div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-lagoon">
+                Customize white-label demo
+              </p>
+              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+                {meta.title}
+              </h2>
 
-        <div className="grid items-start gap-8 lg:grid-cols-[1.35fr_auto]">
-          <section className="brand-panel">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={step}
-                initial={{ opacity: 0, x: 16 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -12 }}
-                transition={{ duration: 0.28 }}
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-lagoon">
-                  Customize white-label demo
-                </p>
-                <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-                  {meta.title}
-                </h2>
+              <div className="mt-8">
+                {step === 1 ? (
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {wlBankTypeOptions.map((opt) => (
+                      <OptionCard
+                        key={opt.value}
+                        label={opt.label}
+                        hint={opt.hint}
+                        selected={answers.bankType === opt.value}
+                        onClick={() => trigger({ bankType: opt.value })}
+                      />
+                    ))}
+                  </div>
+                ) : null}
 
-                <div className="mt-8">
-                  {step === 1 ? (
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {wlBankTypeOptions.map((opt) => (
-                        <OptionCard
-                          key={opt.value}
-                          label={opt.label}
-                          hint={opt.hint}
-                          selected={answers.bankType === opt.value}
-                          onClick={() => trigger({ bankType: opt.value })}
-                        />
-                      ))}
-                    </div>
-                  ) : null}
+                {step === 2 ? (
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {wlAudienceOptions.map((opt) => (
+                      <OptionCard
+                        key={opt.value}
+                        label={opt.label}
+                        selected={answers.audience === opt.value}
+                        onClick={() => trigger({ audience: opt.value })}
+                      />
+                    ))}
+                  </div>
+                ) : null}
 
-                  {step === 2 ? (
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {wlAudienceOptions.map((opt) => (
-                        <OptionCard
-                          key={opt.value}
-                          label={opt.label}
-                          selected={answers.audience === opt.value}
-                          onClick={() => trigger({ audience: opt.value })}
-                        />
-                      ))}
-                    </div>
-                  ) : null}
+                {step === 3 ? (
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                    {wlFeatureOptions.map((opt) => (
+                      <OptionCard
+                        key={opt.value}
+                        label={opt.label}
+                        multi
+                        selected={answers.features.includes(opt.value)}
+                        onClick={() => toggleFeature(opt.value)}
+                      />
+                    ))}
+                  </div>
+                ) : null}
 
-                  {step === 3 ? (
-                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                      {wlFeatureOptions.map((opt) => (
-                        <OptionCard
-                          key={opt.value}
-                          label={opt.label}
-                          multi
-                          selected={answers.features.includes(opt.value)}
-                          onClick={() => toggleFeature(opt.value)}
-                        />
-                      ))}
-                    </div>
-                  ) : null}
-
-                  {step === 4 ? (
-                    <div className="space-y-8">
-                      <div>
-                        <SectionLabel>Brand theme</SectionLabel>
-                        <div className="grid gap-3 sm:grid-cols-2">
-                          {wlThemeOptions.map((opt) => (
-                            <OptionCard
-                              key={opt.value}
-                              label={opt.label}
-                              hint={opt.hint}
-                              selected={answers.theme === opt.value}
-                              onClick={() => trigger({ theme: opt.value })}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                      <div>
-                        <SectionLabel>App language</SectionLabel>
-                        <div className="flex flex-wrap gap-2">
-                          {wlLanguageOptions.map((opt) => (
-                            <Chip
-                              key={opt.value}
-                              label={opt.label}
-                              selected={answers.language === opt.value}
-                              onClick={() => trigger({ language: opt.value })}
-                            />
-                          ))}
-                        </div>
+                {step === 4 ? (
+                  <div className="space-y-8">
+                    <div>
+                      <SectionLabel>Brand theme</SectionLabel>
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        {wlThemeOptions.map((opt) => (
+                          <OptionCard
+                            key={opt.value}
+                            label={opt.label}
+                            hint={opt.hint}
+                            selected={answers.theme === opt.value}
+                            onClick={() => trigger({ theme: opt.value })}
+                          />
+                        ))}
                       </div>
                     </div>
-                  ) : null}
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                    <div>
+                      <SectionLabel>App language</SectionLabel>
+                      <div className="flex flex-wrap gap-2">
+                        {wlLanguageOptions.map((opt) => (
+                          <Chip
+                            key={opt.value}
+                            label={opt.label}
+                            selected={answers.language === opt.value}
+                            onClick={() => trigger({ language: opt.value })}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
-            <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-line/80 pt-6">
+          <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-line/80 pt-6">
+            <Button
+              variant="ghost"
+              onClick={() => setStep(Math.max(1, step - 1))}
+              disabled={step === 1}
+              className="disabled:opacity-30"
+            >
+              Back
+            </Button>
+            {step < WL_TOTAL_STEPS ? (
               <Button
-                variant="ghost"
-                onClick={() => setStep(Math.max(1, step - 1))}
-                disabled={step === 1}
-                className="disabled:opacity-30"
+                onClick={() => setStep(Math.min(WL_TOTAL_STEPS, step + 1))}
+                disabled={!ok}
               >
-                Back
+                Continue
               </Button>
-              {step < WL_TOTAL_STEPS ? (
-                <Button
-                  onClick={() => setStep(Math.min(WL_TOTAL_STEPS, step + 1))}
-                  disabled={!ok}
-                >
-                  Continue
-                </Button>
-              ) : (
-                <Button
-                  onClick={() => navigate(routes.whiteLabelResults)}
-                  disabled={!ok}
-                >
-                  Launch white-label demo
-                </Button>
-              )}
-            </div>
-          </section>
+            ) : (
+              <Button
+                onClick={() => navigate(routes.whiteLabelResults)}
+                disabled={!ok}
+              >
+                Launch white-label demo
+              </Button>
+            )}
+          </div>
+        </section>
 
-          <WhiteLabelPhonePreview answers={answers} analyzing={analyzing} />
-        </div>
+        <WhiteLabelPhonePreview answers={answers} analyzing={analyzing} />
       </div>
-    </div>
+    </ExperimentShell>
   )
 }

@@ -6,7 +6,7 @@ import {
 } from '@/theme/palettes'
 
 /** Bump when defaults change so stale lab prefs do not override the new system. */
-export const THEME_STORAGE_KEY = 'tayseer-theme-lab-v6'
+export const THEME_STORAGE_KEY = 'tayseer-theme-lab-v8'
 
 /** Editable colour fields (everything except id/name/blurb/rgb channels). */
 export type ThemeColorKey =

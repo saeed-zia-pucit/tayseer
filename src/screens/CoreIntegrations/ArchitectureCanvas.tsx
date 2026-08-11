@@ -14,34 +14,34 @@ interface ArchitectureCanvasProps {
   animated?: boolean
 }
 
-/** Layer chrome — tinted surfaces + ink text (readable on pearl / light themes). */
+/** Layer chrome — dark elevated tiles + white text for lab contrast. */
 const layerStyle: Record<
   ArchitectureNode['layer'],
   { ring: string; bg: string; label: string }
 > = {
   core: {
-    ring: 'ring-[color-mix(in_srgb,var(--brand-slide-1)_42%,transparent)]',
-    bg: 'bg-[color-mix(in_srgb,var(--brand-slide-1)_20%,#eef6f4)] text-ink',
+    ring: 'ring-[color-mix(in_srgb,var(--brand-accent)_50%,transparent)]',
+    bg: 'bg-[#222222] text-white',
     label: 'Core',
   },
   channel: {
-    ring: 'ring-[color-mix(in_srgb,var(--brand-slide-2)_40%,transparent)]',
-    bg: 'bg-[color-mix(in_srgb,var(--brand-slide-2)_14%,#eef3fb)] text-ink',
+    ring: 'ring-[color-mix(in_srgb,var(--brand-accent-2)_45%,transparent)]',
+    bg: 'bg-[#222222] text-white',
     label: 'Channel',
   },
   rail: {
-    ring: 'ring-[color-mix(in_srgb,var(--brand-slide-3)_38%,transparent)]',
-    bg: 'bg-[color-mix(in_srgb,var(--brand-slide-3)_12%,#f3eef8)] text-ink',
+    ring: 'ring-white/20',
+    bg: 'bg-[#1a1a1a] text-white',
     label: 'Rail',
   },
   risk: {
     ring: 'ring-[color-mix(in_srgb,var(--brand-accent-soft)_40%,transparent)]',
-    bg: 'bg-[color-mix(in_srgb,var(--brand-accent-soft)_12%,#f2f5f8)] text-ink',
+    bg: 'bg-[#222222] text-white',
     label: 'Risk',
   },
   legacy: {
-    ring: 'ring-ink/15',
-    bg: 'bg-[color-mix(in_srgb,var(--brand-bg-deep)_35%,#f4f6f9)] text-ink',
+    ring: 'ring-white/15',
+    bg: 'bg-[#1a1a1a] text-[#c8c8c8]',
     label: 'Legacy',
   },
 }
@@ -85,18 +85,18 @@ function NodeCard({
         node.layer === 'core' && 'px-4 py-4 shadow-lift',
       )}
     >
-      <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-ink/45">
+      <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[#a8a8a8]">
         {style.label}
       </p>
       <p
         className={cn(
-          'mt-1 font-semibold text-ink',
+          'mt-1 font-semibold text-white',
           node.layer === 'core' ? 'text-sm' : 'text-xs',
         )}
       >
         {node.label}
       </p>
-      <p className="mt-1 text-[9px] font-medium capitalize text-ink/50">
+      <p className="mt-1 text-[9px] font-medium capitalize text-[#a8a8a8]">
         {node.mode}
       </p>
       {animated && node.layer === 'core' ? (
@@ -131,7 +131,7 @@ export function ArchitectureCanvas({
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-lagoon">
               Architecture canvas
             </p>
-            <p className="mt-1 text-sm font-medium text-ink/55">
+            <p className="mt-1 text-sm font-medium text-[#a8a8a8]">
               Core & integrations lighting up
             </p>
           </div>
@@ -145,14 +145,14 @@ export function ArchitectureCanvas({
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-lagoon">
               {result?.title ?? 'Awaiting goal'}
             </p>
-            <p className="mt-1 text-xs text-ink/50">
+            <p className="mt-1 text-xs text-[#a8a8a8]">
               {answers.style
                 ? `${result?.styleLabel ?? ''} pattern`
                 : 'Select integrations to connect'}
             </p>
           </div>
           {animated ? (
-            <span className="flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2.5 py-1 text-[10px] font-bold text-emerald-700">
+            <span className="flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2.5 py-1 text-[10px] font-bold text-emerald-300">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-70" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
@@ -162,7 +162,7 @@ export function ArchitectureCanvas({
           ) : null}
         </div>
 
-        <div className="relative min-h-[320px] rounded-2xl bg-[color-mix(in_srgb,var(--brand-bg-deep)_28%,transparent)] p-4 ring-1 ring-ink/10">
+        <div className="relative min-h-[320px] rounded-2xl bg-black/40 p-4 ring-1 ring-white/10">
           {animated && satellites.length > 0 ? (
             <motion.div
               className="pointer-events-none absolute inset-8 rounded-full border border-dashed border-lagoon/30"
@@ -175,7 +175,7 @@ export function ArchitectureCanvas({
           <div className="relative z-10 grid gap-4">
             {channels.length > 0 ? (
               <div>
-                <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-ink/40">
+                <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#a8a8a8]">
                   Channels
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -201,7 +201,7 @@ export function ArchitectureCanvas({
                   transition={{ duration: 1.4, repeat: Infinity }}
                 />
               ) : (
-                <div className="h-4 w-px bg-ink/15" />
+                <div className="h-4 w-px bg-white/20" />
               )}
 
               {core ? (
@@ -209,7 +209,7 @@ export function ArchitectureCanvas({
                   <NodeCard node={core} animated={animated} index={0} />
                 </div>
               ) : (
-                <div className="w-full max-w-[220px] rounded-2xl border border-dashed border-ink/20 px-4 py-6 text-center text-xs text-ink/40">
+                <div className="w-full max-w-[220px] rounded-2xl border border-dashed border-white/20 px-4 py-6 text-center text-xs text-[#a8a8a8]">
                   Pick a core goal to place Tayseer Core
                 </div>
               )}
@@ -221,13 +221,13 @@ export function ArchitectureCanvas({
                   transition={{ duration: 1.4, repeat: Infinity, delay: 0.3 }}
                 />
               ) : satellites.length > 0 ? (
-                <div className="h-4 w-px bg-ink/15" />
+                <div className="h-4 w-px bg-white/20" />
               ) : null}
             </div>
 
             {(rails.length > 0 || risk.length > 0) && (
               <div>
-                <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-ink/40">
+                <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#a8a8a8]">
                   Rails & risk
                 </p>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -247,7 +247,7 @@ export function ArchitectureCanvas({
 
             {legacy.length > 0 ? (
               <div>
-                <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-ink/40">
+                <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#a8a8a8]">
                   Legacy bridges
                 </p>
                 <div className="grid grid-cols-2 gap-2">
@@ -266,7 +266,7 @@ export function ArchitectureCanvas({
             ) : null}
 
             {!answers.goal && satellites.length === 0 ? (
-              <p className="py-8 text-center text-sm text-ink/40">
+              <p className="py-8 text-center text-sm text-[#a8a8a8]">
                 Answer questions to assemble your integration map.
               </p>
             ) : null}
@@ -281,7 +281,7 @@ export function ArchitectureCanvas({
               .map((n) => (
                 <span
                   key={n.id}
-                  className="rounded-full bg-[color-mix(in_srgb,var(--brand-slide-2)_10%,#eef3f8)] px-2.5 py-1 text-[10px] font-medium text-ink/70 ring-1 ring-ink/10"
+                  className="rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-medium text-white ring-1 ring-white/15"
                 >
                   {n.label} · {n.mode}
                 </span>

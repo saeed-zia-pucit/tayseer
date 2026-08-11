@@ -739,9 +739,7 @@ export function HomeFooter() {
         </div>
       </div>
       <div className="footer-links">
-        <a href="https://www.tayseer.me/" target="_blank" rel="noopener noreferrer">
-          Current site
-        </a>
+        <a href="/">Home</a>
         <a href="mailto:info@tayseer.me">info@tayseer.me</a>
         <Link to={routes.experiments}>AI Playground</Link>
         <Link to={routes.finder}>Product Finder</Link>

@@ -5,7 +5,6 @@ import {
   CoreIntegrationsResultsPage,
 } from '@/screens/CoreIntegrations'
 import { ImplementationJourneyPage } from '@/screens/ImplementationJourney'
-import { LandingPage } from '@/screens/Landing'
 import {
   MbukeDemoFinderPage,
   MbukeDemoResultsPage,
@@ -28,10 +27,17 @@ import {
   WhiteLabelResultsPage,
 } from '@/screens/WhiteLabel'
 
+/**
+ * Interactive flows live under /app/* (basename).
+ * Marketing homepage is the static page at / — do not mount it here.
+ */
 export function AppRouter() {
   return (
     <Routes>
-      <Route path={routes.home} element={<LandingPage />} />
+      <Route
+        path={routes.home}
+        element={<Navigate to={routes.experiments} replace />}
+      />
       <Route path={routes.products} element={<ProductsPage />} />
       <Route path={routes.architecture} element={<ArchitecturePage />} />
       <Route path={routes.contact} element={<ContactPage />} />
@@ -73,7 +79,7 @@ export function AppRouter() {
       <Route path={routes.results} element={<ResultsPage />} />
       <Route path={routes.experiments} element={<ExperimentsPage />} />
       <Route path={routes.themeLab} element={<ThemeLabPage />} />
-      <Route path="*" element={<Navigate to={routes.home} replace />} />
+      <Route path="*" element={<Navigate to={routes.experiments} replace />} />
     </Routes>
   )
 }

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { routes } from '@/lib/constants'
 import { useFinder } from '@/app/providers'
+import { BRAND_ASSETS, SITE_NAME } from '@/lib/brand'
 import { cn } from '@/lib/cn'
 
 export function Header({ className }: { className?: string }) {
@@ -14,12 +15,13 @@ export function Header({ className }: { className?: string }) {
       )}
     >
       <Link to={routes.home} className="group flex items-center gap-2.5">
-        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-void text-sm font-bold text-mist">
-          T
-        </span>
-        <span className="font-display text-lg font-bold tracking-tight text-ink">
-          Tayseer
-        </span>
+        <img
+          src={BRAND_ASSETS.logoLight}
+          alt={SITE_NAME}
+          className="h-8 w-auto md:h-10"
+          width={180}
+          height={39}
+        />
       </Link>
 
       <div className="flex items-center gap-2 rounded-full bg-white/5 p-1 ring-1 ring-white/12 backdrop-blur">

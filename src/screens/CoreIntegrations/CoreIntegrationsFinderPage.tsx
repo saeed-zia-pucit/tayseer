@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useCoreIntegrations } from '@/app/coreIntegrationsProvider'
-import { SiteHeader } from '@/components/layout/SiteHeader'
+import { ExperimentShell } from '@/components/layout/ExperimentShell'
 import { FinderProgress } from '@/components/finder/FinderProgress'
 import { OptionCard, SectionLabel } from '@/components/finder/OptionCard'
 import { Button } from '@/components/ui/Button'
@@ -62,156 +62,147 @@ export function CoreIntegrationsFinderPage() {
   const ok = canProceed(step, answers)
 
   return (
-    <div className="relative min-h-dvh bg-surface">
-      <div className="pointer-events-none absolute inset-0 opacity-80" aria-hidden>
-        <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-lagoon-bright/15 blur-3xl" />
-        <div className="absolute right-0 top-40 h-64 w-64 rounded-full bg-coral/10 blur-3xl" />
+    <ExperimentShell contentClassName="mx-auto max-w-7xl px-5 pb-12 pt-6 md:px-8">
+      <div className="mb-8 flex max-w-xl flex-wrap items-center justify-between gap-3">
+        <FinderProgress
+          step={step}
+          total={CORE_TOTAL_STEPS}
+          steps={coreStepMeta}
+        />
+        <button
+          type="button"
+          onClick={() => reset()}
+          className="text-xs font-semibold text-ink/50 underline-offset-4 hover:underline"
+        >
+          Reset
+        </button>
       </div>
 
-      <SiteHeader />
+      <div className="grid items-start gap-8 lg:grid-cols-[1.35fr_1fr]">
+        <section className="brand-panel">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={step}
+              initial={{ opacity: 0, x: 16 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -12 }}
+              transition={{ duration: 0.28 }}
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-lagoon">
+                Core architect
+              </p>
+              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+                {meta.title}
+              </h2>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5 pb-12 pt-6 md:px-8">
-        <div className="mb-8 flex max-w-xl flex-wrap items-center justify-between gap-3">
-          <FinderProgress
-            step={step}
-            total={CORE_TOTAL_STEPS}
-            steps={coreStepMeta}
-          />
-          <button
-            type="button"
-            onClick={() => reset()}
-            className="text-xs font-semibold text-ink/50 underline-offset-4 hover:underline"
-          >
-            Reset
-          </button>
-        </div>
+              <div className="mt-8">
+                {step === 1 ? (
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {coreGoalOptions.map((opt) => (
+                      <OptionCard
+                        key={opt.value}
+                        label={opt.label}
+                        hint={opt.hint}
+                        selected={answers.goal === opt.value}
+                        onClick={() => trigger({ goal: opt.value })}
+                      />
+                    ))}
+                  </div>
+                ) : null}
 
-        <div className="grid items-start gap-8 lg:grid-cols-[1.35fr_1fr]">
-          <section className="brand-panel">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={step}
-                initial={{ opacity: 0, x: 16 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -12 }}
-                transition={{ duration: 0.28 }}
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-lagoon">
-                  Core architect
-                </p>
-                <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-                  {meta.title}
-                </h2>
+                {step === 2 ? (
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                    {integrationOptions.map((opt) => (
+                      <OptionCard
+                        key={opt.value}
+                        label={opt.label}
+                        hint={opt.hint}
+                        multi
+                        selected={answers.integrations.includes(opt.value)}
+                        onClick={() => toggleIntegration(opt.value)}
+                      />
+                    ))}
+                  </div>
+                ) : null}
 
-                <div className="mt-8">
-                  {step === 1 ? (
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {coreGoalOptions.map((opt) => (
-                        <OptionCard
-                          key={opt.value}
-                          label={opt.label}
-                          hint={opt.hint}
-                          selected={answers.goal === opt.value}
-                          onClick={() => trigger({ goal: opt.value })}
-                        />
-                      ))}
-                    </div>
-                  ) : null}
+                {step === 3 ? (
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {integrationStyleOptions.map((opt) => (
+                      <OptionCard
+                        key={opt.value}
+                        label={opt.label}
+                        hint={opt.hint}
+                        selected={answers.style === opt.value}
+                        onClick={() => trigger({ style: opt.value })}
+                      />
+                    ))}
+                  </div>
+                ) : null}
 
-                  {step === 2 ? (
-                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                      {integrationOptions.map((opt) => (
-                        <OptionCard
-                          key={opt.value}
-                          label={opt.label}
-                          hint={opt.hint}
-                          multi
-                          selected={answers.integrations.includes(opt.value)}
-                          onClick={() => toggleIntegration(opt.value)}
-                        />
-                      ))}
-                    </div>
-                  ) : null}
-
-                  {step === 3 ? (
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {integrationStyleOptions.map((opt) => (
-                        <OptionCard
-                          key={opt.value}
-                          label={opt.label}
-                          hint={opt.hint}
-                          selected={answers.style === opt.value}
-                          onClick={() => trigger({ style: opt.value })}
-                        />
-                      ))}
-                    </div>
-                  ) : null}
-
-                  {step === 4 ? (
-                    <div className="space-y-8">
-                      <div>
-                        <SectionLabel>Deployment</SectionLabel>
-                        <div className="grid gap-3 sm:grid-cols-3">
-                          {coreDeploymentOptions.map((opt) => (
-                            <OptionCard
-                              key={opt.value}
-                              label={opt.label}
-                              hint={opt.hint}
-                              selected={answers.deployment === opt.value}
-                              onClick={() => trigger({ deployment: opt.value })}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                      <div>
-                        <SectionLabel>Priority</SectionLabel>
-                        <div className="grid gap-3 sm:grid-cols-2">
-                          {corePriorityOptions.map((opt) => (
-                            <OptionCard
-                              key={opt.value}
-                              label={opt.label}
-                              selected={answers.priority === opt.value}
-                              onClick={() => trigger({ priority: opt.value })}
-                            />
-                          ))}
-                        </div>
+                {step === 4 ? (
+                  <div className="space-y-8">
+                    <div>
+                      <SectionLabel>Deployment</SectionLabel>
+                      <div className="grid gap-3 sm:grid-cols-3">
+                        {coreDeploymentOptions.map((opt) => (
+                          <OptionCard
+                            key={opt.value}
+                            label={opt.label}
+                            hint={opt.hint}
+                            selected={answers.deployment === opt.value}
+                            onClick={() => trigger({ deployment: opt.value })}
+                          />
+                        ))}
                       </div>
                     </div>
-                  ) : null}
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                    <div>
+                      <SectionLabel>Priority</SectionLabel>
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        {corePriorityOptions.map((opt) => (
+                          <OptionCard
+                            key={opt.value}
+                            label={opt.label}
+                            selected={answers.priority === opt.value}
+                            onClick={() => trigger({ priority: opt.value })}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
-            <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-line/80 pt-6">
+          <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-line/80 pt-6">
+            <Button
+              variant="ghost"
+              onClick={() => setStep(Math.max(1, step - 1))}
+              disabled={step === 1}
+              className="disabled:opacity-30"
+            >
+              Back
+            </Button>
+            {step < CORE_TOTAL_STEPS ? (
               <Button
-                variant="ghost"
-                onClick={() => setStep(Math.max(1, step - 1))}
-                disabled={step === 1}
-                className="disabled:opacity-30"
+                onClick={() => setStep(Math.min(CORE_TOTAL_STEPS, step + 1))}
+                disabled={!ok}
               >
-                Back
+                Continue
               </Button>
-              {step < CORE_TOTAL_STEPS ? (
-                <Button
-                  onClick={() => setStep(Math.min(CORE_TOTAL_STEPS, step + 1))}
-                  disabled={!ok}
-                >
-                  Continue
-                </Button>
-              ) : (
-                <Button
-                  onClick={() => navigate(routes.coreIntegrationsResults)}
-                  disabled={!ok}
-                >
-                  View architecture
-                </Button>
-              )}
-            </div>
-          </section>
+            ) : (
+              <Button
+                onClick={() => navigate(routes.coreIntegrationsResults)}
+                disabled={!ok}
+              >
+                View architecture
+              </Button>
+            )}
+          </div>
+        </section>
 
-          <ArchitectureCanvas answers={answers} analyzing={analyzing} />
-        </div>
+        <ArchitectureCanvas answers={answers} analyzing={analyzing} />
       </div>
-    </div>
+    </ExperimentShell>
   )
 }

@@ -24,14 +24,14 @@ export function FinderProgress({
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between gap-3">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink/45">
+        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#c8c8c8]">
           Step {step} of {total}
         </p>
-        <p className="text-xs font-medium text-ink/50">{pct}%</p>
+        <p className="text-xs font-medium text-[#c8c8c8]">{pct}%</p>
       </div>
-      <div className="h-1.5 overflow-hidden rounded-full bg-line/70">
+      <div className="lab-progress__track">
         <motion.div
-          className="h-full rounded-full bg-lagoon-bright"
+          className="lab-progress__fill"
           initial={false}
           animate={{ width: `${pct}%` }}
           transition={{ type: 'spring', stiffness: 120, damping: 20 }}
@@ -42,12 +42,9 @@ export function FinderProgress({
           <span
             key={s.id}
             className={cn(
-              'rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide',
-              s.id === step
-                ? 'bg-lagoon text-mist'
-                : s.id < step
-                  ? 'bg-lagoon/20 text-lagoon-bright'
-                  : 'bg-[color-mix(in_srgb,var(--brand-bg-deep)_28%,white)] text-ink/40 ring-1 ring-ink/10',
+              'lab-progress__step',
+              s.id === step && 'is-active',
+              s.id < step && 'is-done',
             )}
           >
             {s.short}

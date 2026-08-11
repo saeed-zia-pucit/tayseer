@@ -162,7 +162,33 @@ export const pearlLagoon: BrandPalette = {
   accent3Rgb: '109, 40, 217',
 }
 
+/**
+ * Matches marketing home dark canvas (#0b0b0b + teal/lime CTAs).
+ */
+export const kindgeekInk: BrandPalette = {
+  id: 'kindgeek-ink',
+  name: 'Ink Dark',
+  blurb:
+    'Near-black canvas with teal and lime accents — same atmosphere as the marketing home.',
+  mode: 'dark',
+  bgDeep: '#0b0b0b',
+  bg: '#0b0b0b',
+  bgElevated: '#161616',
+  text: '#ffffff',
+  muted: '#c8c8c8',
+  accent: '#00bfbf',
+  accent2: '#9edc57',
+  accent3: '#00bfbf',
+  accentSoft: '#9edc57',
+  intro: '#161616',
+  slides: ['#00bfbf', '#9edc57', '#00a8a8', '#7ec43a', '#00bfbf', '#9edc57'],
+  accentRgb: '0, 191, 191',
+  accent2Rgb: '158, 220, 87',
+  accent3Rgb: '0, 191, 191',
+}
+
 export const PALETTES: Record<string, BrandPalette> = {
+  [kindgeekInk.id]: kindgeekInk,
   [violetAurora.id]: violetAurora,
   [lagoonPrism.id]: lagoonPrism,
   [sunsetCircuit.id]: sunsetCircuit,
@@ -172,8 +198,8 @@ export const PALETTES: Record<string, BrandPalette> = {
 
 export const PALETTE_LIST = Object.values(PALETTES)
 
-/** Default app-wide palette */
-export const ACTIVE_PALETTE_ID: keyof typeof PALETTES = 'pearl-lagoon'
+/** Default app-wide palette — aligned with marketing home */
+export const ACTIVE_PALETTE_ID: keyof typeof PALETTES = 'kindgeek-ink'
 
 export function getPalette(id: string = ACTIVE_PALETTE_ID): BrandPalette {
   return PALETTES[id] ?? violetAurora

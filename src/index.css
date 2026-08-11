@@ -2,35 +2,35 @@
 
 /*
  * Brand tokens on :root — mirrored by applyTheme() / Theme Lab.
- * Default = Pearl Lagoon (light) — see src/theme/palettes.ts.
+ * Default = Ink Dark — see src/theme/palettes.ts.
  */
 :root {
-  --brand-bg-deep: #d8e2ec;
-  --brand-bg: #eef2f7;
-  --brand-bg-elevated: #ffffff;
-  --brand-text: #0b1628;
-  --brand-muted: #4f6278;
-  --brand-accent: #0f766e;
-  --brand-accent-2: #1d4ed8;
-  --brand-accent-3: #6d28d9;
-  --brand-accent-soft: #0369a1;
-  --brand-intro: #cbd8e6;
-  --brand-slide-1: #0f766e;
-  --brand-slide-2: #1d4ed8;
-  --brand-slide-3: #6d28d9;
-  --brand-slide-4: #0e7490;
-  --brand-slide-5: #4338ca;
-  --brand-slide-6: #0d9488;
-  --brand-accent-rgb: 15, 118, 110;
-  --brand-accent-2-rgb: 29, 78, 216;
-  --brand-accent-3-rgb: 109, 40, 217;
+  --brand-bg-deep: #0b0b0b;
+  --brand-bg: #0b0b0b;
+  --brand-bg-elevated: #161616;
+  --brand-text: #ffffff;
+  --brand-muted: #c8c8c8;
+  --brand-accent: #00bfbf;
+  --brand-accent-2: #9edc57;
+  --brand-accent-3: #00bfbf;
+  --brand-accent-soft: #9edc57;
+  --brand-intro: #161616;
+  --brand-slide-1: #00bfbf;
+  --brand-slide-2: #9edc57;
+  --brand-slide-3: #00a8a8;
+  --brand-slide-4: #7ec43a;
+  --brand-slide-5: #00bfbf;
+  --brand-slide-6: #9edc57;
+  --brand-accent-rgb: 0, 191, 191;
+  --brand-accent-2-rgb: 158, 220, 87;
+  --brand-accent-3-rgb: 0, 191, 191;
 
-  /* Light phone / mock-app chrome (scoped via .phone-ui) */
-  --phone-bg: #e8eef5;
-  --phone-ink: #0b1628;
-  --phone-muted: #4f6278;
-  --phone-chip: #d5e4ef;
-  --phone-card: #ffffff;
+  /* Phone / mock-app chrome (scoped via .phone-ui) */
+  --phone-bg: #161616;
+  --phone-ink: #ffffff;
+  --phone-muted: #858585;
+  --phone-chip: #222222;
+  --phone-card: #1a1a1a;
 }
 
 @theme {
@@ -84,22 +84,38 @@
 
 /* Shared panel chrome for experiment / finder shells */
 @layer components {
+  .lab-shell {
+    background: #0b0b0b;
+    color: var(--brand-text);
+  }
+
+  .lab-shell__glow {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0.9;
+    background:
+      radial-gradient(ellipse 55% 40% at 12% 8%, rgb(var(--brand-accent-rgb) / 0.18), transparent 58%),
+      radial-gradient(ellipse 45% 35% at 92% 12%, rgb(var(--brand-accent-2-rgb) / 0.12), transparent 52%),
+      radial-gradient(ellipse 40% 30% at 70% 90%, rgb(var(--brand-accent-rgb) / 0.08), transparent 55%);
+  }
+
   .brand-panel {
     @apply rounded-[1.75rem] p-6 shadow-lift ring-1 backdrop-blur-md md:p-8;
-    background: color-mix(in srgb, var(--brand-bg-elevated) 88%, transparent);
+    background: #161616;
     border-color: transparent;
-    --tw-ring-color: rgb(255 255 255 / 0.12);
+    --tw-ring-color: rgb(255 255 255 / 0.07);
   }
 
   .brand-aside {
     @apply overflow-hidden rounded-[1.75rem] p-6 text-mist shadow-lift ring-1;
     background: linear-gradient(
       165deg,
-      rgb(var(--brand-accent-rgb) / 0.22),
-      var(--brand-bg-deep) 42%,
-      var(--brand-bg-elevated)
+      rgb(var(--brand-accent-rgb) / 0.16),
+      #121212 42%,
+      #161616
     );
-    --tw-ring-color: rgb(255 255 255 / 0.1);
+    --tw-ring-color: rgb(255 255 255 / 0.07);
   }
 
   .brand-chip {
@@ -111,8 +127,8 @@
 
   .theme-card {
     @apply rounded-2xl p-5 ring-1;
-    background: color-mix(in srgb, var(--brand-bg-elevated) 55%, transparent);
-    --tw-ring-color: rgb(255 255 255 / 0.12);
+    background: #161616;
+    --tw-ring-color: rgb(255 255 255 / 0.07);
   }
 
   .theme-swatch {
@@ -132,6 +148,91 @@
     --tw-ring-color: rgb(255 255 255 / 0.1);
   }
 
+  /* Lab option cards — dark tiles, high-contrast white text */
+  .option-card {
+    @apply relative rounded-2xl border px-4 py-4 text-left transition duration-200;
+    background: #2c2c2c;
+    color: #ffffff;
+    border-color: rgb(255 255 255 / 0.14);
+  }
+
+  .option-card:hover {
+    background: #353535;
+    border-color: color-mix(in srgb, var(--brand-accent) 55%, transparent);
+  }
+
+  .option-card.is-selected {
+    background: var(--brand-accent);
+    color: #ffffff;
+    border-color: color-mix(in srgb, var(--brand-accent) 70%, white);
+    box-shadow: 0 10px 28px rgb(0 0 0 / 0.35);
+  }
+
+  .option-card__hint {
+    color: #d4d4d4;
+  }
+
+  .option-card.is-selected .option-card__hint {
+    color: rgb(255 255 255 / 0.92);
+  }
+
+  .option-card__mark {
+    border-color: rgb(255 255 255 / 0.45);
+    color: transparent;
+    background: transparent;
+  }
+
+  .option-card.is-selected .option-card__mark {
+    border-color: #0b0b0b;
+    background: #9edc57;
+    color: #0b0b0b;
+  }
+
+  .lab-chip {
+    @apply rounded-full px-3.5 py-2 text-xs font-semibold transition;
+    background: #2c2c2c;
+    color: #ffffff;
+    border: 1px solid rgb(255 255 255 / 0.14);
+  }
+
+  .lab-chip:hover {
+    background: #353535;
+    border-color: color-mix(in srgb, var(--brand-accent) 45%, transparent);
+  }
+
+  .lab-chip.is-selected {
+    background: var(--brand-accent);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 8px 18px rgb(0 0 0 / 0.22);
+  }
+
+  .lab-progress__track {
+    @apply h-1.5 overflow-hidden rounded-full;
+    background: rgb(255 255 255 / 0.14);
+  }
+
+  .lab-progress__fill {
+    @apply h-full rounded-full;
+    background: var(--brand-accent-2);
+  }
+
+  .lab-progress__step {
+    @apply rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide;
+    background: rgb(255 255 255 / 0.1);
+    color: rgb(255 255 255 / 0.75);
+  }
+
+  .lab-progress__step.is-active {
+    background: var(--brand-accent);
+    color: #ffffff;
+  }
+
+  .lab-progress__step.is-done {
+    background: color-mix(in srgb, var(--brand-accent) 22%, transparent);
+    color: var(--brand-accent-2);
+  }
+
   /*
    * Remap ink/mist inside light phone mocks so existing text-ink / bg-mist
    * utilities stay readable without rewriting every screen.
@@ -145,13 +246,12 @@
   }
 }
 
-/* Shared site header — fixed height, brand gradient, identical on every page */
+/* Marketing-matching site header — same bar as home */
 .site-header {
-  --site-header-h: 64px;
+  --site-header-h: 116px;
   position: sticky;
   top: 0;
   z-index: 50;
-  height: var(--site-header-h);
   isolation: isolate;
 }
 
@@ -160,99 +260,86 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    linear-gradient(
-      105deg,
-      color-mix(in srgb, var(--brand-slide-1) 55%, var(--brand-bg-deep)) 0%,
-      color-mix(in srgb, var(--brand-slide-2) 42%, var(--brand-bg)) 42%,
-      color-mix(in srgb, var(--brand-slide-4) 48%, var(--brand-bg-deep)) 78%,
-      color-mix(in srgb, var(--brand-slide-3) 35%, var(--brand-bg-deep)) 100%
-    );
-  border-bottom: 1px solid rgb(255 255 255 / 0.14);
-  box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.06) inset,
-    0 10px 32px rgb(0 0 0 / 0.28);
+  background: transparent;
+  border-bottom: 0;
+  box-shadow: none;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .site-header.is-scrolled::before {
-  box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.08) inset,
-    0 14px 40px rgb(0 0 0 / 0.38);
+  background: rgb(11 11 11 / 0.92);
+  border-bottom: 1px solid rgb(255 255 255 / 0.06);
+  box-shadow: 0 10px 32px rgb(0 0 0 / 0.35);
+  backdrop-filter: blur(14px);
 }
 
 .site-nav {
   position: relative;
-  height: var(--site-header-h);
+  min-height: var(--site-header-h);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   column-gap: 1.25rem;
-  padding: 0 clamp(1.25rem, 3.5vw, 2.75rem);
+  padding: 30px clamp(1rem, 3.5vw, 2.5rem);
   color: #fff;
-  backdrop-filter: blur(14px);
 }
 
 .site-nav__brand {
   justify-self: start;
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: -0.01em;
+  gap: 0.55rem;
   color: inherit;
   text-decoration: none;
-}
-
-.site-nav__mark {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: conic-gradient(
-    from 210deg,
-    var(--brand-slide-1),
-    var(--brand-slide-2),
-    var(--brand-slide-3),
-    var(--brand-slide-6),
-    var(--brand-slide-1)
-  );
-  box-shadow: 0 0 24px rgb(var(--brand-accent-2-rgb) / 0.55);
-  position: relative;
   flex-shrink: 0;
 }
 
-.site-nav__mark::after {
-  content: '';
-  position: absolute;
-  inset: 5px;
-  border-radius: 4px;
-  background: #0a0614;
+.site-nav__logo {
+  display: block;
+  width: auto;
+  height: 40px;
+}
+
+.site-nav__pill {
+  justify-self: center;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .site-nav__links {
-  justify-self: center;
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  justify-content: space-around;
+  gap: 0.35rem 1.1rem;
+  min-height: 56px;
+  padding: 0 1.5rem;
+  margin: 0;
+  list-style: none;
+  background: #161616;
+  border-radius: 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.site-nav__links::-webkit-scrollbar {
+  display: none;
 }
 
 .site-nav__links a {
-  color: rgb(255 255 255 / 0.78);
+  flex-shrink: 0;
+  color: rgb(255 255 255 / 0.92);
   text-decoration: none;
   font-size: 0.875rem;
-  font-weight: 600;
-  padding: 0.45rem 0.85rem;
-  border-radius: 999px;
-  transition:
-    color 0.2s,
-    background 0.2s;
+  font-weight: 500;
+  line-height: 1.2;
+  padding: 0.35rem 0.15rem;
+  white-space: nowrap;
+  transition: color 0.2s;
 }
 
 .site-nav__links a:hover,
 .site-nav__links a.is-active {
-  color: #fff;
-  background: rgb(255 255 255 / 0.14);
+  color: #00bfbf;
 }
 
 .site-nav__right {
@@ -260,41 +347,30 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.85rem;
+  gap: 0.75rem;
   min-width: 0;
 }
 
-.site-nav__lab {
+.site-nav__contact {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  min-height: 2.5rem;
-  padding: 0.7rem 1.55rem;
-  margin-inline-end: 0.15rem;
-  border-radius: 999px;
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  line-height: 1.15;
-  text-transform: uppercase;
+  min-width: 124px;
+  min-height: 40px;
+  padding: 10px 28px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
   text-decoration: none;
-  color: #fff;
-  background: linear-gradient(
-    135deg,
-    var(--brand-slide-1),
-    var(--brand-slide-2) 55%,
-    var(--brand-slide-4)
-  );
-  border: 1px solid rgb(255 255 255 / 0.38);
-  box-shadow:
-    0 0 0 1px rgb(var(--brand-accent-rgb) / 0.22),
-    0 8px 22px rgb(0 0 0 / 0.28);
+  color: #0b0b0b;
+  background: #fff;
   white-space: nowrap;
+  transition: filter 0.2s, transform 0.2s;
 }
 
-.site-nav__lab:hover {
-  filter: brightness(1.06);
+.site-nav__contact:hover {
+  filter: brightness(0.96);
   transform: translateY(-1px);
 }
 
@@ -318,44 +394,104 @@
   border-radius: 2px;
 }
 
-@media (max-width: 720px) {
+.site-nav__contact-mobile {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .site-header {
+    --site-header-h: 88px;
+  }
+
   .site-nav {
-    grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: 0.75rem;
-    padding: 0 1rem;
+    padding: 20px 1.25rem;
+  }
+
+  .site-nav__logo {
+    height: 34px;
   }
 
   .site-nav__links {
+    min-height: 48px;
+    padding: 0 1rem;
+    gap: 0.35rem 0.85rem;
+  }
+
+  .site-nav__links a {
+    font-size: 0.8rem;
+  }
+
+  .site-nav__contact {
+    min-width: 110px;
+    padding: 8px 18px;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .site-header {
+    --site-header-h: 72px;
+  }
+
+  .site-nav {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 0.75rem;
+    padding: 16px 1rem;
+  }
+
+  .site-nav__pill {
     display: none;
   }
 
-  .site-nav.is-open .site-nav__links {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+  .site-nav.is-open .site-nav__pill {
+    display: block;
     position: absolute;
-    top: var(--site-header-h);
+    top: 100%;
     left: 0;
     right: 0;
-    padding: 0.85rem 1rem 1.15rem;
-    gap: 0.35rem;
-    background: linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--brand-slide-1) 40%, var(--brand-bg-deep)),
-      color-mix(in srgb, var(--brand-bg-deep) 92%, transparent)
-    );
-    border-bottom: 1px solid rgb(255 255 255 / 0.12);
-    box-shadow: 0 18px 40px rgb(0 0 0 / 0.35);
+    padding: 0.5rem 1rem 1.15rem;
+    background: #0b0b0b;
+    border-bottom: 1px solid rgb(255 255 255 / 0.08);
+    box-shadow: 0 18px 40px rgb(0 0 0 / 0.45);
   }
 
-  .site-nav__lab {
-    padding: 0.62rem 1.15rem;
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
+  .site-nav.is-open .site-nav__links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.15rem;
+    min-height: 0;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+  }
+
+  .site-nav.is-open .site-nav__links a {
+    padding: 0.7rem 0.35rem;
+    font-size: 1rem;
+  }
+
+  .site-nav__contact {
+    display: none;
+  }
+
+  .site-nav__contact-mobile {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+    min-height: 44px;
+    border-radius: 8px;
+    font-size: 0.9375rem !important;
+    font-weight: 500;
+    color: #0b0b0b !important;
+    background: #fff;
   }
 
   .site-nav__toggle {
     display: flex;
+  }
+
+  .site-nav__logo {
+    height: 30px;
   }
 }
 
@@ -423,17 +559,41 @@ html[data-theme-mode='light'] .theme-field {
 }
 
 html[data-theme-mode='light'] .option-card {
-  border-color: rgb(11 22 40 / 0.1);
-  background: color-mix(in srgb, var(--brand-bg-deep) 22%, white);
+  border-color: rgb(11 22 40 / 0.12);
+  background: #ffffff;
+  color: #0b1628;
 }
 
 html[data-theme-mode='light'] .option-card:hover {
   border-color: color-mix(in srgb, var(--brand-accent) 40%, transparent);
-  background: color-mix(in srgb, var(--brand-accent) 8%, white);
+  background: color-mix(in srgb, var(--brand-accent) 6%, white);
 }
 
 html[data-theme-mode='light'] .option-card.is-selected {
   border-color: color-mix(in srgb, var(--brand-accent) 55%, transparent);
+  background: var(--brand-accent);
+  color: #ffffff;
+}
+
+html[data-theme-mode='light'] .option-card__hint {
+  color: rgb(11 22 40 / 0.55);
+}
+
+html[data-theme-mode='light'] .option-card.is-selected .option-card__hint {
+  color: rgb(255 255 255 / 0.82);
+}
+
+html[data-theme-mode='light'] .option-card__mark {
+  border-color: rgb(11 22 40 / 0.28);
+}
+
+html[data-theme-mode='light'] .lab-chip {
+  background: #ffffff;
+  color: #0b1628;
+  border-color: rgb(11 22 40 / 0.12);
+}
+
+html[data-theme-mode='light'] .lab-chip.is-selected {
   background: var(--brand-accent);
   color: #ffffff;
 }

@@ -187,7 +187,7 @@ export function ThemeLabPage() {
             >
               Live preview
             </p>
-            <h3 className="mt-2 font-display text-2xl font-bold">Tayseer</h3>
+            <h3 className="mt-2 font-display text-2xl font-bold">Tayseer Innovations</h3>
             <p className="mt-2 text-sm" style={{ color: preview.muted }}>
               Banking, reimagined through AI — sample card using your tokens.
             </p>
